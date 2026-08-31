@@ -1,0 +1,35 @@
+# Local configuration and virtual environments
+.env
+.venv/
+venv/
+
+# Local consent and safety records, when a user intentionally places the data
+# directory inside a checkout.
+privacy_consent.json
+conversation_history/safety_events.jsonl
+
+# Python build and cache artifacts
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+build/
+dist/
+
+# Application data: keep placeholder files, never publish user content
+conversation_history/tool_audit.jsonl
+conversation_history/sessions/*
+!conversation_history/sessions/.gitkeep
+knowledge/*
+!knowledge/.gitkeep
+training_data/raw/*
+!training_data/raw/.gitkeep
+training_data/review/*
+!training_data/review/.gitkeep
+training_data/curated/*
+!training_data/curated/.gitkeep
+
+# Generated local retrieval data
+*.sqlite3
+*.sqlite3-shm
+*.sqlite3-wal

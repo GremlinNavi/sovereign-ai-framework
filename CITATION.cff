@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use Sovereign AI Demonstrator — Eternal Thread, please cite it as below."
+type: software
+title: "Sovereign AI Demonstrator — Eternal Thread"
+version: 0.4.0
+date-released: 2026-08-31
+authors:
+  - family-names: Prowse
+    given-names: Zoey
+abstract: "A local-first, auditable, human-controlled reference implementation for AI-assisted research."
+license: "Apache-2.0"
