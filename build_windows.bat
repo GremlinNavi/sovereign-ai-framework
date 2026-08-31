@@ -11,13 +11,16 @@ python -m pip install --upgrade pip
 if errorlevel 1 goto :failed
 python -m pip install -r requirements-build.lock
 if errorlevel 1 goto :failed
+python -m pip install -r requirements-test.lock
+if errorlevel 1 goto :failed
+python -m pytest -q
+if errorlevel 1 goto :failed
 python -m PyInstaller --noconfirm --clean --windowed --name "%APP_NAME%" launcher.py
 if errorlevel 1 goto :failed
-python tools\generate_third_party_notices.py --output THIRD_PARTY_NOTICES.md
+python tools\generate_third_party_notices.py --output dist\%APP_NAME%\THIRD_PARTY_NOTICES.md
 if errorlevel 1 goto :failed
 copy /Y LICENSE dist\%APP_NAME%\LICENSE >nul
 copy /Y NOTICE dist\%APP_NAME%\NOTICE >nul
-copy /Y THIRD_PARTY_NOTICES.md dist\%APP_NAME%\THIRD_PARTY_NOTICES.md >nul
 echo.
 echo Built: dist\%APP_NAME%\%APP_NAME%.exe
 endlocal

@@ -93,6 +93,14 @@ pytest -q
 `requirements.lock` pins the reviewed runtime dependency set; `requirements-test.lock`
 adds the test tools; and `requirements-build.lock` adds the Windows packaging tools.
 
+To install the application from a source checkout and use its command-line entry
+point, run:
+
+```bash
+pip install .
+eternal-thread
+```
+
 ## Folders
 
 - `conversation_history/sessions/` — JSONL conversation sessions.
@@ -248,7 +256,9 @@ Evidence assessments are never treated as publication authorization. The model i
 Before making a repository public, remove personal conversation histories, tool audit
 logs, knowledge files, `.env` files, API keys, local paths, and any training or review
 data. Publish source archives and any Windows build as versioned GitHub release assets,
-with release notes and a SHA-256 checksum file. Mark unfinished work as a pre-release.
+with release notes and a SHA-256 checksum file. Do not commit generated release archives,
+checksums, executable builds, or personal data to the default branch. Mark unfinished
+work as a pre-release.
 
 Keep project identity precise: use **Sovereign AI Demonstrator — Eternal Thread** and
 the tagline **Local-first. Auditable. Human-controlled.** Do not imply government

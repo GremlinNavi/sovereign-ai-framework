@@ -15,6 +15,7 @@ __pycache__/
 .pytest_cache/
 build/
 dist/
+release-assets/
 
 # Application data: keep placeholder files, never publish user content
 conversation_history/tool_audit.jsonl
@@ -33,3 +34,10 @@ training_data/curated/*
 *.sqlite3
 *.sqlite3-shm
 *.sqlite3-wal
+
+# Release assets are published through GitHub Releases, not committed to source.
+*.exe
+*.msi
+*.zip
+SHA256SUMS.txt
+THIRD_PARTY_NOTICES.md
