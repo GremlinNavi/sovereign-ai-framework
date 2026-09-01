@@ -1,6 +1,6 @@
 # Security policy
 
-Eternal Thread is a local-first demonstrator, not a network service. Keep it bound to
+Sovereign AI Demonstrator is a local-first demonstrator, not a network service. Keep it bound to
 your machine and do not expose its web-research tools or backend endpoint to untrusted
 networks without a separate security review.
 
