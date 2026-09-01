@@ -4,20 +4,20 @@ A Canadian reference implementation for local-first, auditable AI-assisted resea
 
 A local-first research framework with replaceable inference backends. It combines AI tool calling, conversation-history retrieval, local knowledge retrieval, public-web research, evidence assessments, provenance-oriented citations, confidence ratings, and universal `.txt` conversation exports.
 
-**Creator:** Zoey Prowse
+**Creator:** Nemi Prowse
 
 **Status:** v0.4 Release Candidate #3 is a portable-framework development release. It is not a Government of Canada product,
 service, endorsement, or production deployment.
 
 ## Authorship, citation, and reuse
 
-Sovereign AI Demonstrator — Eternal Thread was created by Zoey Prowse. Please retain
+Sovereign AI Demonstrator — Eternal Thread was created by Nemi Prowse. Please retain
 the project attribution and refer to [CITATION.cff](CITATION.cff) when citing this
 software. The repository's release materials are documented in [NOTICE](NOTICE) and
 [RELEASE_CHECKLIST.md](RELEASE_CHECKLIST.md).
 
 This project is open source under the [Apache License, Version 2.0](LICENSE).
-Copyright remains with Zoey Prowse and contributors retain copyright in their own
+Copyright remains with Nemi Prowse and contributors retain copyright in their own
 contributions. The `NOTICE` file preserves project attribution; the licence does not
 grant permission to imply project or government endorsement.
 
