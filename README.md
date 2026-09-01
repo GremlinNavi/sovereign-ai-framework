@@ -314,6 +314,11 @@ Conversation history, embeddings, and fetched page text are stored locally. Web 
 
 The project includes a native Tk desktop GUI in `app/gui.py` and `launcher.py`. On Windows, run `build_windows.bat` to create `dist\\EternalThread\\EternalThread.exe` by default, with no console window. The executable name is read from `config.py`. Tk is bundled with standard Windows Python installations, so the GUI does not need a separate Qt runtime.
 
+The accessibility-first distribution layout keeps `EternalThread.exe`, `START_HERE.txt`,
+and `.env.example` at the package top level. Full guidance is in `Documentation\\` and
+licensing/SBOM material is in `Licences_and_Notices\\`; users should create a shortcut
+to the EXE rather than moving it out of the package folder.
+
 The GUI is a thin client over the same local agent: conversation history, hybrid RAG, web tools, security checks, and the configured inference backend remain in the Python backend.
 
 SQLite connections are thread-local. GUI work that calls an AI backend runs in a

@@ -1,0 +1,42 @@
+ETERNAL THREAD — START HERE
+
+This folder is the Windows application package. You normally only need to open
+EternalThread.exe after your chosen local AI runtime and models are already installed
+and running.
+
+WHAT TO OPEN
+
+1. EternalThread.exe
+   Starts the application.
+
+2. .env.example
+   Optional configuration template. Leave it alone unless you need to change the
+   configured backend, model, or other settings. If you use it, copy it to a file
+   named .env in this same folder, then keep .env private and do not share it.
+
+WHERE THINGS ARE
+
+  Documentation\
+    README.txt                 Full guide and setup information
+    PRIVACY.md                 Data and consent information
+    SECURITY.md                Security-reporting guidance
+    UPSTREAM_REFERENCES.md     Model/runtime sources and migration guidance
+
+  Licences_and_Notices\
+    LICENSE                    Eternal Thread's Apache-2.0 licence
+    NOTICE                     Project attribution notices
+    THIRD_PARTY_NOTICES.md     Included Python dependency notices
+    SBOM.cdx.json              Software-component inventory
+
+IMPORTANT BOUNDARIES
+
+- This package does not include an AI runtime, model weights, or a cloud fallback.
+- Your conversations, knowledge files, and local settings are not stored in this
+  package by default.
+- Keep the whole folder together. If you want an easy desktop launch, create a
+  shortcut to EternalThread.exe rather than moving only the EXE.
+
+If something does not work, read Documentation\README.txt before changing settings.
+
+Copyright (c) 2026 Nemi Prowse. Licensed under Apache-2.0; see
+Licences_and_Notices\LICENSE.

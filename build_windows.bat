@@ -17,24 +17,36 @@ if errorlevel 1 goto :failed
 REM Generate release metadata from the reviewed, version-pinned build environment.
 python tools\generate_release_metadata.py --root . --notices THIRD_PARTY_NOTICES.md --sbom SBOM.cdx.json
 if errorlevel 1 goto :failed
-copy /Y LICENSE dist\%APP_NAME%\LICENSE >nul
+set DIST_ROOT=dist\%APP_NAME%
+set DOCS_ROOT=%DIST_ROOT%\Documentation
+set LEGAL_ROOT=%DIST_ROOT%\Licences_and_Notices
+if not exist "%DOCS_ROOT%" mkdir "%DOCS_ROOT%"
 if errorlevel 1 goto :failed
-copy /Y NOTICE dist\%APP_NAME%\NOTICE >nul
+if not exist "%LEGAL_ROOT%" mkdir "%LEGAL_ROOT%"
 if errorlevel 1 goto :failed
-copy /Y THIRD_PARTY_NOTICES.md dist\%APP_NAME%\THIRD_PARTY_NOTICES.md >nul
+copy /Y START_HERE.txt "%DIST_ROOT%\START_HERE.txt" >nul
 if errorlevel 1 goto :failed
-copy /Y SBOM.cdx.json dist\%APP_NAME%\SBOM.cdx.json >nul
+copy /Y .env.example "%DIST_ROOT%\.env.example" >nul
 if errorlevel 1 goto :failed
-copy /Y README.txt dist\%APP_NAME%\README.txt >nul
+copy /Y README.txt "%DOCS_ROOT%\README.txt" >nul
 if errorlevel 1 goto :failed
-copy /Y SECURITY.md dist\%APP_NAME%\SECURITY.md >nul
+copy /Y SECURITY.md "%DOCS_ROOT%\SECURITY.md" >nul
 if errorlevel 1 goto :failed
-copy /Y PRIVACY.md dist\%APP_NAME%\PRIVACY.md >nul
+copy /Y PRIVACY.md "%DOCS_ROOT%\PRIVACY.md" >nul
 if errorlevel 1 goto :failed
-copy /Y .env.example dist\%APP_NAME%\.env.example >nul
+copy /Y UPSTREAM_REFERENCES.md "%DOCS_ROOT%\UPSTREAM_REFERENCES.md" >nul
+if errorlevel 1 goto :failed
+copy /Y LICENSE "%LEGAL_ROOT%\LICENSE" >nul
+if errorlevel 1 goto :failed
+copy /Y NOTICE "%LEGAL_ROOT%\NOTICE" >nul
+if errorlevel 1 goto :failed
+copy /Y THIRD_PARTY_NOTICES.md "%LEGAL_ROOT%\THIRD_PARTY_NOTICES.md" >nul
+if errorlevel 1 goto :failed
+copy /Y SBOM.cdx.json "%LEGAL_ROOT%\SBOM.cdx.json" >nul
 if errorlevel 1 goto :failed
 echo.
 echo Built: dist\%APP_NAME%\%APP_NAME%.exe
+echo Start here: dist\%APP_NAME%\START_HERE.txt
 endlocal
 exit /b 0
 

@@ -127,6 +127,14 @@ It creates a project-local Python environment and validates configuration. It do
 not change the system execution policy, overwrite .env, install a runtime or model,
 or silently use a remote backend.
 
+ACCESSIBLE WINDOWS PACKAGE LAYOUT
+
+The Windows application package keeps EternalThread.exe, START_HERE.txt, and
+.env.example at its top level. START_HERE.txt explains the two visible subfolders:
+Documentation contains the full guide, privacy/security guidance, and upstream
+references; Licences_and_Notices contains the licence, notices, and SBOM. Keep the
+whole package folder together and create a shortcut to the EXE instead of moving it.
+
 AUTHORSHIP AND CITATION
 
 Copyright © 2026 Nemi Prowse. Licensed under Apache-2.0; see LICENSE, NOTICE, and

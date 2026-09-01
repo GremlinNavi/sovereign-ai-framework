@@ -35,6 +35,19 @@ def test_windows_build_copies_required_public_release_materials():
         assert f"copy /Y {asset}" in build_script
 
 
+def test_windows_build_uses_a_shallow_accessible_package_layout():
+    build_script = (ROOT / "build_windows.bat").read_text(encoding="utf-8")
+    start_here = (ROOT / "START_HERE.txt").read_text(encoding="utf-8")
+
+    assert "set DOCS_ROOT=%DIST_ROOT%\\Documentation" in build_script
+    assert "set LEGAL_ROOT=%DIST_ROOT%\\Licences_and_Notices" in build_script
+    assert 'copy /Y START_HERE.txt "%DIST_ROOT%\\START_HERE.txt"' in build_script
+    assert 'copy /Y README.txt "%DOCS_ROOT%\\README.txt"' in build_script
+    assert 'copy /Y LICENSE "%LEGAL_ROOT%\\LICENSE"' in build_script
+    assert "EternalThread.exe" in start_here
+    assert "This package does not include an AI runtime, model weights, or a cloud fallback." in start_here
+
+
 def test_owned_executable_and_release_automation_sources_have_spdx_headers():
     owned_sources = [
         ROOT / "build_windows.bat",
