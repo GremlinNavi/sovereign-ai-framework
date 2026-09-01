@@ -37,6 +37,15 @@ def test_inspiration_record_is_utf8_and_scopes_its_claims():
     assert "not a claim that the framework is sentient" in record
 
 
+def test_upstream_references_cover_default_model_and_runtime():
+    references = (ROOT / "UPSTREAM_REFERENCES.md").read_text(encoding="utf-8")
+
+    assert "https://github.com/ollama/ollama" in references
+    assert "https://huggingface.co/Qwen/Qwen3-4B" in references
+    assert "https://huggingface.co/nomic-ai/nomic-embed-text-v1.5" in references
+    assert "Rebuild the local retrieval index" in references
+
+
 def test_release_docs_keep_compliance_claims_bounded():
     alignment = (ROOT / "REGULATORY_ALIGNMENT.md").read_text(encoding="utf-8").lower()
     security = (ROOT / "SECURITY.md").read_text(encoding="utf-8").lower()

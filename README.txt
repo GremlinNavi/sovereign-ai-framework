@@ -10,6 +10,9 @@ not a Government of Canada product, service, endorsement, procurement, certifica
 For the creator inspiration record and the distinction between creative inspiration
 and technical claims, see INSPIRATION_AND_DESIGN_LINEAGE.txt.
 
+For canonical upstream model and runtime references, plus migration and archival
+guardrails, see UPSTREAM_REFERENCES.md.
+
 WHAT PORTABLE, OPEN-SOURCE MEANS
 
 The framework’s inference backend is replaceable: users may select or develop a

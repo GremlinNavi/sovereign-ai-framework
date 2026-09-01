@@ -49,6 +49,9 @@ deployment. Before switching, validate its capabilities, endpoint, data handling
 security controls, cost, and its own licence and terms; rebuild the local embedding
 index after changing its embedding model or backend.
 
+For canonical upstream model and runtime references, plus migration and archival
+guardrails, see [UPSTREAM_REFERENCES.md](UPSTREAM_REFERENCES.md).
+
 Apache-2.0 applies to the project material identified by this repository’s notices.
 It allows recipients to use, modify, and redistribute that material, including in
 forks, subject to the licence’s conditions. It does not grant rights to third-party
