@@ -18,9 +18,16 @@ WHERE THINGS ARE
 
   Documentation\
     README.txt                 Full guide and setup information
+    ACCESSIBILITY_FORK.md      Why this package is organized this way
     PRIVACY.md                 Data and consent information
     SECURITY.md                Security-reporting guidance
     UPSTREAM_REFERENCES.md     Model/runtime sources and migration guidance
+
+  Tools\
+    Set-EternalThreadGuiPreferences.ps1
+                              Optional PowerShell helper for text size, colour
+                              theme, and opening-window size. It changes only
+                              local app preferences; use -WhatIf to preview.
 
   Licences_and_Notices\
     LICENSE                    Eternal Thread's Apache-2.0 licence

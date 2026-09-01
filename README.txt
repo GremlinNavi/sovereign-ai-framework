@@ -135,6 +135,11 @@ Documentation contains the full guide, privacy/security guidance, and upstream
 references; Licences_and_Notices contains the licence, notices, and SBOM. Keep the
 whole package folder together and create a shortcut to the EXE instead of moving it.
 
+The accessibility-focused distribution fork is documented in ACCESSIBILITY_FORK.md.
+Its optional Tools\Set-EternalThreadGuiPreferences.ps1 helper saves only local GUI
+preferences: theme, text scale, and opening-window size. It does not change source
+code, backend settings, model selection, or Windows-wide settings.
+
 AUTHORSHIP AND CITATION
 
 Copyright © 2026 Nemi Prowse. Licensed under Apache-2.0; see LICENSE, NOTICE, and

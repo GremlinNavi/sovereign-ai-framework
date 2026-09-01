@@ -20,9 +20,12 @@ if errorlevel 1 goto :failed
 set DIST_ROOT=dist\%APP_NAME%
 set DOCS_ROOT=%DIST_ROOT%\Documentation
 set LEGAL_ROOT=%DIST_ROOT%\Licences_and_Notices
+set TOOLS_ROOT=%DIST_ROOT%\Tools
 if not exist "%DOCS_ROOT%" mkdir "%DOCS_ROOT%"
 if errorlevel 1 goto :failed
 if not exist "%LEGAL_ROOT%" mkdir "%LEGAL_ROOT%"
+if errorlevel 1 goto :failed
+if not exist "%TOOLS_ROOT%" mkdir "%TOOLS_ROOT%"
 if errorlevel 1 goto :failed
 copy /Y START_HERE.txt "%DIST_ROOT%\START_HERE.txt" >nul
 if errorlevel 1 goto :failed
@@ -35,6 +38,10 @@ if errorlevel 1 goto :failed
 copy /Y PRIVACY.md "%DOCS_ROOT%\PRIVACY.md" >nul
 if errorlevel 1 goto :failed
 copy /Y UPSTREAM_REFERENCES.md "%DOCS_ROOT%\UPSTREAM_REFERENCES.md" >nul
+if errorlevel 1 goto :failed
+copy /Y ACCESSIBILITY_FORK.md "%DOCS_ROOT%\ACCESSIBILITY_FORK.md" >nul
+if errorlevel 1 goto :failed
+copy /Y tools\Set-EternalThreadGuiPreferences.ps1 "%TOOLS_ROOT%\Set-EternalThreadGuiPreferences.ps1" >nul
 if errorlevel 1 goto :failed
 copy /Y LICENSE "%LEGAL_ROOT%\LICENSE" >nul
 if errorlevel 1 goto :failed

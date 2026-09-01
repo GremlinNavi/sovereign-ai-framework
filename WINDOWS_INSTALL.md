@@ -134,3 +134,18 @@ tree:
 
 If the update is blocked, review `git status --short`, `git branch --show-current`,
 and `git remote -v`; preserve your work before resolving any issue manually.
+
+## Optional desktop accessibility preferences
+
+The accessibility-first distribution fork includes a local-only preference helper:
+
+```powershell
+.\Tools\Set-EternalThreadGuiPreferences.ps1 -Theme HighContrast -FontScale 125
+```
+
+For a source checkout, run the equivalent helper from `tools\`. It writes only
+`gui_preferences.json` in Eternal Thread's local data directory. Available bounded
+choices are a system/light/dark/high-contrast theme, an 80–200% text scale, and an
+opening-window size. It does not edit source files, `.env`, backend/model settings,
+Git configuration, or Windows-wide accessibility settings. Use `-WhatIf` to preview
+or `-Reset` to remove the local preferences and return to application defaults.

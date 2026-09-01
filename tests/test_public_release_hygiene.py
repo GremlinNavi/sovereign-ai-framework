@@ -41,11 +41,26 @@ def test_windows_build_uses_a_shallow_accessible_package_layout():
 
     assert "set DOCS_ROOT=%DIST_ROOT%\\Documentation" in build_script
     assert "set LEGAL_ROOT=%DIST_ROOT%\\Licences_and_Notices" in build_script
+    assert "set TOOLS_ROOT=%DIST_ROOT%\\Tools" in build_script
     assert 'copy /Y START_HERE.txt "%DIST_ROOT%\\START_HERE.txt"' in build_script
     assert 'copy /Y README.txt "%DOCS_ROOT%\\README.txt"' in build_script
+    assert 'copy /Y tools\\Set-EternalThreadGuiPreferences.ps1 "%TOOLS_ROOT%\\Set-EternalThreadGuiPreferences.ps1"' in build_script
     assert 'copy /Y LICENSE "%LEGAL_ROOT%\\LICENSE"' in build_script
     assert "EternalThread.exe" in start_here
     assert "This package does not include an AI runtime, model weights, or a cloud fallback." in start_here
+
+
+def test_accessibility_fork_documents_its_scope_and_gui_preference_boundary():
+    documentation = (ROOT / "ACCESSIBILITY_FORK.md").read_text(encoding="utf-8").lower()
+    helper = (ROOT / "tools" / "Set-EternalThreadGuiPreferences.ps1").read_text(encoding="utf-8")
+
+    assert "separate distribution-focused branch" in documentation
+    assert "not bundle or install an inference runtime" in documentation
+    assert "does not edit source files" in documentation
+    assert "[CmdletBinding(SupportsShouldProcess = $true" in helper
+    assert "Set-ExecutionPolicy" not in helper
+    assert "git push" not in helper.lower()
+    assert "[System.IO.File]::WriteAllText" in helper
 
 
 def test_owned_executable_and_release_automation_sources_have_spdx_headers():

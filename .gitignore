@@ -25,6 +25,7 @@ secrets.*
 # Local consent and safety records, when a user intentionally places the data
 # directory inside a checkout.
 privacy_consent.json
+gui_preferences.json
 conversation_history/safety_events.jsonl
 
 # Python build and cache artifacts

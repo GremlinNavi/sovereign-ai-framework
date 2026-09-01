@@ -18,6 +18,7 @@ from .main import append_turn, load_turns
 from .export import export_session_txt, format_evidence_assessment
 from .privacy import ConsentStore, PURPOSES, delete_session, export_personal_data, purge_expired_sessions
 from .safety import record_safety_event
+from .gui_preferences import apply_root_preferences, load_gui_preferences
 
 
 class Worker(threading.Thread):
@@ -61,7 +62,8 @@ class MainWindow:
     def __init__(self, root: tk.Tk) -> None:
         self.root = root
         self.root.title("Eternal Thread — Sovereign AI Demonstrator")
-        self.root.geometry("1100x760")
+        self.gui_preferences = load_gui_preferences(settings.data_root)
+        self.gui_palette = apply_root_preferences(self.root, self.gui_preferences)
         self.root.minsize(760, 500)
 
         self.consent = ConsentStore()
@@ -134,6 +136,17 @@ class MainWindow:
         ttk.Label(bottom, textvariable=self.status).pack(side="left", fill="x", expand=True)
         self.send_button = ttk.Button(bottom, text="Send", command=self._send)
         self.send_button.pack(side="right")
+
+        if self.gui_palette is not None:
+            text_options = {
+                "background": self.gui_palette["field"],
+                "foreground": self.gui_palette["foreground"],
+                "insertbackground": self.gui_palette["foreground"],
+                "selectbackground": self.gui_palette["accent"],
+                "selectforeground": self.gui_palette["background"],
+            }
+            for widget in (self.session_list, self.transcript, self.input):
+                widget.configure(**text_options)
 
     def _set_status(self, text: str) -> None:
         self.status.set(text)
