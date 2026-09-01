@@ -15,10 +15,10 @@ def test_release_candidate_metadata_is_consistent():
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     checklist = (ROOT / "RELEASE_CHECKLIST.md").read_text(encoding="utf-8")
 
-    assert 'version = "0.4.0rc3"' in pyproject
-    assert "version: 0.4.0-rc3" in citation
-    assert "v0.4.0-rc3" in readme
-    assert "v0.4.0-rc3" in checklist
+    assert 'version = "0.4.0rc4"' in pyproject
+    assert "version: 0.4.0-rc4" in citation
+    assert "v0.4.0-rc4" in readme
+    assert "v0.4.0-rc4" in checklist
     assert "pre-release" in readme.lower()
 
 

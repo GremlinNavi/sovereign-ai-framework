@@ -32,3 +32,5 @@ that fact must be documented, not hidden by force-pushing history.
 
 - [v0.4.0-rc3](v0.4.0-rc3.md) — source-input and pre-release import record; not yet
   a tagged hosted release or an asset manifest.
+- [v0.4.0-rc4](v0.4.0-rc4.md) — source-candidate record for the opt-in Windows
+  bootstrap/update workflow; not yet a tagged hosted release or an asset manifest.

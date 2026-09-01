@@ -38,8 +38,10 @@ def test_windows_build_copies_required_public_release_materials():
 def test_owned_executable_and_release_automation_sources_have_spdx_headers():
     owned_sources = [
         ROOT / "build_windows.bat",
+        ROOT / "tools" / "Install-EternalThread.ps1",
         ROOT / "tools" / "Push-RepositoryUpdate.ps1",
         ROOT / "tools" / "Test-PublicReleaseReadiness.ps1",
+        ROOT / "tools" / "Update-EternalThread.ps1",
         ROOT / ".github" / "workflows" / "ci.yml",
         ROOT / ".github" / "dependabot.yml",
     ]
@@ -74,3 +76,16 @@ def test_local_professionalism_audit_outputs_are_never_release_material():
         assert path in gitignore
     assert ".professionalism-audit-(data|pytest)" in helper
     assert "\\.spec$" in helper
+
+
+def test_generated_third_party_notices_have_no_trailing_whitespace():
+    notices = (ROOT / "THIRD_PARTY_NOTICES.md").read_text(encoding="utf-8")
+
+    assert all(line == line.rstrip() for line in notices.splitlines())
+
+
+def test_readiness_helper_treats_missing_release_tags_as_warnings():
+    helper = (ROOT / "tools" / "Test-PublicReleaseReadiness.ps1").read_text(encoding="utf-8")
+
+    assert "git rev-parse -q --verify" in helper
+    assert "A missing pre-release tag is a normal readiness warning" in helper

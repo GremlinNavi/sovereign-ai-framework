@@ -14,17 +14,17 @@ release gates that must receive a human review, without printing potentially
 sensitive file contents.
 
 .EXAMPLE
-.\tools\Test-PublicReleaseReadiness.ps1 -Version v0.4.0-rc3 -RequireClean
+.\tools\Test-PublicReleaseReadiness.ps1 -Version v0.4.0-rc4 -RequireClean
 
 .EXAMPLE
-.\tools\Test-PublicReleaseReadiness.ps1 -Version v0.4.0-rc3 -RequireClean `
+.\tools\Test-PublicReleaseReadiness.ps1 -Version v0.4.0-rc4 -RequireClean `
     -ChecksumFile C:\releases\SHA256SUMS.txt `
-    -ReleaseAsset C:\releases\eternal-thread-v0.4.0-rc3.zip
+    -ReleaseAsset C:\releases\eternal-thread-v0.4.0-rc4.zip
 #>
 [CmdletBinding()]
 param(
     [ValidatePattern('^v?\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$')]
-    [string]$Version = 'v0.4.0-rc3',
+    [string]$Version = 'v0.4.0-rc4',
 
     [string[]]$ReleaseAsset = @(),
 
@@ -146,7 +146,8 @@ try {
         $requiredFiles = @(
             'LICENSE', 'NOTICE', 'AUTHORS.md', 'CITATION.cff', 'DCO.md', 'IP_POLICY.md',
             'TRADEMARKS.md', 'SECURITY.md', 'CONTRIBUTING.md', 'THIRD_PARTY_NOTICES.md',
-            'SBOM.cdx.json', 'RELEASE_CHECKLIST.md', 'PROVENANCE.md', '.gitignore'
+            'SBOM.cdx.json', 'RELEASE_CHECKLIST.md', 'PROVENANCE.md', 'WINDOWS_INSTALL.md',
+            '.gitignore'
         )
         foreach ($file in $requiredFiles) {
             if (-not (Test-Path -LiteralPath $file -PathType Leaf)) {
@@ -167,7 +168,16 @@ try {
         }
 
         $tagName = if ($Version.StartsWith('v')) { $Version } else { "v$Version" }
-        $tagCommit = & git rev-list -n 1 $tagName 2>$null
+        $tagCommit = $null
+        try {
+            # A missing pre-release tag is a normal readiness warning. `-q --verify`
+            # avoids a fatal Git message, and the catch keeps that expected nonzero
+            # result non-fatal when PowerShell is configured to turn native failures
+            # into terminating errors.
+            $tagCommit = & git rev-parse -q --verify "$tagName^{commit}" 2>$null
+        } catch {
+            $tagCommit = $null
+        }
         if ($LASTEXITCODE -ne 0 -or -not $tagCommit) {
             Add-Warning "Tag $tagName does not exist yet. Create an annotated release tag only after this audit passes."
         } else {

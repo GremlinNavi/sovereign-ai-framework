@@ -1,4 +1,4 @@
-# GitHub release checklist — v0.4.0-rc3
+# GitHub release checklist — v0.4.0-rc4
 
 ## How to use this checklist
 
@@ -18,6 +18,9 @@ being published.
 - [x] `THIRD_PARTY_NOTICES.md` and `SBOM.cdx.json` are present in this preparation tree.
 - [x] The Windows build script generates notices/SBOM from its locked build environment and copies the licensing, safety, privacy, configuration, and release-readme materials beside the executable; it does not bundle an inference runtime or model weights.
 - [x] The pull-request CI workflow checks DCO `Signed-off-by:` trailers on every proposed commit.
+- [x] The source tree contains opt-in Windows bootstrap/update scripts whose documented
+  boundaries exclude global PowerShell policy changes, runtime/model installation,
+  `.env` overwrites, force operations, and automatic remote-backend use.
 
 ## Maintainer gates before first public access
 
@@ -33,6 +36,9 @@ being published.
 - [ ] Regenerate `THIRD_PARTY_NOTICES.md` and `SBOM.cdx.json` from a clean, reviewed version-pinned environment.
 - [ ] Confirm every source file has the project copyright/SPDX header or a documented third-party notice.
 - [ ] Confirm test fixtures, screenshots, sample data, documentation, and generated assets contain no sensitive or third-party material that lacks permission for public release.
+- [ ] Review each PowerShell script line by line from the exact release commit and
+  smoke-test it on a clean supported Windows environment before publishing it as an
+  installer/update workflow.
 
 ## Verification gate — repeat on the exact final source tree
 
@@ -58,7 +64,7 @@ build_windows.bat
 - [ ] Windows build completes on a clean supported Windows environment.
 - [ ] Generated `THIRD_PARTY_NOTICES.md` and `SBOM.cdx.json` are retained beside every executable and source archive.
 - [ ] Smoke-test the exact release archive/build, not only the working tree.
-- [ ] Run `tools/Test-PublicReleaseReadiness.ps1 -Version v0.4.0-rc3 -RequireClean` from inside the actual Git repository. Treat warnings as human-review work; this read-only audit is not proof that no sensitive data exists.
+- [ ] Run `tools/Test-PublicReleaseReadiness.ps1 -Version v0.4.0-rc4 -RequireClean` from inside the actual Git repository. Treat warnings as human-review work; this read-only audit is not proof that no sensitive data exists.
 - [ ] Re-run the read-only readiness audit with the final `SHA256SUMS.txt` and each final release asset before upload and after download verification.
 
 ## Final provenance gate
@@ -71,8 +77,8 @@ build_windows.bat
 
 ## Git and hosted-release gate
 
-- [ ] Create tag `v0.4.0-rc3`.
-- [ ] Record the full commit ID resolved by `v0.4.0-rc3` in `PROVENANCE.md` before publishing the release.
+- [ ] Create tag `v0.4.0-rc4`.
+- [ ] Record the full commit ID resolved by `v0.4.0-rc4` in `PROVENANCE.md` before publishing the release.
 - [ ] Configure or re-check public branch and tag protections appropriate to the chosen host after the repository becomes public; do not assume private-repository rules remain in force.
 - [ ] Mark the GitHub Release as a **pre-release**.
 - [ ] Publish release notes stating prototype status and known limitations.

@@ -1,6 +1,6 @@
 # Public source-release guide
 
-This guide is the practical path from the prepared RC3 source tree to a public,
+This guide is the practical path from the prepared RC4 source tree to a public,
 open-source release. It does not replace legal advice, platform documentation, or a
 maintainer's review of the exact repository being published.
 
@@ -28,7 +28,7 @@ files, indexes, `.env` files, API keys, local paths, and training/review data mu
 not be released. Run the read-only audit from inside the actual repository:
 
 ```powershell
-.\tools\Test-PublicReleaseReadiness.ps1 -Version v0.4.0-rc3 -RequireClean
+.\tools\Test-PublicReleaseReadiness.ps1 -Version v0.4.0-rc4 -RequireClean
 ```
 
 The audit deliberately makes no file, Git, network, remote, visibility, or account
@@ -73,9 +73,9 @@ Create `SHA256SUMS.txt` from the final files. Then run the read-only audit with 
 actual asset and manifest, for example:
 
 ```powershell
-.\tools\Test-PublicReleaseReadiness.ps1 -Version v0.4.0-rc3 -RequireClean `
+.\tools\Test-PublicReleaseReadiness.ps1 -Version v0.4.0-rc4 -RequireClean `
   -ChecksumFile C:\releases\SHA256SUMS.txt `
-  -ReleaseAsset C:\releases\eternal-thread-v0.4.0-rc3.zip
+  -ReleaseAsset C:\releases\eternal-thread-v0.4.0-rc4.zip
 ```
 
 Complete the **Final public-release provenance** section of
@@ -88,7 +88,7 @@ retained-base notes are not a release diff.
 ## 5. Publish deliberately
 
 Push the reviewed branch through the repository's chosen review controls, create the
-`v0.4.0-rc3` tag from the verified commit, and record that commit ID in the provenance
+`v0.4.0-rc4` tag from the verified commit, and record that commit ID in the provenance
 record. Before or immediately after changing visibility, re-check the public
 repository's branch and tag protections, vulnerability-reporting path, release notes,
 and account security. Mark RC3 as a pre-release, attach the exact checked assets and

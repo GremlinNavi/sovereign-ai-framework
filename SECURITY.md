@@ -6,7 +6,7 @@ networks without a separate security review.
 
 ## Supported release status
 
-`v0.4.0-rc3` is a pre-release. Security controls are implemented and tested as an
+`v0.4.0-rc4` is a pre-release. Security controls are implemented and tested as an
 engineering baseline, but the project has not completed an independent security
 assessment and is not represented as production-ready.
 

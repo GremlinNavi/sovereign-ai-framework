@@ -1,15 +1,16 @@
-# Release provenance — v0.4.0-rc3
+# Release provenance — v0.4.0-rc4
 
-This file separates the retained input archive from the final public-release record.
-It is a release-preparation record, not proof that a tag, repository, or hosted
-release has already been made public.
+This file separates the retained RC3 input archive from the current RC4
+source-candidate record and any later final public-release record. It is a
+release-preparation record, not proof that a tag, repository, or hosted release has
+already been made public.
 
 ## Declared retained base — owner verification required
 
 - Source archive: `sovereign-ai-demonstrator-eternal-thread-v0.4.0-rc3-nemi-safety-hardened.zip`
 - Source SHA-256: `7D23EEF377CA826968953572C73FDD733547E78F61988973DAB0850C9169F141`
 - Maintainer/creator identity in project metadata: Nemi Prowse
-- Release line: `v0.4.0-rc3` / Python package version `0.4.0rc3`
+- Retained-base release line: `v0.4.0-rc3` / Python package version `0.4.0rc3`
 
 This record identifies the claimed retained base for the release-preparation work.
 The named archive and its hash have not been independently verified in this workspace;
@@ -40,6 +41,13 @@ The final release may include additional release-hygiene, documentation, depende
 test, build, or application changes. Record the actual final diff in the next section
 after the intended public baseline and tagged commit are known.
 
+## Current RC4 source-candidate scope
+
+RC4 adds a small opt-in Windows PowerShell bootstrap and guarded update workflow,
+plus related documentation and release metadata. It is a source candidate only: no
+`v0.4.0-rc4` tag, hosted source archive, executable, or checksum manifest is claimed
+by this file. The retained RC3 archive hash above is not an RC4 asset hash.
+
 ## Final-diff and change-impact record — maintainer completion required
 
 - Public comparison baseline (repository URL and commit/tag): `[TO BE COMPLETED]`
@@ -59,7 +67,7 @@ Use the full commit ID and hashes calculated from the assets actually uploaded. 
 not copy the retained-base hash above into this section.
 
 - Public repository URL: `[TO BE COMPLETED BEFORE PUBLIC RELEASE]`
-- Release tag: `[TO BE COMPLETED; expected release candidate tag: v0.4.0-rc3]`
+- Release tag: `[TO BE COMPLETED; expected release candidate tag: v0.4.0-rc4]`
 - Tag target commit (full Git object ID): `[TO BE COMPLETED]`
 - Commit URL or immutable host reference: `[TO BE COMPLETED]`
 - Final change summary and behavior-impact record completed: `[TO BE COMPLETED]`

@@ -6,7 +6,7 @@ A local-first research framework with replaceable inference backends. It combine
 
 **Creator:** Nemi Prowse
 
-**Status:** v0.4.0-rc3 (Release Candidate #3) is a portable-framework development release. It is a pre-release, not a stable or production release. It is not a Government of Canada product, service, endorsement, procurement, certification, or production deployment.
+**Status:** v0.4.0-rc4 (Release Candidate #4) is a portable-framework development release. It is a pre-release, not a stable or production release. It is not a Government of Canada product, service, endorsement, procurement, certification, or production deployment.
 
 ## Authorship, citation, and reuse
 
@@ -29,6 +29,13 @@ and responsible professional disclosure, see [DEVELOPMENT_ATTRIBUTION.md](DEVELO
 For a guarded PowerShell workflow that stages only named files and pushes a feature
 branch, see [GIT_WORKFLOW.md](GIT_WORKFLOW.md) and
 [Push-RepositoryUpdate.ps1](tools/Push-RepositoryUpdate.ps1).
+
+For a small, opt-in Windows bootstrap that creates only a project-local Python
+environment, see [WINDOWS_INSTALL.md](WINDOWS_INSTALL.md). It does not install an
+inference runtime or model, overwrite `.env`, change a PowerShell execution policy,
+or redirect work to a remote backend. The shipped default adapter is Ollama, whose
+optional Python client must be selected explicitly; the bootstrap does not add it
+unless requested.
 
 ## What portable, open-source means
 
@@ -322,7 +329,7 @@ Evidence assessments are never treated as publication authorization. The model i
 
 Before publishing a release, remove personal conversation histories, tool audit
 logs, knowledge files, `.env` files, API keys, local paths, and any training or review
-data. Publish source archives and any Windows build as versioned GitHub release assets, with release notes and a SHA-256 checksum file. RC3 should be tagged `v0.4.0-rc3` and marked as a GitHub pre-release; reserve `v0.4.0` for a later stable release after the release gates are satisfied.
+data. Publish source archives and any Windows build as versioned GitHub release assets, with release notes and a SHA-256 checksum file. RC4 should be tagged `v0.4.0-rc4` and marked as a GitHub pre-release; reserve `v0.4.0` for a later stable release after the release gates are satisfied.
 
 Use [PUBLIC_RELEASE_GUIDE.md](PUBLIC_RELEASE_GUIDE.md) and
 [RELEASE_CHECKLIST.md](RELEASE_CHECKLIST.md) as the release gate. Immediately before

@@ -1,8 +1,9 @@
 # Third-party notices
 
-Generated from the exact Python distributions named in `requirements.lock`,
+Generated from the version-pinned Python distributions named in `requirements.lock`,
 `requirements-test.lock`, and `requirements-build.lock`.
-Regenerate this file whenever a lock file changes, using the locked build environment.
+Regenerate this file whenever a lock file changes, using a clean reviewed
+environment constructed from the version-pinned lock files.
 
 ## altgraph 0.17.5
 

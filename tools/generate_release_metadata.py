@@ -43,7 +43,8 @@ def _license_text(distribution: metadata.Distribution) -> str:
         filename = Path(normalized).name.lower()
         if "/licenses/" in normalized.lower() or filename.startswith(("license", "copying", "notice")):
             try:
-                return distribution.locate_file(file).read_text(encoding="utf-8", errors="replace").rstrip()
+                text = distribution.locate_file(file).read_text(encoding="utf-8", errors="replace")
+                return "\n".join(line.rstrip() for line in text.splitlines()).rstrip()
             except OSError:
                 continue
     return "No licence text was found in this installed distribution. Consult its published package metadata."
@@ -117,7 +118,7 @@ def generate(root: Path, notices_output: Path, sbom_output: Path, timestamp: str
             "component": {
                 "type": "application",
                 "name": "eternal-thread",
-                "version": "0.4.0rc3",
+                "version": "0.4.0rc4",
                 "licenses": [{"license": {"id": "Apache-2.0"}}],
             },
             "tools": [{"vendor": "Sovereign AI Demonstrator", "name": "generate_release_metadata.py"}],

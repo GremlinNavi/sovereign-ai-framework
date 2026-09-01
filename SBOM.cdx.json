@@ -5,11 +5,11 @@
   "serialNumber": "urn:uuid:7e40c29a-66bb-5391-bcef-e9252cda56f6",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-31T00:00:00Z",
+    "timestamp": "2026-09-01T00:00:00Z",
     "component": {
       "type": "application",
       "name": "eternal-thread",
-      "version": "0.4.0rc3",
+      "version": "0.4.0rc4",
       "licenses": [
         {
           "license": {

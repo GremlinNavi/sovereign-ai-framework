@@ -2,7 +2,7 @@ SOVEREIGN AI DEMONSTRATOR — ETERNAL THREAD
 Release and configuration guide
 
 Creator: Nemi Prowse
-Status: v0.4.0-rc3 (Release Candidate #3) portable-framework development pre-release
+Status: v0.4.0-rc4 (Release Candidate #4) portable-framework development pre-release
 
 This project is a local-first, auditable AI-assisted research demonstrator. It is
 not a Government of Canada product, service, endorsement, procurement, certification, or production system.
@@ -110,9 +110,16 @@ PUBLIC_RELEASE_GUIDE.md and RELEASE_CHECKLIST.md; their unchecked items require 
 maintainer’s real-world confirmation.
 
 From the actual Git repository, run the read-only readiness audit before release:
-  .\tools\Test-PublicReleaseReadiness.ps1 -Version v0.4.0-rc3 -RequireClean
+  .\tools\Test-PublicReleaseReadiness.ps1 -Version v0.4.0-rc4 -RequireClean
 It makes no file, Git, network, remote, visibility, or account changes and cannot
 prove the absence of sensitive data; review its warnings before publication.
+
+WINDOWS BOOTSTRAP
+
+For an optional Windows PowerShell bootstrap/update workflow, see WINDOWS_INSTALL.md.
+It creates a project-local Python environment and validates configuration. It does
+not change the system execution policy, overwrite .env, install a runtime or model,
+or silently use a remote backend.
 
 AUTHORSHIP AND CITATION
 
