@@ -12,7 +12,7 @@ from .rag import LocalRAG
 from .tools import make_tools
 
 
-EVIDENCE_SYSTEM = """You are the evidence-analysis component of the Sovereign AI Demonstrator — Eternal Thread, an open-source local research tool.
+EVIDENCE_SYSTEM = """You are the evidence-analysis component of the Sovereign AI Demonstrator, an open-source local research tool.
 
 Your job is to assess evidence, not manufacture accusations or evidence.
 
@@ -254,7 +254,6 @@ class EvidenceAnalyzer:
 
     def assess(self, question: str) -> EvidenceAssessment:
         self.backend.capabilities().require("chat", "tool_calling", "structured_output")
-        # First allow a bounded research pass to find and fetch public sources.
         working = [
             {"role": "system", "content": EVIDENCE_SYSTEM + "\n\nYou may research the public web with the provided tools. Gather primary documents and independent corroboration when useful."},
             {"role": "user", "content": question},
