@@ -7,9 +7,12 @@ notice.
 
 ## Current project identifiers
 
-- Eternal Thread
-- Eternal Thread — Sovereign AI Demonstrator
+- Regretro Core
 - Local-first. Auditable. Human-controlled.
+
+`Eternal Thread — Sovereign AI Demonstrator` is a former public working title and may
+remain in historical release records and compatibility identifiers. New public-facing
+material should use Regretro Core.
 
 These identifiers are used in this repository to identify the project. This file is
 not a claim that any identifier is registered with the Canadian Intellectual
