@@ -1,11 +1,54 @@
 SOVEREIGN AI DEMONSTRATOR — ETERNAL THREAD
 Release and configuration guide
 
-Creator: Zoey Prowse
-Status: v0.4 Release Candidate #3 portable-framework development release
+Creator: Nemi Prowse
+Status: v0.4.0-rc3 (Release Candidate #3) portable-framework development pre-release
 
 This project is a local-first, auditable AI-assisted research demonstrator. It is
-not a Government of Canada product, service, endorsement, or production system.
+not a Government of Canada product, service, endorsement, procurement, certification, or production system.
+
+WHAT PORTABLE, OPEN-SOURCE MEANS
+
+The framework’s inference backend is replaceable: users may select or develop a
+compatible local backend without making Ollama, a particular model, or a particular
+provider the identity of the project. This flexibility is not an endorsement,
+certification, privacy guarantee, or support commitment for a replacement backend.
+Validate a backend’s capabilities, endpoint, data handling, security controls, cost,
+and its own licence and terms before use. Rebuild the local embedding index after
+changing the embedding model or backend.
+
+Apache-2.0 applies to the project material identified by this repository’s notices.
+It permits use, modification, redistribution, and forks of that material subject to
+its conditions. It does not license third-party model weights, serving software,
+hosted services, datasets, or project trademarks. Modified distributions should use
+their own branding and state their backend choices and material changes clearly.
+
+PYTHON ENVIRONMENT AND INFERENCE RUNTIME
+
+Use a Python virtual environment to isolate this project’s pinned Python
+dependencies and adapter client libraries. A virtual environment does not install or
+start Ollama or any other inference service, download model weights, select a model,
+or grant rights to third-party models, datasets, or services. The operator must
+separately choose, install or start, and configure a compatible inference runtime
+and the chat and embedding models it serves.
+
+Ollama is the default adapter for convenience, not a bundled runtime or a permanent
+project dependency. A compatible local OpenAI-style server may instead be selected
+in config.py. There is no automatic runtime installation, model download, or cloud
+fallback: the application uses only the chat and embedding endpoints explicitly
+configured by the operator. Non-local endpoints require an explicit remote-backend
+opt-in and informed in-application consent.
+
+The installable base package supports the OpenAI-compatible local adapter without
+the Ollama Python client. The Ollama client is an optional project extra; the reviewed
+default lock files include it for the default Ollama adapter. A Python client library
+is still distinct from the separately managed inference service and model weights.
+For an installation from project metadata rather than the lock files, use
+  python -m pip install .
+for the base package, and only use
+  python -m pip install ".[ollama]"
+when selecting the Ollama adapter. Neither command installs an inference service or
+model weights.
 
 CURRENT CONFIGURATION
 
@@ -22,7 +65,8 @@ environment variables remain supported for backward compatibility:
   WEB_MAX_FETCH_CHARS      Default: 18000
   WEB_TIMEOUT              Default: 15 seconds
 
-Ollama and model weights are not included in the Windows build.
+Ollama, other inference runtimes, and model weights are not included in the Windows
+build or installed by the project’s Python virtual environment.
 
 PORTABLE BACKEND CONFIGURATION
 
@@ -56,10 +100,22 @@ Do not publish conversation history, audit logs, knowledge files, .env files, AP
 keys, local paths, or training/review data. Release source/build archives with a
 version number, notes, and SHA-256 checksums. Keep all project claims accurate:
 the demonstrator is local-first, auditable, human-controlled, and not government
-endorsed.
+endorsed. REGULATORY_ALIGNMENT.md records engineering traceability to selected
+proposed Canadian requirements; it is not legal advice or a compliance claim.
+
+Before public release, record the exact Git tag, tag target commit, release-asset
+filenames, and their SHA-256 hashes in PROVENANCE.md. The checksum of a retained
+input archive is not the checksum of the final public release asset. Follow
+PUBLIC_RELEASE_GUIDE.md and RELEASE_CHECKLIST.md; their unchecked items require a
+maintainer’s real-world confirmation.
+
+From the actual Git repository, run the read-only readiness audit before release:
+  .\tools\Test-PublicReleaseReadiness.ps1 -Version v0.4.0-rc3 -RequireClean
+It makes no file, Git, network, remote, visibility, or account changes and cannot
+prove the absence of sensitive data; review its warnings before publication.
 
 AUTHORSHIP AND CITATION
 
-Copyright © 2026 Zoey Prowse. Licensed under Apache-2.0; see LICENSE, NOTICE, and
+Copyright © 2026 Nemi Prowse. Licensed under Apache-2.0; see LICENSE, NOTICE, and
 CITATION.cff. This is open-source software, but the licence does not grant permission
 to imply creator or government endorsement.

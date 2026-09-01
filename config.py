@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2026 Nemi Prowse
+# SPDX-License-Identifier: Apache-2.0
+
 """Central, user-editable configuration for Eternal Thread.
 
 This file declares provider choices. Secrets stay in environment variables named by
@@ -7,11 +10,25 @@ from __future__ import annotations
 
 import argparse
 import os
+import sys
 from dataclasses import dataclass, field
 from pathlib import Path
 from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parent
+
+
+def _configuration_root() -> Path:
+    """Return the location from which a user-controlled ``.env`` is loaded.
+
+    Source runs keep configuration beside this file.  A PyInstaller onedir build
+    keeps Python modules under its private bundle directory, so its user-facing
+    configuration belongs beside the executable instead.  Process environment
+    variables still take precedence in either case.
+    """
+    if getattr(sys, "frozen", False):
+        return Path(sys.executable).resolve().parent
+    return ROOT
 
 
 def _bool_env(name: str, default: bool = False) -> bool:
@@ -63,7 +80,7 @@ def _load_dotenv(path: Path) -> None:
             os.environ.setdefault(name, value)
 
 
-_load_dotenv(ROOT / ".env")
+_load_dotenv(_configuration_root() / ".env")
 
 # Change these two values to select independent inference backends.
 CHAT_BACKEND = os.getenv("ETERNAL_THREAD_CHAT_BACKEND", "ollama")
@@ -199,6 +216,92 @@ def validate_configuration() -> Settings:
 
 settings = validate_configuration()
 
+
+def backend_unavailable_message(role: str, current: Settings | None = None, *, reason: str = "") -> str:
+    """Return a safe, role-specific recovery message without exposing a traceback."""
+    if current is None:
+        current = settings
+    choices = {
+        "chat": (current.chat_backend_name, current.chat_backend, current.chat_model),
+        "embedding": (current.embedding_backend_name, current.embedding_backend, current.embedding_model),
+    }
+    try:
+        name, provider, model = choices[role]
+    except KeyError as exc:
+        raise ValueError(f"Unknown backend role: {role}") from exc
+    if "python client is not installed" in reason.lower():
+        action = "Install the locked Python dependencies in the selected virtual environment or choose another configured backend."
+    else:
+        action = "Start a compatible configured local runtime or choose another configured backend."
+    return (
+        f"{role.capitalize()} backend '{name}' at {provider.base_url} is unavailable for model "
+        f"'{model}'. {action}"
+    )
+
+
+def backend_model_missing_message(role: str, current: Settings | None = None) -> str:
+    """Return a role-specific message when a reachable backend lacks its model."""
+    if current is None:
+        current = settings
+    choices = {
+        "chat": (current.chat_backend_name, current.chat_backend, current.chat_model),
+        "embedding": (current.embedding_backend_name, current.embedding_backend, current.embedding_model),
+    }
+    try:
+        name, provider, model = choices[role]
+    except KeyError as exc:
+        raise ValueError(f"Unknown backend role: {role}") from exc
+    return (
+        f"{role.capitalize()} backend '{name}' at {provider.base_url} does not list configured "
+        f"model '{model}'. Install/select that local model or update the backend configuration."
+    )
+
+
+def health_check_configured_backends(
+    current: Settings | None = None, *, create_backend_fn=None
+) -> int:
+    """Check selected services and models, returning a shell-friendly status code.
+
+    The check reports chat and embedding roles independently.  It deliberately
+    does not select an alternative backend when one is unavailable.
+    """
+    if current is None:
+        current = settings
+    from app.backends import BackendUnavailableError, create_backend
+
+    factory = create_backend_fn or create_backend
+    configured = (
+        ("chat", current.chat_backend_name, current.chat_model),
+        ("embedding", current.embedding_backend_name, current.embedding_model),
+    )
+    available_models: dict[str, set[str]] = {}
+    unavailable: dict[str, str] = {}
+    for _role, name, _model in configured:
+        if name in available_models or name in unavailable:
+            continue
+        try:
+            available_models[name] = set(factory(name).list_models())
+        except BackendUnavailableError as exc:
+            unavailable[name] = str(exc)
+        except Exception:
+            # This is a diagnostic command.  Keep it non-traceback-based even
+            # if a third-party adapter raises an unexpected implementation error.
+            unavailable[name] = ""
+
+    failed = False
+    for role, name, model in configured:
+        if name in unavailable:
+            print("Health check failed: " + backend_unavailable_message(role, current, reason=unavailable[name]))
+            failed = True
+        elif model not in available_models[name]:
+            print("Health check failed: " + backend_model_missing_message(role, current))
+            failed = True
+    if failed:
+        print("No alternative backend was used.")
+        return 1
+    print("Configured AI backend endpoints and model names passed health checks")
+    return 0
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Validate Eternal Thread configuration")
     parser.add_argument("--validate", action="store_true")
@@ -210,21 +313,6 @@ if __name__ == "__main__":
     elif args.validate:
         print(f"Configuration valid: chat={settings.chat_backend_name}/{settings.chat_model}; embeddings={settings.embedding_backend_name}/{settings.embedding_model}")
     elif args.health_check:
-        from app.backends import create_backend
-        required_models: dict[str, set[str]] = {}
-        for name, model in (
-            (settings.chat_backend_name, settings.chat_model),
-            (settings.embedding_backend_name, settings.embedding_model),
-        ):
-            required_models.setdefault(name, set()).add(model)
-        for name, expected in required_models.items():
-            backend = create_backend(name)
-            available = set(backend.list_models())
-            missing = expected - available
-            if missing:
-                raise RuntimeError(
-                    f"Configured model(s) not listed by backend '{name}': {', '.join(sorted(missing))}"
-                )
-        print("Configured AI backend endpoints and model names passed health checks")
+        raise SystemExit(health_check_configured_backends())
     else:
         parser.print_help()

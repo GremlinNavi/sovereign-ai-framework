@@ -1,7 +1,26 @@
 # Local configuration and virtual environments
 .env
+.env.*
+!.env.example
 .venv/
 venv/
+.ip-build-env/
+
+# Local review/audit outputs can contain generated fixtures, session data, or test
+# configuration. They are never release material.
+.professionalism-audit-data/
+.professionalism-audit-pytest/
+# PyInstaller writes this local build plan beside the source tree.
+*.spec
+
+# Never commit credentials, private keys, certificates, or local secret stores.
+*.pem
+*.key
+*.p12
+*.pfx
+*.kdbx
+credentials.json
+secrets.*
 
 # Local consent and safety records, when a user intentionally places the data
 # directory inside a checkout.
@@ -15,7 +34,6 @@ __pycache__/
 .pytest_cache/
 build/
 dist/
-release-assets/
 
 # Application data: keep placeholder files, never publish user content
 conversation_history/tool_audit.jsonl
@@ -34,10 +52,3 @@ training_data/curated/*
 *.sqlite3
 *.sqlite3-shm
 *.sqlite3-wal
-
-# Release assets are published through GitHub Releases, not committed to source.
-*.exe
-*.msi
-*.zip
-SHA256SUMS.txt
-THIRD_PARTY_NOTICES.md

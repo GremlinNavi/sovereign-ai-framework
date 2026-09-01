@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2026 Nemi Prowse
+# SPDX-License-Identifier: Apache-2.0
+
 from __future__ import annotations
 
 from types import SimpleNamespace
@@ -38,6 +41,15 @@ def test_ollama_adapter_normalizes_chat_embeddings_and_models():
     assert backend.chat(model="chat", messages=[{"role": "user", "content": "hello"}]).content == "ok"
     assert backend.capabilities().tool_calling is True
 
+
+
+def test_missing_ollama_python_client_fails_cleanly(monkeypatch):
+    import app.backends.ollama as ollama_module
+
+    monkeypatch.setattr(ollama_module, "OllamaClient", None)
+    backend = ollama_module.OllamaBackend("ollama", _ollama_config(), 1)
+    with pytest.raises(BackendUnavailableError, match="Ollama Python client is not installed"):
+        backend.health_check()
 
 def test_unavailable_backend_has_a_clear_error():
     backend = OllamaBackend("ollama", _ollama_config(), 1)

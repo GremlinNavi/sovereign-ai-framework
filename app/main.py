@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2026 Nemi Prowse
+# SPDX-License-Identifier: Apache-2.0
+
 from __future__ import annotations
 
 import json
@@ -7,8 +10,9 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from .agent import Agent
+from .backends import BackendUnavailableError
 from .export import export_session_txt, format_evidence_assessment
-from .config import settings
+from .config import backend_unavailable_message, settings
 from .privacy import (
     PURPOSES,
     ConsentStore,
@@ -82,6 +86,28 @@ def _consent_for_configured_features(consent: ConsentStore) -> bool:
     return True
 
 
+def _report_backend_unavailable(role: str, exc: BackendUnavailableError) -> None:
+    print(backend_unavailable_message(role, settings, reason=str(exc)))
+    print("No alternative backend was used. Run `python config.py --health-check` after updating the local runtime or configuration.")
+
+
+def _required_backends_available(agent: Agent, *roles: str) -> bool:
+    """Check each local dependency before sending a user request to the agent."""
+    for role in roles:
+        backend = agent.chat_backend if role == "chat" else agent.embedding_backend
+        try:
+            backend.health_check()
+        except BackendUnavailableError as exc:
+            _report_backend_unavailable(role, exc)
+            return False
+    return True
+
+
+def _report_backend_unavailable_during_request() -> None:
+    print("The configured chat or embedding backend became unavailable while processing the request.")
+    print("No alternative backend was used. Run `python config.py --health-check` after updating the local runtime or configuration.")
+
+
 def main() -> int:
     consent = ConsentStore()
     if not _consent_for_configured_features(consent):
@@ -98,9 +124,12 @@ def main() -> int:
 
     # Index local knowledge at startup. Duplicates are ignored by SQLite.
     if settings.index_knowledge and consent.granted("knowledge_indexing"):
-        added = agent.rag.ingest_directory(settings.knowledge_dir)
-        if added:
-            print(f"Indexed {added} new knowledge chunks.")
+        try:
+            added = agent.rag.ingest_directory(settings.knowledge_dir)
+            if added:
+                print(f"Indexed {added} new knowledge chunks.")
+        except BackendUnavailableError as exc:
+            _report_backend_unavailable("embedding", exc)
 
     print(f"Sovereign AI Demonstrator — Eternal Thread — chat backend={settings.chat_backend_name}, model={settings.chat_model}")
     print("Commands: /exit, /session, /privacy, /consent <purpose>, /revoke <purpose>, /reindex, /export [path], /export-data [path], /delete-session [id], /delete-all-data, /assess <question>")
@@ -141,7 +170,10 @@ def main() -> int:
             if not settings.index_knowledge or not consent.granted("knowledge_indexing"):
                 print("Knowledge indexing requires ETERNAL_THREAD_INDEX_KNOWLEDGE=1 and consent.")
             else:
-                print(f"Indexed {agent.rag.ingest_directory(settings.knowledge_dir)} new chunks.")
+                try:
+                    print(f"Indexed {agent.rag.ingest_directory(settings.knowledge_dir)} new chunks.")
+                except BackendUnavailableError as exc:
+                    _report_backend_unavailable("embedding", exc)
             continue
         if user.startswith("/export-data"):
             parts = user.split(maxsplit=1)
@@ -183,25 +215,42 @@ def main() -> int:
             if not question:
                 print("Usage: /assess <question>")
                 continue
+            if not _required_backends_available(agent, "chat", "embedding"):
+                continue
             try:
                 assessment = agent.assess_evidence(question)
             except (PermissionError, ValueError) as exc:
                 print(f"Assessment unavailable: {exc}")
+                continue
+            except BackendUnavailableError:
+                _report_backend_unavailable_during_request()
                 continue
             report = format_evidence_assessment(assessment)
             print("\n" + report)
             append_turn(session_id, "evidence", report, consent=consent, sensitivity="public-research")
             continue
 
+        # A normal chat always needs an embedding backend for local retrieval
+        # before it calls the selected chat backend.  Check both roles explicitly
+        # so a missing external runtime never becomes a traceback or a fallback.
+        if not _required_backends_available(agent, "embedding", "chat"):
+            continue
         append_turn(session_id, "user", user, consent=consent)
         turns.append({"role": "user", "content": user})
-        result = agent.chat(turns)
+        try:
+            result = agent.chat(turns)
+        except BackendUnavailableError:
+            _report_backend_unavailable_during_request()
+            continue
         answer = result["content"]
         print(f"\nAssistant> {answer}")
         append_turn(session_id, "assistant", answer, consent=consent)
         turns.append({"role": "assistant", "content": answer})
         # Embed the latest conversation into the local RAG store for future sessions.
-        _index_conversation_if_permitted(agent, consent, session_id, turns)
+        try:
+            _index_conversation_if_permitted(agent, consent, session_id, turns)
+        except BackendUnavailableError as exc:
+            _report_backend_unavailable("embedding", exc)
     return 0
 
 if __name__ == "__main__":

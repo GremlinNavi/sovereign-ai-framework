@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2026 Nemi Prowse
+# SPDX-License-Identifier: Apache-2.0
+
 from __future__ import annotations
 
 from pathlib import Path
@@ -43,3 +46,10 @@ def test_failed_web_search_is_audited(tmp_path: Path, monkeypatch):
     else:  # pragma: no cover - makes the intended failure explicit
         raise AssertionError("search should propagate its failure")
     assert '"status": "error:ValueError"' in audit_path.read_text(encoding="utf-8")
+
+
+def test_application_config_exports_local_endpoint_helper():
+    from app.config import is_local_endpoint
+
+    assert is_local_endpoint("http://127.0.0.1:11434") is True
+    assert is_local_endpoint("https://example.com/v1") is False

@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2026 Nemi Prowse
+# SPDX-License-Identifier: Apache-2.0
+
 """Consent, retention, access and deletion controls for local application data.
 
 This module intentionally stores only the user's choices and operational metadata.

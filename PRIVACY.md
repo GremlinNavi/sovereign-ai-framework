@@ -29,11 +29,15 @@ cross-border transfer safeguards that apply to the deployment.
 The CLI supports `/privacy`, `/consent <purpose>`, `/revoke <purpose>`,
 `/export-data [path]`, `/delete-session [id]`, and `/delete-all-data`.
 
-## Deployment duties
+## Deployment assessment
 
-This software does not itself guarantee legal compliance. A commercial or hosted
-operator must appoint a privacy accountable person, publish a plain-language privacy
-notice and complaint route, maintain an incident register, assess breaches, and
-implement safeguards proportionate to the sensitivity of the data. Use full-disk
-encryption and operating-system account protections for local data; the project does
-not implement custom cryptography.
+This software does not itself guarantee legal compliance. Legal duties depend on the
+operator, jurisdiction, deployment model, data flows, users, and purposes. A commercial
+or hosted operator should obtain deployment-specific privacy/legal review and determine
+which accountability, transparency, consent, retention, disposal, breach-response,
+cross-border-transfer, and security-safeguard obligations apply.
+
+Use full-disk encryption and operating-system account protections for sensitive local
+data; the project does not implement custom cryptography. See
+[REGULATORY_ALIGNMENT.md](REGULATORY_ALIGNMENT.md) for a non-authoritative engineering
+traceability note covering selected proposed Canadian requirements.

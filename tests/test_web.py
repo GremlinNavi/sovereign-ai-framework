@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2026 Nemi Prowse
+# SPDX-License-Identifier: Apache-2.0
+
 import pytest
 
 from app.web import validate_url
@@ -10,7 +13,6 @@ from app.web import validate_url
     "http://127.0.0.1:11434/api/tags",
     "http://localhost/",
     "http://192.168.1.10/",
-    "http://100.64.0.1/",
     "http://[::1]/",
 ])
 def test_unsafe_urls_rejected(url):

@@ -1,4 +1,4 @@
-# Runtime dependency lock for the v0.4.0 release. Generated from the verified
+# Runtime dependency lock for the v0.4.0-rc3 release candidate. Generated from the verified
 # Windows/Python 3.12 review environment; re-resolve deliberately for another
 # Python version or platform.
 annotated-types==0.8.0

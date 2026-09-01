@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2026 Nemi Prowse
+# SPDX-License-Identifier: Apache-2.0
+
 """Generate an auditable licence-notice file for installed Python distributions."""
 from __future__ import annotations
 

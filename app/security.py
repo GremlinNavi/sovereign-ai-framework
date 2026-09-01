@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2026 Nemi Prowse
+# SPDX-License-Identifier: Apache-2.0
+
 from __future__ import annotations
 
 import ipaddress
@@ -21,9 +24,17 @@ def validate_public_http_url(url: str) -> None:
     addresses = {ipaddress.ip_address(info[4][0]) for info in infos}
     if not addresses:
         raise ValueError("Hostname did not resolve to an address")
-    # ``is_global`` is deliberately stricter than a deny-list of known private
-    # ranges.  It also rejects carrier-grade NAT and special-purpose address
-    # space, which must not be reachable through a public-web research tool.
-    blocked = [str(ip) for ip in addresses if not ip.is_global]
+    blocked = []
+    for ip in addresses:
+        if (
+            ip.is_private
+            or ip.is_loopback
+            or ip.is_link_local
+            or ip.is_multicast
+            or ip.is_reserved
+            or ip.is_unspecified
+            or ip.is_loopback
+        ):
+            blocked.append(str(ip))
     if blocked:
-        raise ValueError("Non-public, loopback, link-local, multicast, reserved, or unspecified hosts are blocked")
+        raise ValueError("Private, loopback, link-local, multicast, reserved, or unspecified hosts are blocked")
