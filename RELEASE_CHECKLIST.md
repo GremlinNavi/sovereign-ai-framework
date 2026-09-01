@@ -88,7 +88,7 @@ build_windows.bat
 
 ## Claims and boundaries
 
-- [ ] Use: “Sovereign AI Demonstrator — Eternal Thread.”
+- [ ] Use: “Eternal Thread — Sovereign AI Demonstrator.”
 - [ ] Use: “Local-first. Auditable. Human-controlled.”
 - [ ] Describe C-34/C-36 work as engineering alignment or controls informed by proposed legislation—not certification, legal advice, or guaranteed compliance.
 - [ ] Do not imply Government of Canada ownership, endorsement, procurement status, certification, or production readiness.

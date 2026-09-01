@@ -1,6 +1,6 @@
 # Developer Certificate of Origin
 
-All contributions to Sovereign AI Demonstrator — Eternal Thread must include a
+All contributions to Eternal Thread — Sovereign AI Demonstrator must include a
 `Signed-off-by` line certifying the Developer Certificate of Origin (DCO) below.
 Use `git commit -s` when creating a commit. Do not sign off code, documentation,
 data, or other material unless you have the right to submit it.

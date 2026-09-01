@@ -2,7 +2,7 @@
 
 ## Creator
 
-- Nemi Prowse — original creator of Sovereign AI Demonstrator — Eternal Thread.
+- Nemi Prowse — original creator of Eternal Thread — Sovereign AI Demonstrator.
 
 ## Contributions
 

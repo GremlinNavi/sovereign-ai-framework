@@ -60,7 +60,7 @@ class AssessmentWorker(threading.Thread):
 class MainWindow:
     def __init__(self, root: tk.Tk) -> None:
         self.root = root
-        self.root.title("Sovereign AI Demonstrator — Eternal Thread")
+        self.root.title("Eternal Thread — Sovereign AI Demonstrator")
         self.root.geometry("1100x760")
         self.root.minsize(760, 500)
 

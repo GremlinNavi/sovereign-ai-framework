@@ -1,6 +1,6 @@
 # Development attribution and responsible AI use
 
-Sovereign AI Demonstrator — Eternal Thread was created and is maintained by Nemi
+Eternal Thread — Sovereign AI Demonstrator was created and is maintained by Nemi
 Prowse as independent software development. Its development has included iterative
 AI-assisted engineering support from OpenAI's Codex. That assistance can support
 analysis, implementation drafts, testing, and documentation; the creator remains

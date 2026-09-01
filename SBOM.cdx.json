@@ -20,7 +20,7 @@
     },
     "tools": [
       {
-        "vendor": "Sovereign AI Demonstrator",
+        "vendor": "Eternal Thread",
         "name": "generate_release_metadata.py"
       }
     ]

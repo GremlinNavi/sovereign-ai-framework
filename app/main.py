@@ -131,7 +131,7 @@ def main() -> int:
         except BackendUnavailableError as exc:
             _report_backend_unavailable("embedding", exc)
 
-    print(f"Sovereign AI Demonstrator — Eternal Thread — chat backend={settings.chat_backend_name}, model={settings.chat_model}")
+    print(f"Eternal Thread — Sovereign AI Demonstrator — chat backend={settings.chat_backend_name}, model={settings.chat_model}")
     print("Commands: /exit, /session, /privacy, /consent <purpose>, /revoke <purpose>, /reindex, /export [path], /export-data [path], /delete-session [id], /delete-all-data, /assess <question>")
     while True:
         try:

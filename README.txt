@@ -1,4 +1,4 @@
-SOVEREIGN AI DEMONSTRATOR — ETERNAL THREAD
+ETERNAL THREAD — SOVEREIGN AI DEMONSTRATOR
 Release and configuration guide
 
 Creator: Nemi Prowse

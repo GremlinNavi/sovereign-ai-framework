@@ -22,6 +22,12 @@ def test_release_candidate_metadata_is_consistent():
     assert "pre-release" in readme.lower()
 
 
+def test_public_title_is_consistent_across_primary_metadata():
+    canonical_title = "Eternal Thread — Sovereign AI Demonstrator"
+    for filename in ("README.md", "BRANDING.md", "CITATION.cff", "NOTICE"):
+        assert canonical_title in (ROOT / filename).read_text(encoding="utf-8")
+
+
 def test_release_docs_keep_compliance_claims_bounded():
     alignment = (ROOT / "REGULATORY_ALIGNMENT.md").read_text(encoding="utf-8").lower()
     security = (ROOT / "SECURITY.md").read_text(encoding="utf-8").lower()

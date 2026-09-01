@@ -1,10 +1,10 @@
-# Sovereign AI Demonstrator — Eternal Thread
+# Eternal Thread — Sovereign AI Demonstrator
 
 ## Official project name
 
-**Sovereign AI Demonstrator**
+**Eternal Thread — Sovereign AI Demonstrator**
 
-**Codename:** Eternal Thread
+**Short name:** Eternal Thread
 
 ## One-line description
 
@@ -12,13 +12,13 @@ A Canadian reference implementation for local-first, auditable AI-assisted resea
 
 ## Short description
 
-The Sovereign AI Demonstrator explores how AI-assisted knowledge work can operate under explicit data-boundary, provenance, auditability, security, and human-review requirements. It is designed as an inspectable reference implementation rather than a production Government of Canada system.
+Eternal Thread explores how AI-assisted knowledge work can operate under explicit data-boundary, provenance, auditability, security, and human-review requirements. It is designed as an inspectable reference implementation rather than a production Government of Canada system.
 
 ## Federal-facing positioning
 
 Use:
 
-> Sovereign AI Demonstrator — Eternal Thread
+> Eternal Thread — Sovereign AI Demonstrator
 
 Avoid:
 
@@ -30,9 +30,13 @@ Those formulations imply institutional ownership, endorsement, or platform statu
 
 ## Brand hierarchy
 
-- Category / mission: **Sovereign AI**
-- Product / demonstrator: **Sovereign AI Demonstrator**
-- Codename / repository identity: **Eternal Thread**
+- Product / software name: **Eternal Thread**
+- Formal public title: **Eternal Thread — Sovereign AI Demonstrator**
+- Category / mission descriptor: **sovereign AI**
+- Technical repository slug: `sovereign-ai-framework`
+
+`Sovereign AI Framework` is a repository/architecture descriptor, not a competing
+public product name. Do not describe Eternal Thread as a codename.
 
 ## Federal-facing tagline
 

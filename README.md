@@ -1,4 +1,4 @@
-# Sovereign AI Demonstrator — Eternal Thread
+# Eternal Thread — Sovereign AI Demonstrator
 
 A Canadian reference implementation for local-first, auditable AI-assisted research.
 
@@ -10,7 +10,7 @@ A local-first research framework with replaceable inference backends. It combine
 
 ## Authorship, citation, and reuse
 
-Sovereign AI Demonstrator — Eternal Thread was created by Nemi Prowse. Please retain
+Eternal Thread — Sovereign AI Demonstrator was created by Nemi Prowse. Please retain
 the project attribution and refer to [CITATION.cff](CITATION.cff) when citing this
 software. The repository's release materials are documented in [NOTICE](NOTICE) and
 [RELEASE_CHECKLIST.md](RELEASE_CHECKLIST.md).
@@ -361,7 +361,7 @@ not a substitute for the checksum of the final public release asset.
 and hosted releases. It records evidence and exclusions, never conversation data,
 knowledge/training material, credentials, local audit records, or private archives.
 
-Keep project identity precise: use **Sovereign AI Demonstrator — Eternal Thread** and
+Keep project identity precise: use **Eternal Thread — Sovereign AI Demonstrator** and
 the tagline **Local-first. Auditable. Human-controlled.** Do not imply government
 ownership, endorsement, or production readiness. See [BRANDING.md](BRANDING.md).
 Review [SECURITY.md](SECURITY.md), [CONTRIBUTING.md](CONTRIBUTING.md), [PROVENANCE.md](PROVENANCE.md), and generated

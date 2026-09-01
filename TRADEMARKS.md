@@ -7,14 +7,17 @@ notice.
 
 ## Current project identifiers
 
-- Sovereign AI Demonstrator
 - Eternal Thread
+- Eternal Thread — Sovereign AI Demonstrator
 - Local-first. Auditable. Human-controlled.
 
 These identifiers are used in this repository to identify the project. This file is
 not a claim that any identifier is registered with the Canadian Intellectual
 Property Office (CIPO), nor a representation of Government of Canada ownership,
 endorsement, approval, procurement, certification, or production status.
+
+`Sovereign AI Framework` is a technical repository/architecture descriptor. It is
+not presented as a separate public product name.
 
 ## Use by downstream users
 

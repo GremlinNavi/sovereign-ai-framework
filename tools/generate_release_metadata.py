@@ -121,7 +121,7 @@ def generate(root: Path, notices_output: Path, sbom_output: Path, timestamp: str
                 "version": "0.4.0rc4",
                 "licenses": [{"license": {"id": "Apache-2.0"}}],
             },
-            "tools": [{"vendor": "Sovereign AI Demonstrator", "name": "generate_release_metadata.py"}],
+            "tools": [{"vendor": "Eternal Thread", "name": "generate_release_metadata.py"}],
         },
         "components": components,
     }

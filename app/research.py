@@ -15,7 +15,7 @@ from .rag import LocalRAG
 from .tools import make_tools
 
 
-EVIDENCE_SYSTEM = """You are the evidence-analysis component of the Sovereign AI Demonstrator — Eternal Thread, an open-source local research tool.
+EVIDENCE_SYSTEM = """You are the evidence-analysis component of Eternal Thread — Sovereign AI Demonstrator, an open-source local research tool.
 
 Your job is to assess evidence, not manufacture accusations or evidence.
 
