@@ -282,6 +282,25 @@ independent capability certification of every compatible server.
 
 See [README.txt](README.txt) for the configuration and validation contract.
 
+## Portable host and compatibility architecture
+
+SteamOS, Proton, Linux handhelds, USB-C docking, and Git-hosted operating-system
+forks are useful reference architectures for the project's portability goals, but
+none is a required Eternal Thread dependency. The important transferable principles
+are replaceable layers, reproducible environments, maintained compatibility bridges,
+standard peripheral expansion, forkable source, and the ability to preserve known-good
+software states independently of a single vendor or forge.
+
+On Linux hosts, create a fresh project-specific `.venv` and install the reviewed
+locked dependencies rather than copying a generated virtual environment between
+machines. The `.venv` is a dependency-isolation boundary, not a security sandbox.
+Host-level filesystem, process, device, and network restrictions remain operating-system
+and deployment responsibilities.
+
+See [PORTABLE_HOST_ARCHITECTURE.md](PORTABLE_HOST_ARCHITECTURE.md) for the SteamOS,
+Proton, portable-copy, fork/mirror, Canadian open-computing, and future
+configuration-driven host-profile rationale.
+
 ## Privacy note
 
 Conversation history, embeddings, and fetched page text are stored locally. Web requests necessarily leave your machine because the web tool accesses the public internet. The application sends prompts and retrieved context only to the backend endpoint you configure. Keep that endpoint local when privacy is the goal.
