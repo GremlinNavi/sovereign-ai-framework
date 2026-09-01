@@ -6,6 +6,10 @@ A local-first research framework with replaceable inference backends. It combine
 
 **Creator:** Nemi Prowse
 
+**Canonical public source:** [GitHub — GremlinNavi/sovereign-ai-framework](https://github.com/GremlinNavi/sovereign-ai-framework)
+
+**Mirror policy:** This GitHub repository is the source of record for public releases. Maintainer-controlled GitLab copies may preserve project history for archival redundancy; their visibility and release status may differ.
+
 **Status:** v0.4 Release Candidate #3 is a portable-framework development release. It is not a Government of Canada product,
 service, endorsement, or production deployment.
 
