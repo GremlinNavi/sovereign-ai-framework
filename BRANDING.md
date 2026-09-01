@@ -12,6 +12,14 @@ A Canadian reference implementation for local-first, auditable AI-assisted resea
 
 The Sovereign AI Demonstrator explores how AI-assisted knowledge work can operate under explicit data-boundary, provenance, auditability, security, and human-review requirements. It is designed as an inspectable reference implementation rather than a production Government of Canada system.
 
+## Open-Source World Access Project relationship
+
+The Open-Source World Access Project (OSWAP) is a separate open-source software-access and discovery initiative. Its planned database layer is documented in [OSWAP_DATABASE.md](OSWAP_DATABASE.md).
+
+OSWAP is not a replacement name for the Sovereign AI Demonstrator. The two projects may interoperate while retaining separate technical and branding boundaries.
+
+The local `knowledge/index.sqlite3` database belongs to the Sovereign AI Demonstrator's RAG runtime. It is not the OSWAP software catalogue.
+
 ## Federal-facing positioning
 
 Use:
@@ -28,8 +36,9 @@ Those formulations imply institutional ownership, endorsement, or platform statu
 
 ## Brand hierarchy
 
-- Category / mission: Sovereign AI
-- Product / demonstrator: Sovereign AI Demonstrator
+- Open-source access/discovery initiative: Open-Source World Access Project (OSWAP)
+- AI product / demonstrator: Sovereign AI Demonstrator
+- OSWAP data/discovery specification: OSWAP Database
 - Repository identity: sovereign-ai-framework
 
 ## Federal-facing tagline
