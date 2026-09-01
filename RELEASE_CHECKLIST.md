@@ -10,7 +10,7 @@
 - [ ] Build with `requirements-build.lock`; the build generates and places `THIRD_PARTY_NOTICES.md` beside every executable.
 - [x] Apache-2.0 `LICENSE` added; the repository may be described as open source.
 - [ ] Review the project name against the Canadian Trademarks Database before representing it as a protected brand.
-- [ ] Confirm public authorship is shown as Zoey Prowse in `AUTHORS.md`, `NOTICE`, and `CITATION.cff`.
+- [ ] Confirm public authorship is shown consistently in `AUTHORS.md`, `NOTICE`, and `CITATION.cff`.
 
 ## Release
 
@@ -22,7 +22,7 @@
 
 ## Claims and boundaries
 
-- [ ] Use: “Sovereign AI Demonstrator — Eternal Thread.”
+- [ ] Use: “Sovereign AI Demonstrator.”
 - [ ] Use: “Local-first. Auditable. Human-controlled.”
 - [ ] Do not imply Government of Canada ownership, endorsement, procurement status, or production readiness.
 - [x] Describe the portable-backend architecture as implemented: adapters, root `config.py`, and static configuration validation are present.
