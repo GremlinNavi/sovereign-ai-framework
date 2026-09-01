@@ -25,6 +25,9 @@ Copyright remains with Nemi Prowse and contributors retain copyright in their ow
 contributions. The `NOTICE` file preserves project attribution; the licence does not
 grant permission to imply project or government endorsement.
 
+For transparent information about AI-assisted development, independent maintenance,
+and responsible professional disclosure, see [DEVELOPMENT_ATTRIBUTION.md](DEVELOPMENT_ATTRIBUTION.md).
+
 ## Architecture
 
 ```text
