@@ -1,10 +1,11 @@
 # Development attribution and responsible AI use
 
 Sovereign AI Demonstrator — Eternal Thread was created and is maintained by Nemi
-Prowse. Its development has included iterative AI-assisted engineering support from
-OpenAI's Codex. That assistance can support analysis, implementation drafts, testing,
-and documentation; the creator remains responsible for the project's architecture,
-technical decisions, review, testing, licensing, security posture, and publication.
+Prowse as independent software development. Its development has included iterative
+AI-assisted engineering support from OpenAI's Codex. That assistance can support
+analysis, implementation drafts, testing, and documentation; the creator remains
+responsible for the project's architecture, technical decisions, review, testing,
+licensing, security posture, and publication.
 
 ## Open development without vendor dependence
 
@@ -19,6 +20,18 @@ or responsibility for the project. Mentioning Codex records a development tool u
 the creator; it is not a claim that Codex is the project's author or that the project
 is vendor-approved.
 
+## Verifiable project description
+
+A concise description aligned with the public release materials is: an independent
+developer designed and released an Apache-2.0, local-first framework for auditable
+AI-assisted research with replaceable inference backends. The source code, tests,
+design documentation, and release materials are the evidence for that description.
+
+When the project is used as professional evidence, link to the relevant public
+repository and release or tag, and describe only features that are present and
+documented in that release. This keeps the authorship record clear while giving a
+reviewer a direct way to verify the work.
+
 ## Responsible professional disclosure
 
 When the project is described in a resume, portfolio, interview, or job application,
@@ -28,6 +41,8 @@ describe both the work and the assistance truthfully:
 - describe the concrete work that can be explained and demonstrated, such as the
   local-first architecture, backend abstraction, privacy controls, tests,
   documentation, and release workflow;
+- link to the relevant public repository and release or tag, and limit claims to
+  what the referenced release documents and supports with evidence;
 - state that OpenAI Codex was used as an AI-assisted development tool when that
   context is relevant or requested;
 - do not imply that the work was unaided, vendor-endorsed, government-certified, or
@@ -63,3 +78,4 @@ Canada product or service.
 
 - [Public Service Commission of Canada — Artificial intelligence in the hiring process](https://www.canada.ca/en/public-service-commission/services/appointment-framework/guides-tools-appointment-framework/ai-hiring-process.html)
 - [Treasury Board of Canada Secretariat — AI Strategy for the Federal Public Service 2025-2027](https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/responsible-use-ai/gc-ai-strategy-overview.html)
+
