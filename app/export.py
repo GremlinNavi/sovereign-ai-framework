@@ -18,7 +18,7 @@ def export_session_txt(session_id: str, destination: Path, *, include_confidenti
             if line.strip():
                 records.append(json.loads(line))
     lines = [
-        "SOVEREIGN AI DEMONSTRATOR — ETERNAL THREAD",
+        "SOVEREIGN AI DEMONSTRATOR",
         "RESEARCH CONVERSATION EXPORT",
         "=============================",
         "",
