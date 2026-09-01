@@ -1,10 +1,8 @@
-# Sovereign AI Demonstrator — Eternal Thread
+# Sovereign AI Demonstrator
 
 ## Official project name
 
-**Sovereign AI Demonstrator**
-
-**Codename:** Eternal Thread
+Sovereign AI Demonstrator
 
 ## One-line description
 
@@ -18,7 +16,7 @@ The Sovereign AI Demonstrator explores how AI-assisted knowledge work can operat
 
 Use:
 
-> Sovereign AI Demonstrator — Eternal Thread
+> Sovereign AI Demonstrator
 
 Avoid:
 
@@ -30,17 +28,17 @@ Those formulations imply institutional ownership, endorsement, or platform statu
 
 ## Brand hierarchy
 
-- Category / mission: **Sovereign AI**
-- Product / demonstrator: **Sovereign AI Demonstrator**
-- Codename / repository identity: **Eternal Thread**
+- Category / mission: Sovereign AI
+- Product / demonstrator: Sovereign AI Demonstrator
+- Repository identity: sovereign-ai-framework
 
 ## Federal-facing tagline
 
-**Local-first. Auditable. Human-controlled.**
+Local-first. Auditable. Human-controlled.
 
 ## Alternate technical descriptor
 
-**A sovereign-AI reference implementation for controlled, evidence-aware knowledge work.**
+A sovereign-AI reference implementation for controlled, evidence-aware knowledge work.
 
 ## Tone
 
