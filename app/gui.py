@@ -28,8 +28,6 @@ class Worker(threading.Thread):
 
     def run(self) -> None:
         try:
-            # The worker owns its backend state. Its RAG instance opens SQLite
-            # connections only in this worker, never in the GUI thread.
             result = Agent(self.consent).chat(self.turns)
             self.results.put(("finished", result.get("content", ""), result))
         except Exception as exc:
@@ -57,15 +55,12 @@ class AssessmentWorker(threading.Thread):
 class MainWindow:
     def __init__(self, root: tk.Tk) -> None:
         self.root = root
-        self.root.title("Sovereign AI Demonstrator — Eternal Thread")
+        self.root.title("Sovereign AI Demonstrator")
         self.root.geometry("1100x760")
         self.root.minsize(760, 500)
 
         self.consent = ConsentStore()
         self._request_initial_consents()
-
-        # This backend is only used from Tk's main thread for indexing and for
-        # saving completed conversation turns.
         self.agent = Agent(self.consent)
         purge_expired_sessions(self.agent.rag)
         self.session_id = self._new_session_id()
@@ -205,7 +200,6 @@ class MainWindow:
             self._append_error(f"{type(exc).__name__}: {exc}")
             self._set_status("Reindex failed — see transcript")
 
-
     def _export_txt(self) -> None:
         if self.busy:
             return
@@ -230,7 +224,7 @@ class MainWindow:
             title="Export all locally held data",
             defaultextension=".json",
             filetypes=[("JSON files", "*.json"), ("All files", "*.*")],
-            initialfile="eternal-thread-personal-data.json",
+            initialfile="sovereign-ai-demonstrator-personal-data.json",
         )
         if not destination:
             return
@@ -301,7 +295,7 @@ class MainWindow:
         self.root.after(50, self._poll_worker)
 
     def _send_on_enter(self, event: tk.Event) -> str | None:
-        if event.state & 0x0001:  # Shift+Enter inserts a newline.
+        if event.state & 0x0001:
             return None
         self._send()
         return "break"
