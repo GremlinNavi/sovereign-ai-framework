@@ -42,7 +42,7 @@ describe both the work and the assistance truthfully:
   local-first architecture, backend abstraction, privacy controls, tests,
   documentation, and release workflow;
 - link to the relevant public repository and release or tag, and limit claims to
-  what the referenced release documents and supports with evidence;
+  what can be documented and supported with evidence in the referenced release;
 - state that OpenAI Codex was used as an AI-assisted development tool when that
   context is relevant or requested;
 - do not imply that the work was unaided, vendor-endorsed, government-certified, or
