@@ -1,4 +1,4 @@
-# Sovereign AI Demonstrator — Eternal Thread
+# Sovereign AI Demonstrator
 
 A Canadian reference implementation for local-first, auditable AI-assisted research.
 
@@ -11,7 +11,7 @@ service, endorsement, or production deployment.
 
 ## Authorship, citation, and reuse
 
-Sovereign AI Demonstrator — Eternal Thread was created by Nemi Prowse. Please retain
+Sovereign AI Demonstrator was created by Nemi Prowse. Please retain
 the project attribution and refer to [CITATION.cff](CITATION.cff) when citing this
 software. The repository's release materials are documented in [NOTICE](NOTICE) and
 [RELEASE_CHECKLIST.md](RELEASE_CHECKLIST.md).
@@ -98,7 +98,7 @@ point, run:
 
 ```bash
 pip install .
-eternal-thread
+sovereign-ai-demonstrator
 ```
 
 ## Folders
@@ -179,7 +179,7 @@ v0.4 ships two adapters:
 - `ollama` — the default local Ollama adapter.
 - `openai_compatible` — a dependency-light adapter for compatible local servers.
 
-Set `ETERNAL_THREAD_CHAT_BACKEND` and `ETERNAL_THREAD_EMBEDDING_BACKEND` to select
+Set `SOVEREIGN_AI_DEMONSTRATOR_CHAT_BACKEND` and `SOVEREIGN_AI_DEMONSTRATOR_EMBEDDING_BACKEND` to select
 an adapter. See `.env.example` and `README.txt`. Capabilities are declared in the
 backend configuration and checked before dependent features run. Basic chat can continue without native tools, but evidence assessment
 requires chat, tool calling, and structured-output support.
@@ -217,7 +217,7 @@ See [README.txt](README.txt) for the configuration and validation contract.
 
 SteamOS, Proton, Linux handhelds, USB-C docking, and Git-hosted operating-system
 forks are useful reference architectures for the project's portability goals, but
-none is a required Eternal Thread dependency. The important transferable principles
+none is a required Sovereign AI Demonstrator dependency. The important transferable principles
 are replaceable layers, reproducible environments, maintained compatibility bridges,
 standard peripheral expansion, forkable source, and the ability to preserve known-good
 software states independently of a single vendor or forge.
@@ -238,7 +238,7 @@ Conversation history, embeddings, and fetched page text are stored locally. Web 
 
 ## Desktop GUI
 
-The project includes a native Tk desktop GUI in `app/gui.py` and `launcher.py`. On Windows, run `build_windows.bat` to create `dist\\EternalThread\\EternalThread.exe` by default, with no console window. The executable name is read from `config.py`. Tk is bundled with standard Windows Python installations, so the GUI does not need a separate Qt runtime.
+The project includes a native Tk desktop GUI in `app/gui.py` and `launcher.py`. On Windows, run `build_windows.bat` to create `dist\\SovereignAIDemonstrator\\SovereignAIDemonstrator.exe` by default, with no console window. The executable name is read from `config.py`. Tk is bundled with standard Windows Python installations, so the GUI does not need a separate Qt runtime.
 
 The GUI is a thin client over the same local agent: conversation history, hybrid RAG, web tools, security checks, and the configured inference backend remain in the Python backend.
 
@@ -249,7 +249,6 @@ and a short busy wait so concurrent GUI reads/writes remain safe.
 
 Inference runtimes and model weights are intentionally not bundled into the executable.
 Install and configure the selected backend separately before launching the app.
-
 
 ## Evidence workflow
 
@@ -265,7 +264,6 @@ Conversation history remains the canonical local JSONL record. `Export .txt` cre
 
 The plain-text format is deliberately dependency-free so research records remain readable outside the project.
 
-
 ## Publication safeguard
 
 Evidence assessments are never treated as publication authorization. The model is required to report uncertainty, contradictions, and evidence gaps, and the application records `HUMAN REVIEW REQUIRED: YES` for every assessment. A separate human decision is required before any research result is treated as publishable.
@@ -279,7 +277,7 @@ with release notes and a SHA-256 checksum file. Do not commit generated release 
 checksums, executable builds, or personal data to the default branch. Mark unfinished
 work as a pre-release.
 
-Keep project identity precise: use **Sovereign AI Demonstrator — Eternal Thread** and
+Keep project identity precise: use **Sovereign AI Demonstrator** and
 the tagline **Local-first. Auditable. Human-controlled.** Do not imply government
 ownership, endorsement, or production readiness. See [BRANDING.md](BRANDING.md).
 Review [SECURITY.md](SECURITY.md), [CONTRIBUTING.md](CONTRIBUTING.md), and generated
