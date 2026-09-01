@@ -108,7 +108,6 @@ class ConsentStore:
 
 
 def _session_timestamp(path: Path) -> datetime | None:
-    """Read the most recent record timestamp without retaining its content."""
     latest: datetime | None = None
     try:
         lines = path.read_text(encoding="utf-8").splitlines()
@@ -126,7 +125,6 @@ def _session_timestamp(path: Path) -> datetime | None:
 
 
 def expired_session_ids(now: datetime | None = None) -> list[str]:
-    """List stored sessions that have passed the configured retention period."""
     now = now or datetime.now(timezone.utc)
     cutoff = now - timedelta(days=settings.retention_days)
     expired = []
@@ -138,7 +136,6 @@ def expired_session_ids(now: datetime | None = None) -> list[str]:
 
 
 def delete_session(session_id: str, rag: object | None = None) -> bool:
-    """Delete a session record and its derived RAG chunks when available."""
     session_id = validate_session_id(session_id)
     path = settings.history_dir / f"{session_id}.jsonl"
     existed = path.is_file()
@@ -158,7 +155,6 @@ def purge_expired_sessions(rag: object | None = None) -> list[str]:
 
 
 def export_personal_data(destination: Path) -> Path:
-    """Export all locally stored user records in a portable JSON document."""
     sessions: dict[str, list[dict]] = {}
     for path in settings.history_dir.glob("*.jsonl"):
         records = []
@@ -173,7 +169,7 @@ def export_personal_data(destination: Path) -> Path:
         return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
 
     payload = {
-        "format": "eternal-thread-personal-data-v1",
+        "format": "sovereign-ai-demonstrator-personal-data-v1",
         "exported_at": datetime.now(timezone.utc).isoformat(),
         "sessions": sessions,
         "tool_audit": read_records(settings.audit_log_path),
@@ -188,7 +184,6 @@ def export_personal_data(destination: Path) -> Path:
 
 
 def delete_all_local_data(rag: object | None = None, *, include_knowledge: bool = False) -> None:
-    """Delete known application data only; knowledge files require an explicit opt-in."""
     if rag is not None and hasattr(rag, "close"):
         rag.close()
     for path in settings.history_dir.glob("*.jsonl"):
