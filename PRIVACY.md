@@ -1,7 +1,7 @@
 # Privacy and data controls
 
-Eternal Thread is designed to work locally by default. It stores user data outside
-the source checkout unless `ETERNAL_THREAD_DATA_DIR` is explicitly configured.
+Sovereign AI Demonstrator is designed to work locally by default. It stores user data outside
+the source checkout unless `SOVEREIGN_AI_DEMONSTRATOR_DATA_DIR` is explicitly configured.
 
 ## Choices before processing
 
@@ -19,7 +19,7 @@ cross-border transfer safeguards that apply to the deployment.
 ## Data lifecycle
 
 - Conversation records are local JSONL files and default to a 30-day retention
-  period. Configure `ETERNAL_THREAD_RETENTION_DAYS` to a suitable positive value.
+  period. Configure `SOVEREIGN_AI_DEMONSTRATOR_RETENTION_DAYS` to a suitable positive value.
 - The retrieval index is derived data. Deleting a session also deletes its indexed
   conversation chunks.
 - Tool audit records keep only a hash and length for string arguments; prompts,
