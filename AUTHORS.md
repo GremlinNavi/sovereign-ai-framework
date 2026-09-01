@@ -2,7 +2,7 @@
 
 ## Creator
 
-- Zoey Prowse — original creator of Sovereign AI Demonstrator — Eternal Thread.
+- Nemi Prowse — original creator of Sovereign AI Demonstrator — Eternal Thread.
 
 ## Contributions
 
