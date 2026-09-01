@@ -7,6 +7,9 @@ Status: v0.4.0-rc4 (Release Candidate #4) portable-framework development pre-rel
 This project is a local-first, auditable AI-assisted research demonstrator. It is
 not a Government of Canada product, service, endorsement, procurement, certification, or production system.
 
+For the creator inspiration record and the distinction between creative inspiration
+and technical claims, see INSPIRATION_AND_DESIGN_LINEAGE.txt.
+
 WHAT PORTABLE, OPEN-SOURCE MEANS
 
 The framework’s inference backend is replaceable: users may select or develop a

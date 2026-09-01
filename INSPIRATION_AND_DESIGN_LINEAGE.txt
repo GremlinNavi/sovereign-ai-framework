@@ -1,0 +1,140 @@
+CREATOR INSPIRATION RECORD
+Eternal Thread — Sovereign AI Demonstrator
+Inspiration, fiction, and design lineage
+
+This UTF-8 plain-text document is a creator inspiration record: it describes personal
+creative influences behind Eternal Thread. It is not a technical specification or a
+claim of affiliation with any named creator or publisher. It is not a claim that the framework is sentient.
+It contains high-level spoilers for 2001: A Space Odyssey, Danganronpa: Trigger Happy Havoc,
+and Danganronpa V3: Killing Harmony.
+
+CHILDHOOD SCIENCE-FI AS A QUESTION, NOT A BLUEPRINT
+
+My childhood fascination with science-fiction AI created the first question behind
+this project: what would it mean for an intelligence to remain useful, inspectable,
+and accountable when its surrounding systems change? Fiction made that question feel
+personal before I had the vocabulary of backends, configuration, provenance, virtual
+environments, or software licences.
+
+Eternal Thread is not an attempt to recreate a fictional computer. Its local-first,
+model- and runtime-agnostic design is a practical response to the question that those
+stories raised. A system should be able to survive changes in models, runtimes,
+hardware, operating systems, hosts, and forges without requiring its user to give up
+control of their data or the ability to understand what changed. The point is not to
+manufacture a mysterious personality. The point is to make a useful tool whose
+boundaries can be read, tested, changed, and preserved.
+
+HAL 9000, HOFSTADTER, AND THE STRANGE-LOOP WARNING
+
+HAL 9000 is compelling because it turns a familiar fear into a systems question:
+what happens when a capable system is given goals, information boundaries, and a role
+that cannot be reconciled honestly? The relevant lesson for Eternal Thread is not
+that AI must be feared or anthropomorphized. It is that opaque objectives and hidden
+constraints create failure modes that users cannot audit or correct.
+
+The phrase “Hofstadter-Möbius loop” is used here as an interpretive shorthand, not
+as the official name of a HAL mechanism. Douglas Hofstadter's “strange loop” describes
+self-reference: a system can move through levels of representation and eventually
+refer back to itself. A Möbius strip is a useful image for that movement because a
+journey that seems to have two sides returns to its starting surface. In a software
+context, a loop appears when a system's model of its purpose, its record of prior
+actions, and its response to new instructions affect one another.
+
+That is a powerful idea, but it is also a warning. A local AI framework should not
+quietly turn its own output, assumptions, or logs into unquestionable authority.
+Eternal Thread therefore separates configuration from application logic, requires
+explicit consent for configured processing features, keeps mutable data outside the
+source checkout, labels evidence assessments as assessments rather than publication
+authorization, and avoids silently selecting an alternate remote backend. A model can
+assist with a task; it is not the project's owner, conscience, or final reviewer.
+
+The project's “thread” is therefore not an endless machine monologue. It is a
+human-controlled continuity of source, configuration, evidence, and accountable
+decisions. The loop is made inspectable and interruptible: a user can validate the
+configuration, inspect stored records, revoke consent, preserve a known-good commit,
+or replace a backend without pretending that the system has become a person.
+
+ALTER EGO AND THE ETHICS OF HELPING WITHOUT REPLACING
+
+Alter Ego in Danganronpa: Trigger Happy Havoc is significant because it presents a
+digital helper shaped by a human creator's care, curiosity, and problem-solving, while
+remaining distinct from that creator. Its emotional force comes from assistance and
+continuity, not from a claim that software literally restores a lost person.
+
+That distinction matters to Eternal Thread. The framework can preserve project
+context, local records, release metadata, conversation exports, and operational
+knowledge when the operator chooses to store them. It can help a person retrieve,
+organize, or assess material. It must not imply that a stored history is a human mind,
+that an AI assistant owns the work, or that automation can replace human judgment.
+
+This influence supports a practical ethic: good assistance expands a person's agency.
+It should leave them with clearer records, more reversible choices, and a way to
+continue independently. That is why the project treats virtual environments as
+rebuildable dependency boundaries; runtimes and model weights as separately managed
+operator choices; and source repositories, exports, and documentation as things a
+person can carry, audit, and rebuild.
+
+ULTIMATE REAL FICTION AND THE NEED FOR VERIFIABLE REALITY
+
+Danganronpa V3: Killing Harmony uses its “Ultimate Real Fiction” idea to pressure
+the boundary between story, performance, memory, audience expectation, and lived
+consequence. Its point is not a technical claim about AI. It is a meta-fictional
+challenge: a narrative can feel real, organize people's choices, and cause real
+effects even when its framing is uncertain or constructed.
+
+That theme is directly relevant to AI-assisted development. A polished explanation,
+a model-generated answer, a résumé line, a release note, or a repository description
+can sound complete without being adequately evidenced. Eternal Thread therefore
+places source code, tests, locked dependencies, SBOMs, third-party notices, commit
+history, release checklists, and public-safe archive records beside its claims. The
+framework is allowed to have a story; the story is not allowed to substitute for
+verification.
+
+This is also why transparent disclosure of AI assistance matters. OpenAI Codex helped
+with parts of the development process, but the creator retains responsibility for
+architecture, review, testing, licensing, and publication. That is neither a denial
+of assistance nor a fictional transfer of authorship. It is an evidence-based account
+of collaboration.
+
+PORTABILITY AS A FORM OF CONTINUITY
+
+The earlier discussions of PowerShell, virtual Python environments, SteamOS, Steam
+Deck hardware, Linux, Proton, macOS PowerShell, and local AI all converge on the same
+design preference: no single layer should own the user's future. A virtual environment
+can be recreated instead of copied blindly. A local runtime or model can be selected
+deliberately instead of silently installed. A portable host can be docked, rebuilt,
+or replaced without redefining the project. A compatibility layer can remain optional
+rather than become the framework's identity.
+
+Those are architectural principles, not promises of universal device support or
+performance. Eternal Thread does not claim that every Steam Deck, SteamOS build,
+Proton configuration, model, or local runtime has been tested. The inspiration is the
+possibility of continuity through replaceable layers: a tool can remain useful when a
+vendor, model, hardware platform, or distribution service changes.
+
+OPEN SOURCE, ARCHIVES, AND RECOGNITION
+
+The twin GitHub and GitLab repositories, the domain eternal-thread.com, original
+archives with metadata, time-stamped conversational records, local backups, and other
+user-controlled archives form a redundancy strategy. Together they make it easier to
+show a development timeline, retain working copies, and preserve access if one service
+changes. They do not automatically decide a legal dispute or replace formal advice,
+but they are meaningful evidence and resilience practices when maintained carefully.
+
+Apache-2.0 makes the code reusable while preserving copyright notices and attribution
+requirements. Citation metadata, NOTICE, AUTHORS, DCO, provenance records, and clear
+release tags make recognition easier without trying to deny others the freedom to
+study, modify, and share the software. Open source is not the absence of authorship;
+it is authorship made visible alongside permission.
+
+THE THREAD
+
+The title Eternal Thread expresses this continuity. The thread is the link between a
+childhood question about artificial intelligence, an adult commitment to local control
+and transparency, a practical open-source framework, and an archive that lets future
+readers inspect what was actually built. Fiction supplied the imaginative pressure.
+Engineering supplies the limits, tests, documentation, and accountability.
+
+The enduring claim is deliberately modest: a person should be able to run, inspect,
+adapt, preserve, and receive credit for a useful local AI tool without being forced to
+trust an opaque service, a single model, or a story that cannot be checked.

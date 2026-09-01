@@ -28,6 +28,15 @@ def test_public_title_is_consistent_across_primary_metadata():
         assert canonical_title in (ROOT / filename).read_text(encoding="utf-8")
 
 
+def test_inspiration_record_is_utf8_and_scopes_its_claims():
+    record = (ROOT / "INSPIRATION_AND_DESIGN_LINEAGE.txt").read_text(encoding="utf-8")
+
+    assert record.startswith("CREATOR INSPIRATION RECORD\n")
+    assert "Eternal Thread — Sovereign AI Demonstrator" in record
+    assert "not a technical specification" in record
+    assert "not a claim that the framework is sentient" in record
+
+
 def test_release_docs_keep_compliance_claims_bounded():
     alignment = (ROOT / "REGULATORY_ALIGNMENT.md").read_text(encoding="utf-8").lower()
     security = (ROOT / "SECURITY.md").read_text(encoding="utf-8").lower()

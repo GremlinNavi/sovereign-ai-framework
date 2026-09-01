@@ -26,6 +26,8 @@ certification. Every release also includes [THIRD_PARTY_NOTICES.md](THIRD_PARTY_
 and [SBOM.cdx.json](SBOM.cdx.json), generated from the locked dependency environment.
 For transparent information about AI-assisted development, independent maintenance,
 and responsible professional disclosure, see [DEVELOPMENT_ATTRIBUTION.md](DEVELOPMENT_ATTRIBUTION.md).
+For the creator inspiration record—from science-fiction AI to local-first, auditable
+engineering—see [INSPIRATION_AND_DESIGN_LINEAGE.txt](INSPIRATION_AND_DESIGN_LINEAGE.txt).
 For a guarded PowerShell workflow that stages only named files and pushes a feature
 branch, see [GIT_WORKFLOW.md](GIT_WORKFLOW.md) and
 [Push-RepositoryUpdate.ps1](tools/Push-RepositoryUpdate.ps1).
