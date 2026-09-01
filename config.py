@@ -1,4 +1,4 @@
-"""Central, user-editable configuration for Eternal Thread.
+"""Central, user-editable configuration for Sovereign AI Demonstrator.
 
 This file declares provider choices. Secrets stay in environment variables named by
 ``api_key_env``; they are never stored in the project or bundled application.
@@ -35,8 +35,8 @@ def _default_data_root() -> Path:
     """Keep mutable user data out of the source checkout by default."""
     local_app_data = os.getenv("LOCALAPPDATA")
     if local_app_data:
-        return Path(local_app_data) / "EternalThread"
-    return Path.home() / ".local" / "share" / "EternalThread"
+        return Path(local_app_data) / "SovereignAIDemonstrator"
+    return Path.home() / ".local" / "share" / "SovereignAIDemonstrator"
 
 
 def is_local_endpoint(url: str) -> bool:
@@ -66,9 +66,9 @@ def _load_dotenv(path: Path) -> None:
 _load_dotenv(ROOT / ".env")
 
 # Change these two values to select independent inference backends.
-CHAT_BACKEND = os.getenv("ETERNAL_THREAD_CHAT_BACKEND", "ollama")
-EMBEDDING_BACKEND = os.getenv("ETERNAL_THREAD_EMBEDDING_BACKEND", "ollama")
-APP_NAME = "EternalThread"
+CHAT_BACKEND = os.getenv("SOVEREIGN_AI_DEMONSTRATOR_CHAT_BACKEND", "ollama")
+EMBEDDING_BACKEND = os.getenv("SOVEREIGN_AI_DEMONSTRATOR_EMBEDDING_BACKEND", "ollama")
+APP_NAME = "SovereignAIDemonstrator"
 
 
 @dataclass(frozen=True)
@@ -149,12 +149,12 @@ def load_settings() -> Settings:
         raise ValueError("CHAT_BACKEND and EMBEDDING_BACKEND must name entries in BACKENDS")
     chat = BACKENDS[CHAT_BACKEND]
     embedding = BACKENDS[EMBEDDING_BACKEND]
-    data_root = Path(os.getenv("ETERNAL_THREAD_DATA_DIR", str(_default_data_root())))
+    data_root = Path(os.getenv("SOVEREIGN_AI_DEMONSTRATOR_DATA_DIR", str(_default_data_root())))
     return Settings(
         chat_backend_name=CHAT_BACKEND, embedding_backend_name=EMBEDDING_BACKEND,
         chat_backend=chat, embedding_backend=embedding,
-        chat_model=os.getenv("ETERNAL_THREAD_CHAT_MODEL", chat.chat_model),
-        embedding_model=os.getenv("ETERNAL_THREAD_EMBEDDING_MODEL", embedding.embedding_model),
+        chat_model=os.getenv("SOVEREIGN_AI_DEMONSTRATOR_CHAT_MODEL", chat.chat_model),
+        embedding_model=os.getenv("SOVEREIGN_AI_DEMONSTRATOR_EMBEDDING_MODEL", embedding.embedding_model),
         top_k=_int_env("RAG_TOP_K", 6, 1), chunk_chars=_int_env("RAG_CHUNK_CHARS", 1200, 100),
         chunk_overlap=_int_env("RAG_CHUNK_OVERLAP", 200, 0), max_web_results=_int_env("WEB_MAX_RESULTS", 5, 1),
         max_fetch_chars=_int_env("WEB_MAX_FETCH_CHARS", 18000, 1000),
@@ -168,12 +168,12 @@ def load_settings() -> Settings:
         audit_log_path=data_root / "conversation_history" / "tool_audit.jsonl",
         safety_log_path=data_root / "conversation_history" / "safety_events.jsonl",
         consent_path=data_root / "privacy_consent.json",
-        retention_days=_int_env("ETERNAL_THREAD_RETENTION_DAYS", 30, 1),
-        store_conversations=_bool_env("ETERNAL_THREAD_STORE_CONVERSATIONS", True),
-        index_conversations=_bool_env("ETERNAL_THREAD_INDEX_CONVERSATIONS", False),
-        index_knowledge=_bool_env("ETERNAL_THREAD_INDEX_KNOWLEDGE", False),
-        web_research_enabled=_bool_env("ETERNAL_THREAD_ENABLE_WEB_RESEARCH", False),
-        allow_remote_backends=_bool_env("ETERNAL_THREAD_ALLOW_REMOTE_BACKENDS", False),
+        retention_days=_int_env("SOVEREIGN_AI_DEMONSTRATOR_RETENTION_DAYS", 30, 1),
+        store_conversations=_bool_env("SOVEREIGN_AI_DEMONSTRATOR_STORE_CONVERSATIONS", True),
+        index_conversations=_bool_env("SOVEREIGN_AI_DEMONSTRATOR_INDEX_CONVERSATIONS", False),
+        index_knowledge=_bool_env("SOVEREIGN_AI_DEMONSTRATOR_INDEX_KNOWLEDGE", False),
+        web_research_enabled=_bool_env("SOVEREIGN_AI_DEMONSTRATOR_ENABLE_WEB_RESEARCH", False),
+        allow_remote_backends=_bool_env("SOVEREIGN_AI_DEMONSTRATOR_ALLOW_REMOTE_BACKENDS", False),
     )
 
 
@@ -185,7 +185,7 @@ def validate_configuration() -> Settings:
             raise ValueError(f"Invalid backend URL: {provider.base_url!r}")
         if not is_local_endpoint(provider.base_url) and not current.allow_remote_backends:
             raise ValueError(
-                "Remote AI backends are disabled. Set ETERNAL_THREAD_ALLOW_REMOTE_BACKENDS=1 "
+                "Remote AI backends are disabled. Set SOVEREIGN_AI_DEMONSTRATOR_ALLOW_REMOTE_BACKENDS=1 "
                 "only after informing the user about the data transfer."
             )
     if not current.chat_model or not current.embedding_model:
@@ -200,7 +200,7 @@ def validate_configuration() -> Settings:
 settings = validate_configuration()
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Validate Eternal Thread configuration")
+    parser = argparse.ArgumentParser(description="Validate Sovereign AI Demonstrator configuration")
     parser.add_argument("--validate", action="store_true")
     parser.add_argument("--health-check", action="store_true", help="Check configured endpoints and verify configured model names are listed")
     parser.add_argument("--build-name", action="store_true")
