@@ -6,6 +6,6 @@ version: 0.4.0
 date-released: 2026-08-31
 authors:
   - family-names: Prowse
-    given-names: Zoey
+    given-names: Nemi
 abstract: "A local-first, auditable, human-controlled reference implementation for AI-assisted research."
 license: "Apache-2.0"
