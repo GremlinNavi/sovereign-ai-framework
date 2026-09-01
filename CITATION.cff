@@ -9,3 +9,4 @@ authors:
     given-names: Nemi
 abstract: "A local-first, auditable, human-controlled reference implementation for AI-assisted research."
 license: "Apache-2.0"
+repository-code: "https://github.com/GremlinNavi/sovereign-ai-framework"
