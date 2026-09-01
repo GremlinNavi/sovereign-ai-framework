@@ -96,13 +96,12 @@ def main() -> int:
     if turns:
         print(f"Resumed session: {session_id}")
 
-    # Index local knowledge at startup. Duplicates are ignored by SQLite.
     if settings.index_knowledge and consent.granted("knowledge_indexing"):
         added = agent.rag.ingest_directory(settings.knowledge_dir)
         if added:
             print(f"Indexed {added} new knowledge chunks.")
 
-    print(f"Sovereign AI Demonstrator — Eternal Thread — chat backend={settings.chat_backend_name}, model={settings.chat_model}")
+    print(f"Sovereign AI Demonstrator — chat backend={settings.chat_backend_name}, model={settings.chat_model}")
     print("Commands: /exit, /session, /privacy, /consent <purpose>, /revoke <purpose>, /reindex, /export [path], /export-data [path], /delete-session [id], /delete-all-data, /assess <question>")
     while True:
         try:
@@ -139,13 +138,13 @@ def main() -> int:
             continue
         if user == "/reindex":
             if not settings.index_knowledge or not consent.granted("knowledge_indexing"):
-                print("Knowledge indexing requires ETERNAL_THREAD_INDEX_KNOWLEDGE=1 and consent.")
+                print("Knowledge indexing requires SOVEREIGN_AI_DEMONSTRATOR_INDEX_KNOWLEDGE=1 and consent.")
             else:
                 print(f"Indexed {agent.rag.ingest_directory(settings.knowledge_dir)} new chunks.")
             continue
         if user.startswith("/export-data"):
             parts = user.split(maxsplit=1)
-            destination = Path(parts[1]) if len(parts) == 2 else Path("eternal-thread-personal-data.json")
+            destination = Path(parts[1]) if len(parts) == 2 else Path("sovereign-ai-demonstrator-personal-data.json")
             if not destination.is_absolute():
                 destination = Path.cwd() / destination
             export_personal_data(destination)
@@ -200,7 +199,6 @@ def main() -> int:
         print(f"\nAssistant> {answer}")
         append_turn(session_id, "assistant", answer, consent=consent)
         turns.append({"role": "assistant", "content": answer})
-        # Embed the latest conversation into the local RAG store for future sessions.
         _index_conversation_if_permitted(agent, consent, session_id, turns)
     return 0
 
