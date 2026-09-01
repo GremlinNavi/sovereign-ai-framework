@@ -37,7 +37,7 @@ def make_tools(rag: LocalRAG, consent: object | None = None):
     def require_web_research_consent() -> None:
         if not getattr(settings, "web_research_enabled", True):
             raise PermissionError(
-                "Web research is disabled. Set ETERNAL_THREAD_ENABLE_WEB_RESEARCH=1 only after informed user consent."
+                "Web research is disabled. Set SOVEREIGN_AI_DEMONSTRATOR_ENABLE_WEB_RESEARCH=1 only after informed user consent."
             )
         if consent is not None:
             consent.require("web_research")
