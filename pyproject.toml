@@ -3,9 +3,9 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "eternal-thread"
+name = "sovereign-ai-demonstrator"
 version = "0.4.0"
-description = "Sovereign AI Demonstrator (Eternal Thread): a portable, backend-agnostic local-first AI research framework with hybrid RAG, provenance-aware assessments, and portable text exports."
+description = "Sovereign AI Demonstrator: a portable, backend-agnostic local-first AI research framework with hybrid RAG, provenance-aware assessments, and portable text exports."
 readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "Apache-2.0"}
@@ -24,7 +24,7 @@ dependencies = [
 ]
 
 [project.scripts]
-eternal-thread = "app.main:main"
+sovereign-ai-demonstrator = "app.main:main"
 
 [project.urls]
 Homepage = "https://github.com/GremlinNavi/sovereign-ai-framework"
