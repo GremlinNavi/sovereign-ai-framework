@@ -1,0 +1,16 @@
+{
+  "id": "assist",
+  "version": "0.1.0",
+  "forms": ["assist powershell <TASK>"],
+  "handler": "local.llm-assist",
+  "summary": "Ask a lightweight local or OpenAI-compatible open-weight model for PowerShell coding assistance without automatically executing generated code.",
+  "status": "implemented",
+  "license": "Apache-2.0",
+  "safety": {
+    "default_endpoint": "http://127.0.0.1:11434/api/chat",
+    "local_by_default": true,
+    "automatic_execution": false,
+    "tool_calling": false,
+    "generated_code_requires_human_review": true
+  }
+}
