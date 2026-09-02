@@ -1,0 +1,23 @@
+{
+  "id": "preserve",
+  "version": "0.2.0",
+  "forms": ["preserve"],
+  "handler": "local.preserve",
+  "summary": "Interactively create a SHA-256-manifested, age-encrypted preservation package and optionally replicate ciphertext through twin destinations.",
+  "status": "implemented",
+  "license": "Apache-2.0",
+  "safety": {
+    "powershell_prompts_only": true,
+    "trusted_device_warning": true,
+    "source_is_never_modified": true,
+    "plaintext_remote_publication": false,
+    "sensitive_cli_arguments": false,
+    "explicit_remote_confirmation": true,
+    "anti_spyware_evasion": false
+  },
+  "encryption": {
+    "required_for_remote_replication": true,
+    "reference_tool": "age",
+    "passphrase_in_process_arguments": false
+  }
+}
