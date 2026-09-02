@@ -102,7 +102,9 @@ try {
     $manifest | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath $manifestPath -Encoding UTF8
 
     Write-Host "Creating temporary local archive for package $packageId ..."
-    Compress-Archive -Path @($payloadRoot, $manifestPath) -DestinationPath $zipPath -CompressionLevel Optimal -Force
+    Add-Type -AssemblyName System.IO.Compression.FileSystem
+    if (Test-Path -LiteralPath $zipPath) { Remove-Item -LiteralPath $zipPath -Force }
+    [IO.Compression.ZipFile]::CreateFromDirectory($tempRoot, $zipPath, [IO.Compression.CompressionLevel]::Optimal, $false)
 
     Write-Host 'Encrypting package with age. Enter the encryption passphrase only in the age prompt.'
     & $age.Source '-p' '-o' $encryptedPath $zipPath
