@@ -1,0 +1,15 @@
+{
+  "id": "dictionary",
+  "version": "0.1.0",
+  "forms": ["dictionary lookup lang=<BCP47> term=<TEXT>"],
+  "handler": "local.dictionary",
+  "summary": "Resolve multilingual terminology from locally indexed, provenance-preserving dictionary datasets.",
+  "status": "implemented",
+  "license": "Apache-2.0",
+  "safety": {
+    "network_required": false,
+    "arbitrary_code_evaluation": false,
+    "source_attribution_required": true,
+    "license_metadata_required": true
+  }
+}
