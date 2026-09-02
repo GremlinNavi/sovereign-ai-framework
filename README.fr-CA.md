@@ -16,14 +16,15 @@ Le Open-Source World Access Project (OSWAP) est une initiative distincte consacr
 
 Sovereign AI Demonstrator conserve sa propre identité de projet. OSWAP n'est pas un nouveau nom pour le démonstrateur.
 
-Les futurs points d'accès publics prévus pour ce projet sont :
+OSWAP possède `oswap.ca`, `oswap.jp` et `oswap.us`. Les futurs points d'accès publics prévus pour ce projet sont :
 
 - `https://ai.oswap.ca`
+- `https://ai.oswap.jp`
 - `https://ai.oswap.us`
 
-Ces deux adresses sont conçues comme des points d'accès pairs plutôt que comme une copie principale et une copie secondaire. Elles ne doivent pas être présentées comme opérationnelles avant la mise en place et la vérification du DNS, du TLS, du routage et du protocole Git.
+Ces trois adresses sont conçues comme des points d'accès pairs plutôt que comme une copie principale et des copies secondaires. Elles ne doivent pas être présentées comme opérationnelles avant la mise en place et la vérification du DNS, du TLS, du routage et du protocole Git.
 
-Voir [OSWAP_AI_ENDPOINTS.fr-CA.md](OSWAP_AI_ENDPOINTS.fr-CA.md) pour le contrat prévu de ces points d'accès.
+Voir [OSWAP_AI_ENDPOINTS.fr-CA.md](OSWAP_AI_ENDPOINTS.fr-CA.md) pour le contrat prévu de ces points d'accès et les exemples d'adressage de dépôt par ordre des opérations.
 
 ## Accès Git prévu
 
@@ -31,6 +32,7 @@ Après le déploiement et la validation de l'infrastructure, les points d'accès
 
 ```text
 git clone https://ai.oswap.ca
+git clone https://ai.oswap.jp
 git clone https://ai.oswap.us
 ```
 
@@ -38,6 +40,7 @@ git clone https://ai.oswap.us
 
 ```text
 git pull https://ai.oswap.ca main
+git pull https://ai.oswap.jp main
 git pull https://ai.oswap.us main
 ```
 

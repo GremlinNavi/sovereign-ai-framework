@@ -16,14 +16,15 @@ Open-Source World Access Project (OSWAP) は、オープンソース・ソフト
 
 Sovereign AI Demonstrator は独立したプロジェクト名を維持します。OSWAP はこのデモンストレーターの改名ではありません。
 
-このプロジェクト向けに計画されている OSWAP 管理下の公開エンドポイントは次の2つです。
+OSWAP は `oswap.ca`、`oswap.jp`、`oswap.us` を所有しています。このプロジェクト向けに計画されている OSWAP 管理下の公開エンドポイントは次の3つです。
 
 - `https://ai.oswap.ca`
+- `https://ai.oswap.jp`
 - `https://ai.oswap.us`
 
-この2つは、主系とミラーという関係ではなく、対等なピア・エンドポイントとして設計されています。DNS、TLS、ルーティング、Git プロトコル処理の導入と検証が完了するまでは、稼働中のサービスとして表現しません。
+この3つは、主系とミラーという階層ではなく、対等なピア・エンドポイントとして設計されています。DNS、TLS、ルーティング、Git プロトコル処理の導入と検証が完了するまでは、稼働中のサービスとして表現しません。
 
-予定されているエンドポイント仕様については [OSWAP_AI_ENDPOINTS.ja.md](OSWAP_AI_ENDPOINTS.ja.md) を参照してください。
+予定されているエンドポイント仕様と Order of Operations によるリポジトリ・アドレッシング例については [OSWAP_AI_ENDPOINTS.ja.md](OSWAP_AI_ENDPOINTS.ja.md) を参照してください。
 
 ## 予定されている Git アクセス
 
@@ -31,6 +32,7 @@ Sovereign AI Demonstrator は独立したプロジェクト名を維持します
 
 ```text
 git clone https://ai.oswap.ca
+git clone https://ai.oswap.jp
 git clone https://ai.oswap.us
 ```
 
@@ -38,6 +40,7 @@ git clone https://ai.oswap.us
 
 ```text
 git pull https://ai.oswap.ca main
+git pull https://ai.oswap.jp main
 git pull https://ai.oswap.us main
 ```
 
