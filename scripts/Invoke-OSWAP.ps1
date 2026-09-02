@@ -51,26 +51,26 @@ function Resolve-OSWAPExpression([string]$Expression) {
         if (-not [double]::TryParse($t, [Globalization.NumberStyles]::Float, [Globalization.CultureInfo]::InvariantCulture, [ref]$n)) { throw "Expected number, got '$t'." }
         return $n
     }
-    function Parse-Unary {
-        $t = Peek-Token
-        if ($t -eq '+') { [void](Take-Token); return Parse-Unary }
-        if ($t -eq '-') { [void](Take-Token); return -(Parse-Unary) }
-        return Parse-Primary
-    }
     function Parse-Power {
-        $left = Parse-Unary
+        $left = Parse-Primary
         if ((Peek-Token) -eq '^') {
             [void](Take-Token)
-            $right = Parse-Power
+            $right = Parse-Unary
             return [Math]::Pow([double]$left, [double]$right)
         }
         return $left
     }
+    function Parse-Unary {
+        $t = Peek-Token
+        if ($t -eq '+') { [void](Take-Token); return Parse-Unary }
+        if ($t -eq '-') { [void](Take-Token); return -(Parse-Unary) }
+        return Parse-Power
+    }
     function Parse-Term {
-        $value = Parse-Power
+        $value = Parse-Unary
         while ((Peek-Token) -in @('*','/')) {
             $op = Take-Token
-            $rhs = Parse-Power
+            $rhs = Parse-Unary
             if ($op -eq '*') { $value *= $rhs }
             else {
                 if ([Math]::Abs([double]$rhs) -lt 1e-15) { throw 'Division by zero.' }
@@ -115,7 +115,7 @@ function Invoke-Twin([string]$Expression = '') {
     $resolution = $null
     if ($Expression) {
         $resolution = Resolve-OSWAPExpression $Expression
-        $resolution | Format-List | Out-Host
+        Write-Output ($resolution | ConvertTo-Json -Compress)
         if (-not $Execute) {
             Write-Host 'Expression resolved in preview mode. Use -Execute only after reviewing the destination mapping.'
             return
