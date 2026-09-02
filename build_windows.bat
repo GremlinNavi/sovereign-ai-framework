@@ -1,8 +1,8 @@
 @echo off
 setlocal
-python config.py --validate
+python oswap_config.py --validate
 if errorlevel 1 goto :failed
-for /f "usebackq delims=" %%A in (`python config.py --build-name`) do set APP_NAME=%%A
+for /f "usebackq delims=" %%A in (`python oswap_config.py --build-name`) do set APP_NAME=%%A
 if "%APP_NAME%"=="" goto :failed
 python -m venv .venv
 if errorlevel 1 goto :failed
