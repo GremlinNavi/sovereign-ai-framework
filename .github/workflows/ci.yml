@@ -31,6 +31,6 @@ jobs:
         shell: pwsh
         run: ./scripts/Test-OSWAPSyntax.ps1
       - name: Validate configuration
-        run: python config.py --validate
+        run: python oswap_config.py --validate
       - name: Run test suite
         run: python -m pytest -q
