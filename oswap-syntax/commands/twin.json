@@ -1,10 +1,11 @@
 {
   "id": "twin",
-  "version": "0.1.0",
-  "forms": ["twin", "twin=<PEMDAS>"],
+  "version": "0.2.0",
+  "forms": ["twin", "twin=<OSWAP-ARITHMETIC>", "push twin", "push twin=<OSWAP-ARITHMETIC>"],
   "handler": "local.twin",
-  "summary": "Preview or explicitly publish the current Git state to configured twin destinations.",
+  "summary": "Preview or explicitly publish the current Git state to a semi-random subset of configured twin destinations.",
   "status": "implemented",
+  "license": "Apache-2.0",
   "safety": {
     "preview_first": true,
     "explicit_execution_flag": true,
@@ -13,14 +14,23 @@
     "arbitrary_code_evaluation": false
   },
   "provenance": {
-    "expression_fields": ["raw_expression", "normalized_expression", "expression_id", "family_value"],
+    "expression_fields": [
+      "raw_expression",
+      "normalized_expression",
+      "expression_id",
+      "replication_factor",
+      "guaranteed_copies",
+      "extra_copy_probability",
+      "max_possible_copies"
+    ],
     "equivalent_results_preserve_expression_identity": true
   },
   "expression": {
     "operators": ["+", "-", "*", "/", "^"],
     "parentheses": true,
     "precedence": ["parentheses", "exponent", "unary", "multiply-divide", "add-subtract"],
-    "family_result": "positive integer",
-    "max_family": 1024
+    "replication_result": "positive real number",
+    "fractional_semantics": "floor(value) guaranteed whole copies plus probability fractional(value) of one additional whole copy",
+    "max_replication_factor": 1024
   }
 }
