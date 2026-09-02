@@ -182,6 +182,16 @@ function Get-TwinPushUrls {
 }
 
 function Invoke-Twin([string]$Expression = '') {
+    $resolution = $null
+    if ($Expression) {
+        $resolution = Resolve-OSWAPExpression $Expression
+        Write-Output ($resolution | ConvertTo-Json -Compress)
+        if (-not $Execute) {
+            Write-Host 'Expression resolved in preview mode. Add -Execute to inspect the destination pool, select destinations, and request publication.'
+            return
+        }
+    }
+
     & git rev-parse --is-inside-work-tree *> $null
     if ($LASTEXITCODE -ne 0) { throw 'push twin must run inside a Git work tree.' }
 
@@ -189,14 +199,8 @@ function Invoke-Twin([string]$Expression = '') {
     if ([string]::IsNullOrWhiteSpace($branch)) { throw 'Detached HEAD is not supported for twin publication.' }
 
     $urls = Get-TwinPushUrls
-    $resolution = $null
-
-    if ($Expression) {
-        $resolution = Resolve-OSWAPExpression $Expression
-        Write-Output ($resolution | ConvertTo-Json -Compress)
-        if ($resolution.max_possible_copies -gt $urls.Count) {
-            throw "Replication factor $($resolution.replication_factor) cannot be satisfied by the $($urls.Count) configured twin destinations."
-        }
+    if ($resolution -and $resolution.max_possible_copies -gt $urls.Count) {
+        throw "Replication factor $($resolution.replication_factor) cannot be satisfied by the $($urls.Count) configured twin destinations."
     }
 
     Write-Host "Branch: $branch"
@@ -214,7 +218,7 @@ function Invoke-Twin([string]$Expression = '') {
     }
 
     if (-not $Execute) {
-        Write-Host 'Preview only. Re-run with -Execute to select destinations and request publication.'
+        Write-Host 'Preview only. Re-run with -Execute to request publication to all configured destinations.'
         return
     }
 
