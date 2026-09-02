@@ -33,6 +33,20 @@ The endpoints are intended to provide both a human-readable project surface and 
 
 See [OSWAP_AI_ENDPOINTS.md](OSWAP_AI_ENDPOINTS.md) for the endpoint contract and proposed Git behavior.
 
+## Documentation languages
+
+Public documentation is implemented in three supported languages:
+
+- English (`en`)
+- Canadian French (`fr-CA`)
+- Japanese (`ja`)
+
+Official project names, commands, URLs, repository slugs, file names, protocol names, hashes, and checksums remain unchanged across translations. English is the technical synchronization source unless a document explicitly states otherwise.
+
+Localized documentation must preserve status qualifiers such as planned, experimental, unverified, or operational. A translation must not strengthen a technical claim beyond the English source.
+
+See [LANGUAGES.md](LANGUAGES.md), [README.fr-CA.md](README.fr-CA.md), and [README.ja.md](README.ja.md).
+
 ## Federal-facing positioning
 
 Use:
