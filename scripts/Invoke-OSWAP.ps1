@@ -30,7 +30,6 @@ function Resolve-OSWAPExpression([string]$Expression) {
     $normalized = ($Expression -replace '\s+', '')
     if ([string]::IsNullOrWhiteSpace($normalized)) { throw 'Expression is empty.' }
     if ($normalized -notmatch '^[0-9+\-*/^().]+$') { throw 'Expression contains characters outside the OSWAP arithmetic grammar.' }
-
     $matches = [regex]::Matches($normalized, '(?:\d+(?:\.\d+)?|\.\d+)|[+\-*/^()]')
     $tokens = @($matches | ForEach-Object { $_.Value })
     if (($tokens -join '') -ne $normalized) { throw 'Expression tokenization failed.' }
@@ -158,13 +157,13 @@ if ($text -eq 'help') {
         $d = Get-Content -LiteralPath $_.FullName -Raw | ConvertFrom-Json
         Write-Host ("{0,-10} {1}" -f $d.id, $d.summary)
     }
-    exit 0
+    return
 }
 if ($text -match '^help\s+([a-z0-9-]+)$') {
     $d = Get-OSWAPCommandDefinition $Matches[1]
     $d.forms | ForEach-Object { Write-Host $_ }
     Write-Host $d.summary
-    exit 0
+    return
 }
 if ($text -match '^explain\s+([a-z0-9-]+)$') {
     $name = $Matches[1]
@@ -172,18 +171,18 @@ if ($text -match '^explain\s+([a-z0-9-]+)$') {
     $d | ConvertTo-Json -Depth 8
     $knowledge = Join-Path $SyntaxRoot "knowledge\$name.md"
     if (Test-Path -LiteralPath $knowledge) { Write-Host ''; Get-Content -LiteralPath $knowledge }
-    exit 0
+    return
 }
 if ($text -eq 'get oswap syntax') {
     Write-Host "OSWAP syntax $((Get-Content -LiteralPath (Join-Path $SyntaxRoot 'VERSION') -Raw).Trim())"
     Write-Host "Path: $SyntaxRoot"
-    exit 0
+    return
 }
 if ($text -eq 'get oswap ai') {
     Write-Host "OSWAP AI repository: $RepoRoot"
-    exit 0
+    return
 }
-if ($text -eq 'twin') { Invoke-Twin; exit 0 }
-if ($text -match '^twin=(.+)$') { Invoke-Twin $Matches[1]; exit 0 }
+if ($text -eq 'twin') { Invoke-Twin; return }
+if ($text -match '^twin=(.+)$') { Invoke-Twin $Matches[1]; return }
 
 throw "Unknown OSWAP syntax: $text"
