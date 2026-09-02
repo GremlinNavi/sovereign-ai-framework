@@ -1,0 +1,9 @@
+{
+  "id": "explain",
+  "version": "0.1.0",
+  "forms": ["explain <command>"],
+  "handler": "local.explain",
+  "summary": "Explain the meaning, resolution rules, provenance, and safety boundaries of an OSWAP command.",
+  "status": "implemented",
+  "safety": {"side_effects": false}
+}
