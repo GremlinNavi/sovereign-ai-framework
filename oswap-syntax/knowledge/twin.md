@@ -1,22 +1,54 @@
-# `twin` and `twin=<PEMDAS>`
+# `upload twin=N` and `download twin=N`
 
-`twin` is OSWAP's explicit multi-destination publication command. It operates on the Git remote named `twin`, previews the current branch/status and configured push URLs, then requires explicit execution and confirmation before publication.
+OSWAP uses explicit transfer verbs for twin operations:
 
-`twin=<PEMDAS>` adds expression-addressed selection. The expression is parsed locally using restricted arithmetic. Its positive integer result defines the required twin family size. The exact expression remains provenance data and is not discarded merely because another expression has the same result.
+```text
+oswap upload twin=N
+oswap download twin=N
+```
+
+`N` may be an OSWAP arithmetic expression. The expression is parsed locally with the restricted OSWAP arithmetic grammar; arbitrary PowerShell evaluation is not used.
+
+## Upload
+
+`oswap upload twin=N` publishes the current committed Git state to selected destinations from the configured `twin` remote.
+
+For upload, the resolved value may be fractional. A value such as `2.5` means two complete destination copies are guaranteed and there is a 50% probability of selecting one additional complete destination. Selection is without replacement.
+
+Upload is preview-first. Execution requires `-Execute`, displays the selected destinations, and requires the operator to type `TWIN` before publication. Each successful destination is verified against the exact local HEAD SHA.
 
 Example:
 
 ```text
-twin=(9/3)
+oswap upload twin=(9/3)
 ```
 
-Resolution:
+resolves to three destination copies.
+
+## Download
+
+`oswap download twin=N` treats `N` as the number of independent twin sources that must agree before local integration is allowed.
+
+Download factors must resolve to a whole number of at least two. Fractional values are rejected because probabilistic verification would weaken the consensus requirement.
+
+Example:
 
 ```text
-raw_expression:        (9/3)
-normalized_expression: (9/3)
-expression_id:         l9d3r
-family_value:          3
+oswap download twin=(6/3)
 ```
 
-The dispatcher refuses expression-addressed execution unless the number of configured `twin` push URLs equals the resolved family value.
+resolves to:
+
+```text
+source_count: 2
+consensus: unanimous
+selection: configured-order
+```
+
+The implementation selects the first `N` configured twin source URLs in their explicit Git configuration order, fetches the requested branch from each source into temporary refs, and compares the resulting commit IDs.
+
+The local branch is modified only when all selected sources report the same commit and that commit is a fast-forward from the current local HEAD. If the sources disagree, a source is unavailable, the worktree is dirty, or history has diverged, OSWAP halts without merge, rebase, reset, or implicit winner selection.
+
+## Canonical spelling
+
+Public OSWAP documentation uses `upload` and `download`. Legacy `push`/`pull` spellings may be accepted temporarily by compatibility layers, but they are not canonical OSWAP syntax.
