@@ -19,7 +19,7 @@
   "expression": {
     "operators": ["+", "-", "*", "/", "^"],
     "parentheses": true,
-    "precedence": ["parentheses", "unary", "exponent", "multiply-divide", "add-subtract"],
+    "precedence": ["parentheses", "exponent", "unary", "multiply-divide", "add-subtract"],
     "family_result": "positive integer",
     "max_family": 1024
   }
