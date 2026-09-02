@@ -1,0 +1,9 @@
+{
+  "id": "help",
+  "version": "0.1.0",
+  "forms": ["help", "help <command>"],
+  "handler": "local.help",
+  "summary": "Show operational OSWAP command usage.",
+  "status": "implemented",
+  "safety": {"side_effects": false}
+}
