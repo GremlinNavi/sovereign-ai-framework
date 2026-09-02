@@ -20,6 +20,19 @@ OSWAP is not a replacement name for the Sovereign AI Demonstrator. The two proje
 
 The local `knowledge/index.sqlite3` database belongs to the Sovereign AI Demonstrator's RAG runtime. It is not the OSWAP software catalogue.
 
+## Planned OSWAP AI endpoints
+
+The planned OSWAP-controlled public identities for this project are:
+
+- `https://ai.oswap.ca`
+- `https://ai.oswap.us`
+
+These are intended as peer endpoints rather than a primary-and-mirror pair. They do not rename the Sovereign AI Demonstrator and they do not make either national domain the canonical copy.
+
+The endpoints are intended to provide both a human-readable project surface and read-only Git access when the required infrastructure is deployed. Until DNS, TLS, routing, and Git protocol handling have been implemented and tested, documentation must describe them as planned rather than operational.
+
+See [OSWAP_AI_ENDPOINTS.md](OSWAP_AI_ENDPOINTS.md) for the endpoint contract and proposed Git behavior.
+
 ## Federal-facing positioning
 
 Use:
@@ -38,6 +51,7 @@ Those formulations imply institutional ownership, endorsement, or platform statu
 
 - Open-source access/discovery initiative: Open-Source World Access Project (OSWAP)
 - AI product / demonstrator: Sovereign AI Demonstrator
+- OSWAP AI public identity: `ai.oswap.ca` and `ai.oswap.us` (planned)
 - OSWAP data/discovery specification: OSWAP Database
 - Repository identity: sovereign-ai-framework
 
