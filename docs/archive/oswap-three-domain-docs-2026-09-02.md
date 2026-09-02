@@ -1,0 +1,1 @@
+Historical archive branch retained as a pre-cleanup checkpoint. No three-domain documentation changes are applied on this branch.
