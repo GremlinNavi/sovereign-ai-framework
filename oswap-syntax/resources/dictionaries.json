@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "policy": {
+    "bundle_source_data": false,
+    "local_indexes": "oswap-syntax/data/dictionaries",
+    "language_tags": "BCP47-compatible",
+    "provenance_required": true,
+    "license_metadata_required": true
+  },
+  "sources": [
+    {
+      "id": "wiktionary-wiktextract",
+      "name": "Wiktionary via Wiktextract/Kaikki",
+      "homepage": "https://kaikki.org/dictionary/",
+      "format": "JSONL",
+      "coverage": "hundreds of languages through supported Wiktionary editions",
+      "license_note": "Wiktionary entry text is generally CC BY-SA 4.0 and GFDL; individual embedded materials may carry different terms. Preserve source attribution and per-record/source metadata.",
+      "recommended": true
+    },
+    {
+      "id": "jmdict",
+      "name": "JMdict",
+      "homepage": "https://www.edrdg.org/jmdict/j_jmdict.html",
+      "format": "XML",
+      "coverage": "Japanese with multilingual glosses",
+      "license_note": "Use under the Electronic Dictionary Research and Development Group licence and preserve required acknowledgement.",
+      "recommended_for": ["ja"]
+    }
+  ],
+  "initial_language_targets": ["en", "fr", "ja", "de", "es", "nl", "zh", "ko", "pt", "it", "ru", "tr", "vi", "id", "ms", "pl", "th"]
+}
