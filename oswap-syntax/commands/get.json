@@ -1,0 +1,9 @@
+{
+  "id": "get",
+  "version": "0.1.0",
+  "forms": ["get oswap syntax", "get oswap ai"],
+  "handler": "local.get",
+  "summary": "Resolve an OSWAP resource through trusted local syntax metadata.",
+  "status": "implemented",
+  "safety": {"side_effects": false, "remote_code_execution": false}
+}
