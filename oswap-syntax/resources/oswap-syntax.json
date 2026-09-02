@@ -1,0 +1,8 @@
+{
+  "id": "oswap-syntax",
+  "name": "OSWAP Syntax",
+  "version": "0.1.0",
+  "local_path": "oswap-syntax",
+  "verification": ["schema", "version"],
+  "planned_peer_namespaces": ["oswap.ca", "oswap.jp", "oswap.us"]
+}

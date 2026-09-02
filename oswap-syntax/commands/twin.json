@@ -1,0 +1,26 @@
+{
+  "id": "twin",
+  "version": "0.1.0",
+  "forms": ["twin", "twin=<PEMDAS>"],
+  "handler": "local.twin",
+  "summary": "Preview or explicitly publish the current Git state to configured twin destinations.",
+  "status": "implemented",
+  "safety": {
+    "preview_first": true,
+    "explicit_execution_flag": true,
+    "explicit_confirmation": "TWIN",
+    "force_push": false,
+    "arbitrary_code_evaluation": false
+  },
+  "provenance": {
+    "expression_fields": ["raw_expression", "normalized_expression", "expression_id", "family_value"],
+    "equivalent_results_preserve_expression_identity": true
+  },
+  "expression": {
+    "operators": ["+", "-", "*", "/", "^"],
+    "parentheses": true,
+    "precedence": ["parentheses", "exponent", "unary", "multiply-divide", "add-subtract"],
+    "family_result": "positive integer",
+    "max_family": 1024
+  }
+}
