@@ -18,6 +18,12 @@ Use this description for the GitHub and GitLab repository metadata:
 
 > Sovereign AI Demonstrator: a portable, backend-agnostic local-first AI research framework with hybrid RAG, provenance-aware assessments, and portable text exports.
 
+## Repository versus product identity
+
+Use `Sovereign AI Demonstrator` for the product/display name. Use `sovereign-ai-framework` only when referring to the repository slug, clone path, package context, or other implementation-specific identifier.
+
+`Eternal Thread` is a historical development name. It must not be used in active repository descriptions, current product headers, taglines, or homepage metadata.
+
 ## Open-Source World Access Project relationship
 
 The Open-Source World Access Project (OSWAP) is a separate open-source software-access and discovery initiative. Its planned database layer is documented in [OSWAP_DATABASE.md](OSWAP_DATABASE.md).
