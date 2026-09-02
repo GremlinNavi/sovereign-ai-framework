@@ -4,6 +4,8 @@ A Canadian reference implementation for local-first, auditable AI-assisted resea
 
 The `sovereign-ai-framework` repository is the source repository for the Sovereign AI Demonstrator; the repository slug is an implementation identifier, not a second product name. OSWAP is a separate open-source access and discovery initiative that may interoperate with this demonstrator.
 
+Development history: [September 2, 2026 OSWAP branding and Twin transport session](docs/development-history/2026-09-02-oswap-branding-and-twin-session.md).
+
 A local-first research framework with replaceable inference backends. It combines AI tool calling, conversation-history retrieval, local knowledge retrieval, public-web research, evidence assessments, provenance-oriented citations, confidence ratings, and universal `.txt` conversation exports.
 
 **Creator:** Nemi Prowse
