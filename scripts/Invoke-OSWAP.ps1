@@ -222,7 +222,7 @@ function Invoke-UploadTwin([string]$Expression) {
         $remoteHead = @(& git ls-remote $url "refs/heads/$branch" 2>$null)
         if ($LASTEXITCODE -ne 0 -or -not $remoteHead) { throw "Post-upload verification failed for $url" }
         $remoteSha = ((@($remoteHead)[0].ToString().Trim()) -split '\s+')[0]
-        if ($remoteSha -ne $head) { throw "Post-upload verification failed for $url: remote $remoteSha != local $head" }
+        if ($remoteSha -ne $head) { throw "Post-upload verification failed for ${url}: remote $remoteSha != local $head" }
     }
     Write-Host "Twin upload completed and SHA-verified across $($selected.Count) destination(s)."
 }
