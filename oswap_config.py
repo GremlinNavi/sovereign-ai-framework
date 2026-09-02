@@ -16,6 +16,11 @@ ROOT = Path(__file__).resolve().parent
 
 
 def _bool_env(name: str, default: bool = False) -> bool:
+    """Read an explicit boolean environment value.
+
+    Privacy-affecting features deliberately default to ``False`` so that a
+    configuration typo cannot silently enable them.
+    """
     value = os.getenv(name)
     if value is None:
         return default
@@ -28,6 +33,7 @@ def _bool_env(name: str, default: bool = False) -> bool:
 
 
 def _default_data_root() -> Path:
+    """Keep mutable user data out of the source checkout by default."""
     local_app_data = os.getenv("LOCALAPPDATA")
     if local_app_data:
         return Path(local_app_data) / "SovereignAIDemonstrator"
@@ -35,12 +41,14 @@ def _default_data_root() -> Path:
 
 
 def is_local_endpoint(url: str) -> bool:
+    """Return whether a configured backend endpoint is loopback-only."""
     parsed = urlparse(url)
     hostname = (parsed.hostname or "").lower()
     return hostname in {"localhost", "127.0.0.1", "::1"}
 
 
 def _load_dotenv(path: Path) -> None:
+    """Load simple KEY=VALUE pairs without overriding the caller's environment."""
     if not path.is_file():
         return
     for raw_line in path.read_text(encoding="utf-8").splitlines():
@@ -57,6 +65,8 @@ def _load_dotenv(path: Path) -> None:
 
 
 _load_dotenv(ROOT / ".env")
+
+# Change these two values to select independent inference backends.
 CHAT_BACKEND = os.getenv("SOVEREIGN_AI_DEMONSTRATOR_CHAT_BACKEND", "ollama")
 EMBEDDING_BACKEND = os.getenv("SOVEREIGN_AI_DEMONSTRATOR_EMBEDDING_BACKEND", "ollama")
 APP_NAME = "SovereignAIDemonstrator"
@@ -72,6 +82,7 @@ class BackendConfig:
     capabilities: frozenset[str] = field(default_factory=frozenset)
 
 
+# Ollama variables remain supported so existing v0.3 setups continue to work.
 BACKENDS: dict[str, BackendConfig] = {
     "ollama": BackendConfig(
         kind="ollama",
@@ -202,14 +213,19 @@ if __name__ == "__main__":
     elif args.health_check:
         from app.backends import create_backend
         required_models: dict[str, set[str]] = {}
-        for name, model in ((settings.chat_backend_name, settings.chat_model),(settings.embedding_backend_name, settings.embedding_model)):
+        for name, model in (
+            (settings.chat_backend_name, settings.chat_model),
+            (settings.embedding_backend_name, settings.embedding_model),
+        ):
             required_models.setdefault(name, set()).add(model)
         for name, expected in required_models.items():
             backend = create_backend(name)
             available = set(backend.list_models())
             missing = expected - available
             if missing:
-                raise RuntimeError(f"Configured model(s) not listed by backend '{name}': {', '.join(sorted(missing))}")
+                raise RuntimeError(
+                    f"Configured model(s) not listed by backend '{name}': {', '.join(sorted(missing))}"
+                )
         print("Configured AI backend endpoints and model names passed health checks")
     else:
         parser.print_help()
