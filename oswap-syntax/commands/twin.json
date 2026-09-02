@@ -1,27 +1,35 @@
 {
   "id": "twin",
-  "version": "0.2.0",
-  "forms": ["twin", "twin=<OSWAP-ARITHMETIC>", "push twin", "push twin=<OSWAP-ARITHMETIC>"],
+  "version": "0.3.0",
+  "forms": [
+    "upload twin=<OSWAP-ARITHMETIC>",
+    "download twin=<OSWAP-ARITHMETIC>"
+  ],
   "handler": "local.twin",
-  "summary": "Preview or explicitly publish the current Git state to a semi-random subset of configured twin destinations.",
+  "summary": "Upload committed Git state to selected twin destinations, or download only after unanimous agreement among an explicit number of configured twin sources.",
   "status": "implemented",
   "license": "Apache-2.0",
+  "canonical_verbs": {
+    "upload": "replicate/publish the current committed state",
+    "download": "retrieve and verify a branch from multiple independent sources"
+  },
   "safety": {
     "preview_first": true,
     "explicit_execution_flag": true,
-    "explicit_confirmation": "TWIN",
+    "upload_confirmation": "TWIN",
+    "download_fast_forward_only": true,
+    "download_requires_clean_worktree": true,
+    "download_requires_unanimous_sha": true,
     "force_push": false,
+    "force_reset": false,
+    "automatic_merge": false,
     "arbitrary_code_evaluation": false
   },
   "provenance": {
     "expression_fields": [
       "raw_expression",
       "normalized_expression",
-      "expression_id",
-      "replication_factor",
-      "guaranteed_copies",
-      "extra_copy_probability",
-      "max_possible_copies"
+      "expression_id"
     ],
     "equivalent_results_preserve_expression_identity": true
   },
@@ -29,8 +37,19 @@
     "operators": ["+", "-", "*", "/", "^"],
     "parentheses": true,
     "precedence": ["parentheses", "exponent", "unary", "multiply-divide", "add-subtract"],
-    "replication_result": "positive real number",
+    "max_factor": 1024
+  },
+  "upload": {
+    "result": "positive real replication factor",
     "fractional_semantics": "floor(value) guaranteed whole copies plus probability fractional(value) of one additional whole copy",
-    "max_replication_factor": 1024
+    "selection": "semi-random without replacement"
+  },
+  "download": {
+    "result": "integer source count",
+    "minimum_sources": 2,
+    "fractional_results": "rejected",
+    "selection": "first N configured twin source URLs in configured order",
+    "consensus": "all selected source branch SHAs must be identical",
+    "integration": "fast-forward only after consensus; otherwise halt without branch modification"
   }
 }
