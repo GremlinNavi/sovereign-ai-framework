@@ -2,7 +2,9 @@
 
 OSWAP syntax is a local, declarative command layer for the Open-Source World Access Project.
 
-Version: `0.1.0`
+Version: `0.2.0`
+
+The normative project rules are defined in [`../OSWAP_STANDARD.md`](../OSWAP_STANDARD.md). Design rationale and social/safety intent are recorded in [`../OSWAP_INTENT.md`](../OSWAP_INTENT.md).
 
 Implemented command forms:
 
@@ -12,15 +14,28 @@ help <command>
 explain <command>
 get oswap syntax
 get oswap ai
+preserve
 twin
-twin=<PEMDAS>
+twin=<OSWAP-ARITHMETIC>
+push twin
+push twin=<OSWAP-ARITHMETIC>
 ```
 
-`twin` previews publication to every configured push URL on the Git remote named `twin`. Execution requires `-Execute` plus an explicit `TWIN` confirmation.
+`push twin` previews publication to every configured push URL on the Git remote named `twin`. Execution requires `-Execute` plus an explicit `TWIN` confirmation.
 
-`twin=<PEMDAS>` evaluates a restricted arithmetic expression with `+`, `-`, `*`, `/`, `^`, and parentheses. The integer result is the required number of configured twin destinations. The original expression, normalized expression, transport-safe expression ID, and evaluated family value remain distinct provenance fields.
+`push twin=<OSWAP-ARITHMETIC>` evaluates a restricted OSWAP arithmetic expression with `+`, `-`, `*`, `/`, `^`, unary signs, and parentheses. OSWAP owns this grammar; PowerShell does not define the expression semantics.
 
-For example, `twin=(9/3)`, `twin=(6/2)`, and `twin=(12/4)` all resolve to family `3`, while preserving different expression identities.
+Positive fractional results are valid replication factors. A value of `3.5` means three guaranteed whole destination copies plus a 50% probability of one additional whole destination copy. It never means half a repository or half a file.
+
+For example:
+
+```text
+oswap push twin=(4+3)/2
+```
+
+resolves to `3.5` and selects destinations without replacement from the configured eligible `twin` push URL pool.
+
+`preserve` launches the PowerShell-prompt-only sensitive-record preservation workflow. It preserves source bytes, creates a SHA-256 manifest, encrypts the package through the external `age` tool before any optional remote replication, and keeps sensitive descriptions out of Git-facing metadata.
 
 ## Installation command contract
 
@@ -36,8 +51,12 @@ That global command is a planned installer interface and is not yet registered b
 & .\scripts\Invoke-OSWAP.ps1 help
 ```
 
-See [OSWAP_INSTALLATION.md](../OSWAP_INSTALLATION.md) for the current manual `gh repo clone` bootstrap procedure, package map, twin-source rules, installer stages, safety requirements, and the distinction between commands implemented now and planned command surfaces.
+See [OSWAP_INSTALLATION.md](../OSWAP_INSTALLATION.md) for the current manual bootstrap procedure, package map, twin-source rules, installer stages, and safety requirements.
 
 ## Security boundary
 
-Remote syntax data is declarative. OSWAP does not execute arbitrary repository text. The reference dispatcher uses a restricted local parser and never uses `Invoke-Expression` or language `eval` for arithmetic. Publication is preview-first and never force-pushes, resets, cleans, or rewrites history.
+Remote syntax data is declarative. OSWAP does not execute arbitrary repository text. The reference dispatcher uses a restricted local parser and never uses `Invoke-Expression` or language `eval` for arithmetic.
+
+Publication is preview-first and never force-pushes, resets, cleans, or rewrites history.
+
+The preservation workflow does not promise invisibility from spyware or privileged monitoring. It refuses to weaken antivirus, logging, or other operating-system security controls and instructs users to move to a trusted device if compromise is suspected.
