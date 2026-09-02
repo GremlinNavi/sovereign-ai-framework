@@ -1,10 +1,58 @@
-#requires -Version 5.1
 <#
 .SYNOPSIS
   Installs Sovereign AI Framework with local Ollama inference and open-source Codex CLI.
+
+.DESCRIPTION
+  Bootstraps a Windows installation of the Sovereign AI Framework, creates a
+  Python virtual environment, configures local Ollama inference, validates the
+  OSWAP AI configuration, and creates local launchers for OSWAP, the AI app,
+  and Codex CLI.
+
+  The installer prefers already-installed dependencies and only invokes the
+  documented package/bootstrap path when a required tool is missing.
+
+.PARAMETER InstallRoot
+  Root directory used for the framework checkout, virtual environment, and
+  generated launcher scripts.
+
+.PARAMETER RepositoryUrl
+  Git repository URL to clone when the framework checkout does not already
+  exist.
+
+.PARAMETER RepositoryName
+  Directory name used for the cloned framework repository.
+
+.PARAMETER ChatModel
+  Local Ollama model used for normal chat inference.
+
+.PARAMETER EmbeddingModel
+  Local Ollama model used for embeddings.
+
+.PARAMETER CodexModel
+  Local Ollama model exposed to Codex CLI. Defaults to ChatModel when omitted.
+
+.PARAMETER SkipCodexSmokeTest
+  Skips the final read-only Codex integration smoke test.
+
+.PARAMETER SkipRepositoryUpdate
+  Prevents an existing repository checkout from being updated with git pull.
+
+.EXAMPLE
+  .\Install-SovereignCodex.ps1
+
+  Installs with the default local models and installation root.
+
+.EXAMPLE
+  .\Install-SovereignCodex.ps1 -ChatModel 'qwen3:4b' -SkipCodexSmokeTest
+
+  Installs the framework while skipping the final Codex smoke test.
+
 .NOTES
-  Windows 11 / PowerShell 5.1+. Remote inference and web research stay disabled.
+  Windows 11 / PowerShell 5.1+. Remote inference and web research stay disabled
+  by the generated default configuration. Review dependency installers and Git
+  changes before using this script in a production or shared environment.
 #>
+#requires -Version 5.1
 
 [CmdletBinding()]
 param(
@@ -26,6 +74,7 @@ $Version = "0.1.0"
 $EndMarker = "# END OF INSTALLER: OSWAP-SOVEREIGN-CODEX-$Version"
 if ([string]::IsNullOrWhiteSpace($CodexModel)) { $CodexModel = $ChatModel }
 
+# Guard against partially copied installers before any dependency or repository work begins.
 if ($MyInvocation.MyCommand.Path -and (Test-Path -LiteralPath $MyInvocation.MyCommand.Path)) {
     $self = Get-Content -LiteralPath $MyInvocation.MyCommand.Path -Raw
     if (-not $self.Contains($EndMarker)) { throw "Installer is incomplete or truncated. Expected: $EndMarker" }
@@ -38,6 +87,7 @@ $CodexLauncher = Join-Path $BinPath "Start-SovereignCodex.ps1"
 $AILauncher = Join-Path $BinPath "Start-SovereignAI.ps1"
 $OSWAPLauncher = Join-Path $BinPath "oswap.ps1"
 
+# Helper functions centralize dependency resolution, process execution, and environment mutation.
 function Step([string]$Text) { Write-Host ""; Write-Host "=== $Text ===" }
 function Refresh-Path {
     $m = [Environment]::GetEnvironmentVariable("Path", "Machine")
@@ -188,6 +238,7 @@ $modelLiteral = "'" + ($CodexModel -replace "'", "''") + "'"
 $pythonLiteral = "'" + ($VenvPython -replace "'", "''") + "'"
 $dispatcherLiteral = "'" + ((Join-Path $RepoPath "scripts\Invoke-OSWAP.ps1") -replace "'", "''") + "'"
 
+# Generated launchers are intentionally small wrappers so their behavior remains easy to audit.
 $oswapText = @'
 #requires -Version 5.1
 [CmdletBinding()]

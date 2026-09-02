@@ -1,4 +1,28 @@
 # SPDX-License-Identifier: Apache-2.0
+
+<#
+.SYNOPSIS
+  Creates an encrypted OSWAP preservation package and optional twin replication.
+
+.DESCRIPTION
+  Stages a user-selected file or directory, records file-level SHA-256 metadata,
+  creates an encrypted age package, emits a ciphertext-only receipt, and can
+  optionally commit and replicate the encrypted artifacts through an approved
+  Git twin repository.
+
+  Preservation is intentionally separated from publication: no remote change
+  occurs unless the user explicitly opts into the Git replication workflow.
+
+.EXAMPLE
+  .\Invoke-OSWAPPreserve.ps1
+
+  Starts the interactive preservation workflow.
+
+.NOTES
+  The script does not claim secure deletion of temporary plaintext blocks and
+  does not disable operating-system security controls. Keep the age passphrase
+  separate from replicated ciphertext.
+#>
 #requires -Version 5.1
 [CmdletBinding()]
 param()
@@ -87,6 +111,7 @@ try {
 
     if ($files.Count -lt 1) { throw 'The source contains no files to preserve.' }
 
+    # Sensitive source context stays inside the encrypted package manifest.
     $manifest = [ordered]@{
         oswap_standard = '0.2.0'
         package_id = $packageId
@@ -113,6 +138,7 @@ try {
     }
 
     $cipherHash = (Get-FileHash -LiteralPath $encryptedPath -Algorithm SHA256).Hash.ToLowerInvariant()
+    # The external receipt describes ciphertext only so sensitive source metadata is not exposed.
     $receipt = [ordered]@{
         oswap_standard = '0.2.0'
         package_id = $packageId
@@ -163,6 +189,7 @@ try {
     $relativeCipher = "oswap-preserve/$packageId/$([IO.Path]::GetFileName($encryptedPath))"
     $relativeReceipt = "oswap-preserve/$packageId/$([IO.Path]::GetFileName($receiptPath))"
 
+    # Only encrypted payload and ciphertext receipt are eligible for Git staging.
     Invoke-Git add -- $relativeCipher $relativeReceipt
     Write-Host 'Only the generic ciphertext package and ciphertext receipt are staged:'
     & git status --short -- $relativeCipher $relativeReceipt
