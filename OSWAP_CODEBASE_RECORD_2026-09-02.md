@@ -48,4 +48,4 @@ No force-push, history rewrite, destructive cleanup, credential transfer, or new
 
 ## Publication verification rule
 
-For repositories with configured GitHub/GitLab twins, the documentation commit containing this record is to be published only to those existing remotes. After publication, each remote `main` SHA must be compared with the local record commit; any mismatch is an unresolved audit gap rather than a successful publication.
+For Git transport, prefer exact remote `main` SHA equality with the local record commit. If an authenticated provider API must materialize the same tracked content as a provider-generated commit, the commit SHA may differ; in that case the changed content must be independently verified and the provider commit SHA recorded as transport-equivalent. Any unverified mismatch remains an unresolved audit gap.
