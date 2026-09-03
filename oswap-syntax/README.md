@@ -1,10 +1,18 @@
-# Open-Source World Access Project syntax
+# Open-Source World Access Project language syntax
 
-OSWAP syntax is a local, declarative command layer for the Open-Source World Access Project.
+OSWAP is a domain-specific programming language (DSL) for expressing auditable digital access, repository transport, preservation, authorization, and accountability operations.
+
+This directory contains the reference language syntax bundle for the Open-Source World Access Project. PowerShell is one supported host and implementation surface; it does not define OSWAP grammar or semantics.
 
 Version: `0.2.0`
 
 The normative project rules are defined in [`../OSWAP_STANDARD.md`](../OSWAP_STANDARD.md). Design rationale and social/safety intent are recorded in [`../OSWAP_INTENT.md`](../OSWAP_INTENT.md).
+
+## Language status
+
+OSWAP is not merely a Git naming convention, a PowerShell wrapper, a shell alias collection, or a list of command names. A conforming OSWAP implementation is expected to recognize OSWAP tokens and keywords, parse OSWAP expressions with OSWAP-defined precedence and semantics, map valid command forms to defined operations, keep host-language behavior behind an explicit language boundary, and validate implemented behavior with conformance tests.
+
+OSWAP is domain-specific rather than general-purpose: its language surface is intentionally focused on auditable access, authorization, replication, preservation, provenance, and related digital-accountability workflows.
 
 Implemented command forms:
 
