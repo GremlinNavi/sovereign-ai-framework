@@ -2,7 +2,7 @@
 
 A Canadian reference implementation for local-first, auditable AI-assisted research.
 
-The `sovereign-ai-framework` repository is the source repository for the Sovereign AI Demonstrator; the repository slug is an implementation identifier, not a second product name. OSWAP is a separate open-source access and discovery initiative that may interoperate with this demonstrator.
+The `sovereign-ai-framework` repository is the source repository for the Sovereign AI Demonstrator; the repository slug is an implementation identifier, not a second product name. OSWAP is a separate open-source project whose user-facing interface is a domain-specific programming language (DSL) for auditable digital access, replication, preservation, authorization, provenance, and accountability workflows. PowerShell is one supported OSWAP host/runtime surface; PowerShell syntax does not define the OSWAP language. This repository includes a reference OSWAP parser and syntax bundle so the demonstrator can interoperate with the language.
 
 Development history: [September 2, 2026 OSWAP branding and Twin transport session](docs/development-history/2026-09-02-oswap-branding-and-twin-session.md).
 
@@ -34,6 +34,12 @@ In progress or requiring broader validation:
 - operational deployment of planned OSWAP public endpoints.
 
 Planned features are documented as design work and should not be interpreted as current runtime behaviour.
+
+## OSWAP language integration
+
+OSWAP is treated in this repository as a versioned domain-specific programming language, not merely as a CLI naming convention, Git alias set, PowerShell wrapper, or collection of command names. The normative language boundary and grammar are defined in [OSWAP_STANDARD.md](OSWAP_STANDARD.md), while [oswap-syntax/README.md](oswap-syntax/README.md) documents the implemented syntax bundle and command forms.
+
+The current reference implementation parses OSWAP expressions itself and maps valid OSWAP forms onto host operations. Language-level changes should be represented in the language documentation and schemas and backed by parser or conformance tests before being described as implemented.
 
 ## Authorship, citation, and reuse
 
