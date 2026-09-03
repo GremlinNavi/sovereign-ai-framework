@@ -9,7 +9,7 @@ This document is normative for OSWAP code and documentation. New OSWAP implement
 
 ## 1. Language boundary
 
-OSWAP is a domain-specific language (DSL). OSWAP syntax is not PowerShell syntax.
+OSWAP is a domain-specific programming language (DSL). It is not merely a Git convention, PowerShell wrapper, shell alias, or collection of command names. OSWAP syntax is not PowerShell syntax.
 
 PowerShell is a supported host, launcher, implementation environment, and human-facing prompt surface. PowerShell grammar does not redefine OSWAP grammar.
 
