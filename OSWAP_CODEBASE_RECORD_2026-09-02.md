@@ -1,0 +1,51 @@
+# OSWAP Codebase Record — 2026-09-02
+
+Recorded UTC: 2026-09-03T01:11:05Z
+Local project date: 2026-09-02 (America/Toronto)
+Record type: OSWAPSACW durable provenance snapshot
+
+## Scope
+
+This record captures the current OSWAP implementation family as developed and validated on September 2, 2026. It distinguishes source that is committed and publishable from local-only or legacy components.
+
+Each source snapshot below is the exact commit immediately before the documentation commit that adds this record. The commit containing this file is therefore a provenance/documentation commit layered on top of the recorded source state.
+
+## Source snapshots
+
+| Component | Role | Recorded source commit | Publication state |
+| --- | --- | --- | --- |
+| `sovereign-ai-framework` | Sovereign AI Demonstrator, OSWAP syntax/runtime integration | `b9b1a971f02bc3e15485714af32986b6bfa2fec4` | Existing GitHub and GitLab twin remotes |
+| `git-push-twin` / OSWAP Twin Transport | Auditable replicated Git transport | `741b5254e4aa133d778a9d8626f1063cce53e1e2` | Existing GitHub and GitLab twin remotes |
+| `sovereign-codex-installer` | Windows bootstrap for local Codex + Ollama workflow | `b96304e0937f2df4ee710c87a7e6061cce42cdba` | Existing GitHub and GitLab twin remotes |
+| `oswapsacw-chatgpt-plugin` | OSWAP Standard for Auditable Code Workflows plugin | `ef934723f31ec3273f4884d9217318a02231861d` | Local Git repository; no remote configured at record time |
+| `ps-twin` | Legacy predecessor / historical GitLab checkout | `1c9783e3ed833adebb52333084d9859964acc7a0` | Legacy; intentionally not mutated by this operation |
+
+## Additional local-only component
+
+`OSWAP Remote PowerShell for Android` is validated local source but was not a Git repository at record time. Its existing OSWAP audit material records APK SHA-256 `2be42898e48b18a5ba533ebee2bbd599fc2c54510413ea6fecb84127eb32339c` and source-archive SHA-256 `072e52da48a3d2af99d748592586b2d26283681e10bbb7d0eb7e748cf576d1d4`.
+## Validated behavior
+
+- Sovereign AI: OSWAP syntax self-test passed; Python regression suite passed 28/28 tests after merging the current GitHub `main` update.
+- OSWAP Twin Transport: parser/conformance check passed for all 10 PowerShell source files; repository-wide PowerShell parsing also passed.
+- Sovereign Codex Installer: `Install-SovereignCodex.ps1` parsed successfully.
+- OSWAPSACW plugin: plugin conformance, canonical upload/download intent resolution, and marketplace validation passed.
+- All dirty public-repository changes passed `git diff --check`; a basic credential/private-key pattern scan found no hits.
+
+## Implemented OSWAP semantics represented by this snapshot
+
+- `oswap upload twin=<OSWAP-ARITHMETIC>` is the canonical forward-publication spelling in the current tracked implementation.
+- `push twin` remains a compatibility alias where documented.
+- Twin arithmetic uses the restricted OSWAP grammar rather than arbitrary shell evaluation.
+- Replication factors are bounded to the implemented range and fractional factors represent complete-copy selection, never partial repositories/files.
+- Publication tooling preserves explicit execution/confirmation gates and verifies the resulting remote commit where implemented.
+- OSWAPSACW defines `oswap upload twin=N` and `oswap download twin=N` as canonical user-facing workflow forms.
+
+## Boundaries
+
+This record describes implemented source, not every OSWAP design idea discussed during development. In particular, a generalized `joker` policy grammar and non-Git archival adapters are not claimed as implemented merely by this record.
+
+No force-push, history rewrite, destructive cleanup, credential transfer, or new remote-repository creation is authorized or implied by this record. Existing repository-declared authorship, attribution, and licensing metadata remain authoritative.
+
+## Publication verification rule
+
+For repositories with configured GitHub/GitLab twins, the documentation commit containing this record is to be published only to those existing remotes. After publication, each remote `main` SHA must be compared with the local record commit; any mismatch is an unresolved audit gap rather than a successful publication.
