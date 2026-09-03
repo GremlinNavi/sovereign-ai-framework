@@ -1,16 +1,33 @@
 # SPDX-License-Identifier: Apache-2.0
+
+<#
+.SYNOPSIS
+  Runs regression checks for the OSWAP syntax dispatcher and twin arithmetic.
+
+.DESCRIPTION
+  Exercises command discovery, expression normalization, replication-factor
+  semantics, fractional-copy behavior, and operator-precedence rejection cases.
+  The test intentionally runs publication syntax in preview mode only.
+
+.EXAMPLE
+  .\Test-OSWAPSyntax.ps1
+
+  Runs the complete OSWAP syntax self-test and throws on the first failure.
+#>
 #requires -Version 5.1
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
 $dispatcher = Join-Path $PSScriptRoot 'Invoke-OSWAP.ps1'
 
+# Smoke-test command discovery before evaluating arithmetic behavior.
 & $dispatcher 'help' *> $null
 & $dispatcher 'help preserve' *> $null
 & $dispatcher 'get oswap syntax' *> $null
 & $dispatcher 'explain twin' *> $null
 & $dispatcher 'explain preserve' *> $null
 
+# Integer expression: deterministic factor and expression identifier.
 $firstLine = (& $dispatcher 'push' 'twin=(9/3)' | Select-Object -First 1)
 $result = $firstLine | ConvertFrom-Json
 if ([double]$result.replication_factor -ne 3.0) { throw "Expected replication factor 3, got $($result.replication_factor)." }
@@ -22,6 +39,7 @@ $uploadLine = (& $dispatcher 'upload' 'twin=(9/3)' | Select-Object -First 1)
 $upload = $uploadLine | ConvertFrom-Json
 if ([double]$upload.replication_factor -ne 3.0) { throw "Expected upload replication factor 3, got $($upload.replication_factor)." }
 
+# Fractional factor: guaranteed floor(N) copies plus one probabilistic copy.
 $fractionLine = (& $dispatcher 'push' 'twin=(4+3)/2' | Select-Object -First 1)
 $fraction = $fractionLine | ConvertFrom-Json
 if ([double]$fraction.replication_factor -ne 3.5) { throw "Expected replication factor 3.5, got $($fraction.replication_factor)." }
@@ -33,6 +51,7 @@ $subOneFailed = $false
 try { & $dispatcher 'upload' 'twin=0.5' *> $null } catch { $subOneFailed = $true }
 if (-not $subOneFailed) { throw 'Expected twin=0.5 to be rejected because replication factors must be at least 1.' }
 
+# Regression check: exponentiation binds before unary negation, yielding an invalid negative factor.
 $precedenceFailed = $false
 try { & $dispatcher 'push' 'twin=-2^2' *> $null } catch { $precedenceFailed = $true }
 if (-not $precedenceFailed) { throw 'Expected -2^2 to resolve to -4 and be rejected as an invalid twin factor.' }

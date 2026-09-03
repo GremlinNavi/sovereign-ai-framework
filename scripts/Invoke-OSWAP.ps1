@@ -1,4 +1,39 @@
 # SPDX-License-Identifier: Apache-2.0
+
+<#
+.SYNOPSIS
+  Dispatches OSWAP command syntax and implements the reference twin workflow.
+
+.DESCRIPTION
+  Resolves OSWAP command definitions, parses the restricted OSWAP arithmetic
+  grammar used by twin expressions, previews replication intent, and performs
+  explicitly authorized Git publication when -Execute is supplied.
+
+  Expression parsing is implemented directly rather than through arbitrary
+  PowerShell evaluation so OSWAP arithmetic cannot become a command-execution
+  surface.
+
+.PARAMETER Command
+  OSWAP command tokens to dispatch. When omitted, the dispatcher shows help.
+
+.PARAMETER Execute
+  Allows commands that can mutate remote state to proceed past preview mode.
+  Twin publication still requires an explicit TWIN confirmation.
+
+.EXAMPLE
+  .\Invoke-OSWAP.ps1 help
+
+  Lists command definitions available to the dispatcher.
+
+.EXAMPLE
+  .\Invoke-OSWAP.ps1 'twin=(9/3)'
+
+  Resolves the expression and reports the replication plan without publishing.
+
+.NOTES
+  Preview is the default. Remote publication requires both -Execute and the
+  command-specific human confirmation prompt.
+#>
 #requires -Version 5.1
 [CmdletBinding()]
 param(
@@ -28,6 +63,7 @@ function ConvertTo-ExpressionId([string]$Expression) {
     return $id
 }
 
+# Parse a deliberately small arithmetic grammar; never substitute Invoke-Expression here.
 function Resolve-OSWAPExpression([string]$Expression) {
     $normalized = ($Expression -replace '\s+', '')
     if ([string]::IsNullOrWhiteSpace($normalized)) { throw 'Expression is empty.' }
@@ -115,6 +151,7 @@ function Resolve-OSWAPExpression([string]$Expression) {
     if ([double]::IsNaN($value) -or [double]::IsInfinity($value)) { throw 'Expression result is not finite.' }
     if ($value -lt 1.0 -or $value -gt 1024.0) { throw 'Twin replication factor must be between 1 and 1024.' }
 
+    # Fractional factors mean floor(N) guaranteed copies plus a probability of one extra copy.
     $guaranteed = [int64][Math]::Floor($value)
     $fraction = $value - [double]$guaranteed
     if ([Math]::Abs($fraction) -lt 1e-12) { $fraction = 0.0 }
@@ -130,6 +167,7 @@ function Resolve-OSWAPExpression([string]$Expression) {
     }
 }
 
+# Cryptographic randomness reduces destination-selection bias; integrity is verified separately.
 function Get-CryptoRandomUInt32 {
     $bytes = New-Object byte[] 4
     $rng = [Security.Cryptography.RandomNumberGenerator]::Create()
@@ -165,6 +203,7 @@ function Select-OSWAPDestinations([string[]]$Urls, $Resolution) {
     $pool = New-Object 'System.Collections.Generic.List[string]'
     foreach ($url in $Urls) { [void]$pool.Add($url) }
 
+    # Fisher-Yates shuffle prevents configuration order from becoming an implicit priority.
     for ($i = $pool.Count - 1; $i -gt 0; $i--) {
         $j = Get-CryptoRandomIndex ($i + 1)
         $tmp = $pool[$i]
@@ -232,6 +271,7 @@ function Invoke-Twin([string]$Expression = '') {
     Write-Host 'Selected destinations for this operation:'
     $selected | ForEach-Object { Write-Host " - $(Get-OSWAPDisplayUrl $_)" }
 
+    # Human confirmation is the final authorization boundary before any remote mutation.
     $confirmation = Read-Host 'Type TWIN to publish the current committed state to these destinations'
     if ($confirmation -cne 'TWIN') { throw 'Twin publication cancelled.' }
 
