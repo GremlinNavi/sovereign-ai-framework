@@ -1,7 +1,7 @@
 SOVEREIGN AI DEMONSTRATOR
 Release and configuration guide
 
-Creator: Zoey Prowse
+Creator: Nemi Prowse
 Status: v0.4 Release Candidate #3 portable-framework development release
 
 This project is a local-first, auditable AI-assisted research demonstrator. It is
@@ -60,6 +60,6 @@ endorsed.
 
 AUTHORSHIP AND CITATION
 
-Copyright © 2026 Zoey Prowse. Licensed under Apache-2.0; see LICENSE, NOTICE, and
+Copyright © 2026 Nemi Prowse. Licensed under Apache-2.0; see LICENSE, NOTICE, and
 CITATION.cff. This is open-source software, but the licence does not grant permission
 to imply creator or government endorsement.

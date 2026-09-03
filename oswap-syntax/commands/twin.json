@@ -1,7 +1,7 @@
 {
   "id": "twin",
   "version": "0.2.0",
-  "forms": ["twin", "twin=<OSWAP-ARITHMETIC>", "push twin", "push twin=<OSWAP-ARITHMETIC>"],
+  "forms": ["twin", "twin=<OSWAP-ARITHMETIC>", "upload twin", "upload twin=<OSWAP-ARITHMETIC>", "push twin", "push twin=<OSWAP-ARITHMETIC>"],
   "handler": "local.twin",
   "summary": "Preview or explicitly publish the current Git state to a semi-random subset of configured twin destinations.",
   "status": "implemented",
@@ -11,6 +11,8 @@
     "explicit_execution_flag": true,
     "explicit_confirmation": "TWIN",
     "force_push": false,
+    "redact_remote_credentials": true,
+    "verify_remote_commit": true,
     "arbitrary_code_evaluation": false
   },
   "provenance": {
@@ -29,7 +31,7 @@
     "operators": ["+", "-", "*", "/", "^"],
     "parentheses": true,
     "precedence": ["parentheses", "exponent", "unary", "multiply-divide", "add-subtract"],
-    "replication_result": "positive real number",
+    "replication_result": "real number in [1, 1024]",
     "fractional_semantics": "floor(value) guaranteed whole copies plus probability fractional(value) of one additional whole copy",
     "max_replication_factor": 1024
   }

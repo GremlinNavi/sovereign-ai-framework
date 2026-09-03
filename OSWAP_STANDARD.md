@@ -50,7 +50,7 @@ The host language's interpretation of `^` is irrelevant. Within OSWAP, `^` means
 
 `oswap push twin=<expression>` expresses a replication factor, not a PowerShell expression.
 
-A positive non-integer result is valid.
+A non-integer result is valid when the replication factor is at least `1`. Replication factors MUST be between `1` and `1024` inclusive.
 
 For replication factor `n + f`, where `n = floor(value)` and `0 <= f < 1`:
 

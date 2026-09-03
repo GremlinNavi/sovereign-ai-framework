@@ -6,12 +6,34 @@ The `sovereign-ai-framework` repository is the source repository for the Soverei
 
 Development history: [September 2, 2026 OSWAP branding and Twin transport session](docs/development-history/2026-09-02-oswap-branding-and-twin-session.md).
 
+Reviewer-oriented technical summary: [ENGINEERING_OVERVIEW.md](ENGINEERING_OVERVIEW.md).
+
 A local-first research framework with replaceable inference backends. It combines AI tool calling, conversation-history retrieval, local knowledge retrieval, public-web research, evidence assessments, provenance-oriented citations, confidence ratings, and universal `.txt` conversation exports.
 
 **Creator:** Nemi Prowse
 
 **Status:** v0.4 Release Candidate #3 is a portable-framework development release. It is not a Government of Canada product,
 service, endorsement, or production deployment.
+
+## Engineering status
+
+Implemented and exercised in the current source tree:
+
+- backend-agnostic chat and embedding adapters with explicit capability checks;
+- local conversation/RAG storage with thread-local SQLite handling;
+- bounded web search/fetch tools with URL and redirect validation;
+- privacy/consent controls, local audit records, and human-review gates;
+- restricted OSWAP arithmetic parsing and preview-first twin publication tooling; and
+- pytest regression coverage plus GitHub Actions validation on Windows and Linux.
+
+In progress or requiring broader validation:
+
+- GitLab Python CI configuration is present locally; runner validation and PowerShell parity remain pending;
+- wider backend/model compatibility testing;
+- release signing, SBOM/security-scanning automation, and reproducible release evidence; and
+- operational deployment of planned OSWAP public endpoints.
+
+Planned features are documented as design work and should not be interpreted as current runtime behaviour.
 
 ## Authorship, citation, and reuse
 

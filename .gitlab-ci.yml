@@ -1,0 +1,21 @@
+stages:
+  - test
+
+.python-test:
+  stage: test
+  before_script:
+    - python -m pip install --disable-pip-version-check -r requirements-test.lock
+  script:
+    - python oswap_config.py --validate
+    - python -m pytest -q
+
+python-3.10:
+  extends: .python-test
+  image: python:3.10-slim
+
+python-3.12:
+  extends: .python-test
+  image: python:3.12-slim
+
+# PowerShell syntax validation remains in the GitHub Windows/Linux matrix until
+# a GitLab PowerShell runner is independently validated for this repository.

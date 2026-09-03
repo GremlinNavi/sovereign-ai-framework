@@ -17,20 +17,22 @@ get oswap ai
 preserve
 twin
 twin=<OSWAP-ARITHMETIC>
+upload twin
+upload twin=<OSWAP-ARITHMETIC>
 push twin
 push twin=<OSWAP-ARITHMETIC>
 ```
 
-`push twin` previews publication to every configured push URL on the Git remote named `twin`. Execution requires `-Execute` plus an explicit `TWIN` confirmation.
+`upload twin` is the canonical forward publication spelling. `push twin` remains a compatibility alias. Both preview publication to every configured push URL on the Git remote named `twin`. Execution requires `-Execute` plus an explicit `TWIN` confirmation.
 
-`push twin=<OSWAP-ARITHMETIC>` evaluates a restricted OSWAP arithmetic expression with `+`, `-`, `*`, `/`, `^`, unary signs, and parentheses. OSWAP owns this grammar; PowerShell does not define the expression semantics.
+`upload twin=<OSWAP-ARITHMETIC>` (and the compatibility alias `push twin=<OSWAP-ARITHMETIC>`) evaluates a restricted OSWAP arithmetic expression with `+`, `-`, `*`, `/`, `^`, unary signs, and parentheses. OSWAP owns this grammar; PowerShell does not define the expression semantics.
 
 Positive fractional results are valid replication factors. A value of `3.5` means three guaranteed whole destination copies plus a 50% probability of one additional whole destination copy. It never means half a repository or half a file.
 
 For example:
 
 ```text
-oswap push twin=(4+3)/2
+oswap upload twin=(4+3)/2
 ```
 
 resolves to `3.5` and selects destinations without replacement from the configured eligible `twin` push URL pool.

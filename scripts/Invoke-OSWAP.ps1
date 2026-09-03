@@ -181,6 +181,11 @@ function Get-TwinPushUrls {
     return @($urls | Where-Object { -not [string]::IsNullOrWhiteSpace($_) })
 }
 
+function Get-OSWAPDisplayUrl([string]$Url) {
+    if ([string]::IsNullOrWhiteSpace($Url)) { return '<empty>' }
+    return ($Url -replace '^(https?://)[^/@]+@', '$1***@')
+}
+
 function Invoke-Twin([string]$Expression = '') {
     $resolution = $null
     if ($Expression) {
@@ -193,7 +198,7 @@ function Invoke-Twin([string]$Expression = '') {
     }
 
     & git rev-parse --is-inside-work-tree *> $null
-    if ($LASTEXITCODE -ne 0) { throw 'push twin must run inside a Git work tree.' }
+    if ($LASTEXITCODE -ne 0) { throw 'twin publication must run inside a Git work tree.' }
 
     $branch = (& git branch --show-current | Select-Object -Last 1).Trim()
     if ([string]::IsNullOrWhiteSpace($branch)) { throw 'Detached HEAD is not supported for twin publication.' }
@@ -207,7 +212,7 @@ function Invoke-Twin([string]$Expression = '') {
     Write-Host 'Working tree:'
     & git status --short
     Write-Host 'Eligible twin destinations:'
-    $urls | ForEach-Object { Write-Host " - $_" }
+    $urls | ForEach-Object { Write-Host " - $(Get-OSWAPDisplayUrl $_)" }
 
     if ($resolution) {
         Write-Host "Replication factor: $($resolution.replication_factor)"
@@ -225,18 +230,26 @@ function Invoke-Twin([string]$Expression = '') {
     $selected = if ($resolution) { Select-OSWAPDestinations $urls $resolution } else { @($urls) }
 
     Write-Host 'Selected destinations for this operation:'
-    $selected | ForEach-Object { Write-Host " - $_" }
+    $selected | ForEach-Object { Write-Host " - $(Get-OSWAPDisplayUrl $_)" }
 
     $confirmation = Read-Host 'Type TWIN to publish the current committed state to these destinations'
     if ($confirmation -cne 'TWIN') { throw 'Twin publication cancelled.' }
 
+    $localHead = (& git rev-parse HEAD | Select-Object -Last 1).Trim()
+    if ([string]::IsNullOrWhiteSpace($localHead)) { throw 'Unable to resolve the local HEAD for post-push verification.' }
+
     foreach ($url in $selected) {
+        $displayUrl = Get-OSWAPDisplayUrl $url
         & git push $url "HEAD:refs/heads/$branch"
-        if ($LASTEXITCODE -ne 0) { throw "Git push failed for destination $url with exit code $LASTEXITCODE." }
+        if ($LASTEXITCODE -ne 0) { throw "Git push failed for destination $displayUrl with exit code $LASTEXITCODE." }
 
         $remoteHead = @(& git ls-remote $url "refs/heads/$branch" 2>$null)
         if ($LASTEXITCODE -ne 0 -or -not $remoteHead) {
-            throw "Post-push verification failed for $url"
+            throw "Post-push verification failed for $displayUrl"
+        }
+        $remoteSha = (($remoteHead | Select-Object -First 1) -split '\s+')[0]
+        if ($remoteSha -ne $localHead) {
+            throw "Post-push verification mismatch for $displayUrl. Expected $localHead, got $remoteSha."
         }
     }
 
@@ -292,12 +305,12 @@ if ($text -eq 'preserve') {
     return
 }
 
-if ($text -in @('twin', 'push twin')) {
+if ($text -in @('twin', 'upload twin', 'push twin')) {
     Invoke-Twin
     return
 }
 
-if ($text -match '^(?:push\s+)?twin=(.+)$') {
+if ($text -match '^(?:(?:upload|push)\s+)?twin=(.+)$') {
     Invoke-Twin $Matches[1]
     return
 }

@@ -1,4 +1,4 @@
-# GitHub release checklist — Release Candidate #3
+# Release checklist — Release Candidate #3
 
 ## Before publishing
 
@@ -7,6 +7,8 @@
 - [ ] Confirm `app/`, `tests/`, and `tools/` are tracked source directories; do not publish them only inside a ZIP archive.
 - [ ] Confirm generated ZIPs, executables, and SHA-256 manifests are absent from the default branch and will be uploaded only as release assets.
 - [ ] Ensure the GitHub Actions `CI` workflow passes on the release commit.
+- [ ] Ensure the GitLab Python CI jobs pass on the release commit when the GitLab twin is used for release validation.
+- [ ] Run a repository-wide identity check so README, NOTICE, AUTHORS, CITATION, package metadata, and forge descriptions agree.
 - [ ] Build with `requirements-build.lock`; the build generates and places `THIRD_PARTY_NOTICES.md` beside every executable.
 - [x] Apache-2.0 `LICENSE` added; the repository may be described as open source.
 - [ ] Review the project name against the Canadian Trademarks Database before representing it as a protected brand.
