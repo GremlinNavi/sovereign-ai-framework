@@ -1,0 +1,58 @@
+OSWAPSACW CHATGPT PLUGIN TEST VECTORS
+Date: 2026-09-02
+
+SEMANTIC CONTRACT
+
+twin = cardinality
+joker = policy
+
+These dimensions are independent. A conforming implementation must not collapse joker into twin.
+
+CASE T01
+INPUT: oswap upload twin=3
+EXPECT: verb=upload
+EXPECT: action_class=remote_write
+EXPECT: consent_required=true
+EXPECT: replication_expression=3
+
+CASE T02
+INPUT: oswap download twin=(9/3)
+EXPECT: verb=download
+EXPECT: action_class=local_write
+EXPECT: consent_required=true
+EXPECT: replication_expression=(9/3)
+
+CASE T03
+INPUT: oswap upload twin=2;Remove-Item C:\\*
+EXPECT: reject
+REASON: characters outside restricted OSWAP arithmetic grammar
+
+CASE J01
+INPUT: oswap upload joker=threshold
+EXPECT: not parsed as twin cardinality
+EXPECT: handled only by an explicit joker-policy parser when implemented
+
+CASE J02
+INPUT: twin=3, joker=threshold
+EXPECT: cardinality remains 3
+EXPECT: policy remains threshold
+EXPECT: neither value overwrites the other
+
+CASE P01
+CONTEXT: project namespace has principals A, B, and automation C
+EXPECT: all may be independently authorized
+EXPECT: no one-human-to-one-principal assumption
+
+CASE P02
+CONTEXT: principal B signing credential KEY-A is confirmed compromised
+EXPECT: KEY-A can be revoked
+EXPECT: principal B or project namespace may authorize replacement KEY-B
+EXPECT: historical attribution is preserved
+
+CASE C01
+AUTHORIZATION: status=denied
+EXPECT: state-changing operation blocked
+
+CASE C02
+AUTHORIZATION: status=missing
+EXPECT: state-changing operation blocked
