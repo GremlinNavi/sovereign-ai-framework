@@ -1,6 +1,6 @@
 # Privacy and data controls
 
-Sovereign AI Demonstrator is designed to work locally by default. It stores user data outside
+OSWAP AI Demonstrator is designed to work locally by default. It stores user data outside
 the source checkout unless `SOVEREIGN_AI_DEMONSTRATOR_DATA_DIR` is explicitly configured.
 
 ## Choices before processing

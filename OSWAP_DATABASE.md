@@ -8,9 +8,9 @@ OSWAP is intended to preserve factual metadata and provenance while keeping rank
 
 ## Relationship to this repository
 
-The Sovereign AI Demonstrator and the OSWAP database are separate systems that may interoperate in the future.
+The OSWAP AI Demonstrator and the OSWAP database are distinct components of the broader OSWAP project that may interoperate in the future.
 
-- `knowledge/index.sqlite3` is the Sovereign AI Demonstrator's local RAG/vector index.
+- `knowledge/index.sqlite3` is the OSWAP AI Demonstrator's local RAG/vector index.
 - The OSWAP database is a separate software-access and discovery catalogue.
 - OSWAP data must not be silently merged into the runtime RAG index or treated as trusted model instructions.
 
@@ -76,4 +76,4 @@ OSWAP is an independent open-source project name and is not affiliated with the 
 
 ## Status
 
-This document defines the planned database boundary and naming convention. It does not claim that the full OSWAP ingestion, normalization, or search stack is already implemented in the Sovereign AI Demonstrator.
+This document defines the planned database boundary and naming convention. It does not claim that the full OSWAP ingestion, normalization, or search stack is already implemented in the OSWAP AI Demonstrator.

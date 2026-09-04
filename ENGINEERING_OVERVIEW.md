@@ -1,6 +1,6 @@
 # Engineering overview
 
-This document gives reviewers a compact technical map of the Sovereign AI Demonstrator and its OSWAP integration.
+This document gives reviewers a compact technical map of the OSWAP AI Demonstrator and its OSWAP integration.
 
 ## What the implementation demonstrates
 

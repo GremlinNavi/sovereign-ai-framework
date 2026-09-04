@@ -24,7 +24,7 @@
 
 ## Claims and boundaries
 
-- [ ] Use: “Sovereign AI Demonstrator.”
+- [ ] Use: “OSWAP AI Demonstrator.”
 - [ ] Use: “Local-first. Auditable. Human-controlled.”
 - [ ] Do not imply Government of Canada ownership, endorsement, procurement status, or production readiness.
 - [x] Describe the portable-backend architecture as implemented: adapters, root `config.py`, and static configuration validation are present.

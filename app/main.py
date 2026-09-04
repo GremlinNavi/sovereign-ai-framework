@@ -101,7 +101,7 @@ def main() -> int:
         if added:
             print(f"Indexed {added} new knowledge chunks.")
 
-    print(f"Sovereign AI Demonstrator — chat backend={settings.chat_backend_name}, model={settings.chat_model}")
+    print(f"OSWAP AI Demonstrator — chat backend={settings.chat_backend_name}, model={settings.chat_model}")
     print("Commands: /exit, /session, /privacy, /consent <purpose>, /revoke <purpose>, /reindex, /export [path], /export-data [path], /delete-session [id], /delete-all-data, /assess <question>")
     while True:
         try:
@@ -144,7 +144,7 @@ def main() -> int:
             continue
         if user.startswith("/export-data"):
             parts = user.split(maxsplit=1)
-            destination = Path(parts[1]) if len(parts) == 2 else Path("sovereign-ai-demonstrator-personal-data.json")
+            destination = Path(parts[1]) if len(parts) == 2 else Path("oswap-ai-demonstrator-personal-data.json")
             if not destination.is_absolute():
                 destination = Path.cwd() / destination
             export_personal_data(destination)

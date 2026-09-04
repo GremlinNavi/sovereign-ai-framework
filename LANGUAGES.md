@@ -2,7 +2,7 @@
 
 ## English
 
-The Sovereign AI Demonstrator and OSWAP-related documentation use three supported public documentation languages:
+The OSWAP AI Demonstrator and OSWAP-related documentation use three supported public documentation languages:
 
 - English: `en`
 - Canadian French: `fr-CA`
@@ -16,7 +16,7 @@ Where a translation has not yet been completed, the repository should link clear
 
 ## Français canadien
 
-La documentation publique du Sovereign AI Demonstrator et des éléments liés à OSWAP prend en charge trois langues :
+La documentation publique du OSWAP AI Demonstrator et des éléments liés à OSWAP prend en charge trois langues :
 
 - anglais : `en`
 - français canadien : `fr-CA`
@@ -30,7 +30,7 @@ Lorsqu'une traduction n'est pas encore disponible, le dépôt doit fournir un li
 
 ## 日本語
 
-Sovereign AI Demonstrator および OSWAP 関連の公開ドキュメントでは、次の3言語をサポートします。
+OSWAP AI Demonstrator および OSWAP 関連の公開ドキュメントでは、次の3言語をサポートします。
 
 - 英語: `en`
 - カナダ・フランス語: `fr-CA`

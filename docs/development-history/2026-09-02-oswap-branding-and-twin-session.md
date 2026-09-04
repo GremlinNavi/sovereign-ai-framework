@@ -56,13 +56,13 @@ while preserving the existing repository slugs and compatibility scripts so ongo
 The Sovereign AI repository was also clarified so that:
 
 ```text
-Sovereign AI Demonstrator
+OSWAP AI Demonstrator
 ```
 
 is the product identity, while:
 
 ```text
-sovereign-ai-framework
+oswap-ai-demonstrator
 ```
 
 is explicitly the repository and implementation identifier.
@@ -132,7 +132,7 @@ The remote GitHub commit hashes were then explicitly read back and verified.
 The live Sovereign AI repository description now identifies it as:
 
 ```text
-Sovereign AI Demonstrator:
+OSWAP AI Demonstrator:
 a portable, backend-agnostic local-first AI research framework
 with hybrid RAG, provenance-aware assessments,
 and portable text exports.

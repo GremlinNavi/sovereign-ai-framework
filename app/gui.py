@@ -55,7 +55,7 @@ class AssessmentWorker(threading.Thread):
 class MainWindow:
     def __init__(self, root: tk.Tk) -> None:
         self.root = root
-        self.root.title("Sovereign AI Demonstrator")
+        self.root.title("OSWAP AI Demonstrator")
         self.root.geometry("1100x760")
         self.root.minsize(760, 500)
 
@@ -224,7 +224,7 @@ class MainWindow:
             title="Export all locally held data",
             defaultextension=".json",
             filetypes=[("JSON files", "*.json"), ("All files", "*.*")],
-            initialfile="sovereign-ai-demonstrator-personal-data.json",
+            initialfile="oswap-ai-demonstrator-personal-data.json",
         )
         if not destination:
             return

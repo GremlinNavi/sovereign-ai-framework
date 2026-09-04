@@ -209,9 +209,9 @@ Future distributed archival work may combine repository replication, content has
 | OSWAP-controlled public AI/Git endpoints | Planned deployment |
 
 ## 13. Repository review notes
-The public `GremlinNavi/sovereign-ai-framework` history includes Standard 0.2.0, parser corrections, syntax self-tests, canonical configuration work, fractional twin replication, preservation workflows, and expression-preview fixes.
+The public `GremlinNavi/oswap-ai-demonstrator` history includes Standard 0.2.0, parser corrections, syntax self-tests, canonical configuration work, fractional twin replication, preservation workflows, and expression-preview fixes.
 
-On YETI-2, `sovereign-ai-framework-src` is currently one local commit ahead of GitHub `origin/main`; that local commit is a branding/documentation cleanup and does not replace Standard 0.2.0.
+On YETI-2, `oswap-ai-demonstrator-src` is currently one local commit ahead of GitHub `origin/main`; that local commit is a branding/documentation cleanup and does not replace Standard 0.2.0.
 
 The active GitLab `GremlinNavi-group/git-push-twin` history has adopted the OSWAP 0.2 twin layer and contains the newer expression-preview work.
 

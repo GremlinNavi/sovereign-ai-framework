@@ -57,8 +57,8 @@
 [CmdletBinding()]
 param(
     [string]$InstallRoot = (Join-Path $HOME "OSWAP"),
-    [string]$RepositoryUrl = "https://github.com/GremlinNavi/sovereign-ai-framework.git",
-    [string]$RepositoryName = "sovereign-ai-framework",
+    [string]$RepositoryUrl = "https://github.com/GremlinNavi/oswap-ai-demonstrator.git",
+    [string]$RepositoryName = "oswap-ai-demonstrator",
     [string]$ChatModel = "qwen3:4b",
     [string]$EmbeddingModel = "nomic-embed-text",
     [string]$CodexModel = "",

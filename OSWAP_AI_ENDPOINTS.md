@@ -8,7 +8,7 @@ The AI subdomains described here remain planned infrastructure. They are design 
 
 ## Purpose
 
-The Sovereign AI Demonstrator is intended to be reachable through stable OSWAP-controlled public identities that do not depend on the continued use of any one Git forge.
+The OSWAP AI Demonstrator is intended to be reachable through stable OSWAP-controlled public identities that do not depend on the continued use of any one Git forge.
 
 The planned peer endpoints are:
 
@@ -20,7 +20,7 @@ None of these endpoints is designated as the primary or canonical country endpoi
 
 ## Browser behavior
 
-An ordinary browser request to any deployed endpoint should return a human-readable Sovereign AI Demonstrator project page with project status, documentation, source locations, release information, licensing, and integrity information.
+An ordinary browser request to any deployed endpoint should return a human-readable OSWAP AI Demonstrator project page with project status, documentation, source locations, release information, licensing, and integrity information.
 
 ## Git behavior
 
@@ -107,12 +107,12 @@ These examples are design concepts, not claims that the subdomains or wrapper sy
 ## Naming
 
 - Initiative: Open-Source World Access Project (OSWAP)
-- AI project: Sovereign AI Demonstrator
-- Repository slug: `sovereign-ai-framework`
+- AI project: OSWAP AI Demonstrator
+- Repository slug: `oswap-ai-demonstrator`
 - Owned OSWAP domains: `oswap.ca`, `oswap.jp`, `oswap.us`
 - Planned public AI endpoints: `ai.oswap.ca`, `ai.oswap.jp`, `ai.oswap.us`
 
-The endpoint names do not rename the Sovereign AI Demonstrator. They provide stable OSWAP-controlled addresses for it.
+The endpoint names do not rename the OSWAP AI Demonstrator. They provide stable OSWAP-controlled addresses for it.
 
 ## Deployment principle
 

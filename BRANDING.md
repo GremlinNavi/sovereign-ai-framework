@@ -1,8 +1,8 @@
-# Sovereign AI Demonstrator
+# OSWAP AI Demonstrator
 
 ## Official project name
 
-Sovereign AI Demonstrator
+OSWAP AI Demonstrator
 
 ## One-line description
 
@@ -10,27 +10,27 @@ A Canadian reference implementation for local-first, auditable AI-assisted resea
 
 ## Short description
 
-The Sovereign AI Demonstrator explores how AI-assisted knowledge work can operate under explicit data-boundary, provenance, auditability, security, and human-review requirements. It is designed as an inspectable reference implementation rather than a production Government of Canada system.
+The OSWAP AI Demonstrator explores how AI-assisted knowledge work can operate under explicit data-boundary, provenance, auditability, security, and human-review requirements. It is designed as an inspectable reference implementation rather than a production Government of Canada system.
 
 ## Repository hosting metadata
 
 Use this description for the GitHub and GitLab repository metadata:
 
-> Sovereign AI Demonstrator: a portable, backend-agnostic local-first AI research framework with hybrid RAG, provenance-aware assessments, and portable text exports.
+> OSWAP AI Demonstrator: a portable, backend-agnostic local-first AI research framework with hybrid RAG, provenance-aware assessments, and portable text exports.
 
 ## Repository versus product identity
 
-Use `Sovereign AI Demonstrator` for the product/display name. Use `sovereign-ai-framework` only when referring to the repository slug, clone path, package context, or other implementation-specific identifier.
+Use `OSWAP AI Demonstrator` for the product/display name. Use `oswap-ai-demonstrator` only when referring to the repository slug, clone path, package context, or other implementation-specific identifier.
 
 `Eternal Thread` is a historical development name. It must not be used in active repository descriptions, current product headers, taglines, or homepage metadata.
 
 ## Open-Source World Access Project relationship
 
-The Open-Source World Access Project (OSWAP) is a separate open-source software-access and discovery initiative. Its planned database layer is documented in [OSWAP_DATABASE.md](OSWAP_DATABASE.md).
+The Open-Source World Access Project (OSWAP) is the broader open-source initiative spanning software access, discovery, preservation, automation, and AI-assisted tooling. Its planned database layer is documented in [OSWAP_DATABASE.md](OSWAP_DATABASE.md).
 
-OSWAP is not a replacement name for the Sovereign AI Demonstrator. The two projects may interoperate while retaining separate technical and branding boundaries.
+The OSWAP AI Demonstrator is the AI demonstrator component within that broader initiative. It may interoperate with other OSWAP components while retaining its own implementation and release boundaries.
 
-The local `knowledge/index.sqlite3` database belongs to the Sovereign AI Demonstrator's RAG runtime. It is not the OSWAP software catalogue.
+The local `knowledge/index.sqlite3` database belongs to the OSWAP AI Demonstrator's RAG runtime. It is not the OSWAP software catalogue.
 
 ## OSWAP-owned domains
 
@@ -50,7 +50,7 @@ The planned OSWAP-controlled public identities for this project are:
 - `https://ai.oswap.jp`
 - `https://ai.oswap.us`
 
-These are intended as peer endpoints rather than a primary-and-mirror hierarchy. They do not rename the Sovereign AI Demonstrator and they do not make any national domain the canonical copy.
+These are intended as peer endpoints rather than a primary-and-mirror hierarchy. They do not rename the OSWAP AI Demonstrator and they do not make any national domain the canonical copy.
 
 The endpoints are intended to provide both a human-readable project surface and read-only Git access when the required infrastructure is deployed. Until DNS, TLS, routing, and Git protocol handling have been implemented and tested, documentation must describe them as planned rather than operational.
 
@@ -76,7 +76,7 @@ See [LANGUAGES.md](LANGUAGES.md), [README.fr-CA.md](README.fr-CA.md), and [READM
 
 Use:
 
-> Sovereign AI Demonstrator
+> OSWAP AI Demonstrator
 
 Avoid:
 
@@ -89,11 +89,11 @@ Those formulations imply institutional ownership, endorsement, or platform statu
 ## Brand hierarchy
 
 - Open-source access/discovery initiative: Open-Source World Access Project (OSWAP)
-- AI product / demonstrator: Sovereign AI Demonstrator
+- AI product / demonstrator: OSWAP AI Demonstrator
 - OSWAP-owned domains: `oswap.ca`, `oswap.jp`, `oswap.us`
 - OSWAP AI public identity: `ai.oswap.ca`, `ai.oswap.jp`, and `ai.oswap.us` (planned)
 - OSWAP data/discovery specification: OSWAP Database
-- Repository identity: sovereign-ai-framework
+- Repository identity: oswap-ai-demonstrator
 
 ## Federal-facing tagline
 

@@ -1,8 +1,8 @@
-# Sovereign AI Demonstrator
+# OSWAP AI Demonstrator
 
 A Canadian reference implementation for local-first, auditable AI-assisted research.
 
-The `sovereign-ai-framework` repository is the source repository for the Sovereign AI Demonstrator; the repository slug is an implementation identifier, not a second product name. OSWAP is a separate open-source project whose user-facing interface is a domain-specific programming language (DSL) for auditable digital access, replication, preservation, authorization, provenance, and accountability workflows. PowerShell is one supported OSWAP host/runtime surface; PowerShell syntax does not define the OSWAP language. This repository includes a reference OSWAP parser and syntax bundle so the demonstrator can interoperate with the language.
+The `oswap-ai-demonstrator` repository is the source repository for the OSWAP AI Demonstrator, the AI demonstrator component of the broader Open-Source World Access Project (OSWAP). The wider OSWAP project exposes a domain-specific programming language (DSL) for auditable digital access, replication, preservation, authorization, provenance, and accountability workflows. PowerShell is one supported OSWAP host/runtime surface; PowerShell syntax does not define the OSWAP language. This repository includes a reference OSWAP parser and syntax bundle so the demonstrator can interoperate with the language.
 
 Development history: [September 2, 2026 OSWAP branding and Twin transport session](docs/development-history/2026-09-02-oswap-branding-and-twin-session.md).
 
@@ -43,7 +43,7 @@ The current reference implementation parses OSWAP expressions itself and maps va
 
 ## Authorship, citation, and reuse
 
-Sovereign AI Demonstrator was created by Nemi Prowse. Please retain
+OSWAP AI Demonstrator was created by Nemi Prowse. Please retain
 the project attribution and refer to [CITATION.cff](CITATION.cff) when citing this
 software. The repository's release materials are documented in [NOTICE](NOTICE) and
 [RELEASE_CHECKLIST.md](RELEASE_CHECKLIST.md).
@@ -130,7 +130,7 @@ point, run:
 
 ```bash
 pip install .
-sovereign-ai-demonstrator
+oswap-ai-demonstrator
 ```
 
 ## Folders
@@ -249,7 +249,7 @@ See [README.txt](README.txt) for the configuration and validation contract.
 
 SteamOS, Proton, Linux handhelds, USB-C docking, and Git-hosted operating-system
 forks are useful reference architectures for the project's portability goals, but
-none is a required Sovereign AI Demonstrator dependency. The important transferable principles
+none is a required OSWAP AI Demonstrator dependency. The important transferable principles
 are replaceable layers, reproducible environments, maintained compatibility bridges,
 standard peripheral expansion, forkable source, and the ability to preserve known-good
 software states independently of a single vendor or forge.
@@ -270,7 +270,7 @@ Conversation history, embeddings, and fetched page text are stored locally. Web 
 
 ## Desktop GUI
 
-The project includes a native Tk desktop GUI in `app/gui.py` and `launcher.py`. On Windows, run `build_windows.bat` to create `dist\\SovereignAIDemonstrator\\SovereignAIDemonstrator.exe` by default, with no console window. The executable name is read from `config.py`. Tk is bundled with standard Windows Python installations, so the GUI does not need a separate Qt runtime.
+The project includes a native Tk desktop GUI in `app/gui.py` and `launcher.py`. On Windows, run `build_windows.bat` to create `dist\\OSWAPAIDemonstrator\\OSWAPAIDemonstrator.exe` by default, with no console window. The executable name is read from `config.py`. Tk is bundled with standard Windows Python installations, so the GUI does not need a separate Qt runtime.
 
 The GUI is a thin client over the same local agent: conversation history, hybrid RAG, web tools, security checks, and the configured inference backend remain in the Python backend.
 
@@ -309,7 +309,7 @@ with release notes and a SHA-256 checksum file. Do not commit generated release 
 checksums, executable builds, or personal data to the default branch. Mark unfinished
 work as a pre-release.
 
-Keep project identity precise: use **Sovereign AI Demonstrator** and
+Keep project identity precise: use **OSWAP AI Demonstrator** and
 the tagline **Local-first. Auditable. Human-controlled.** Do not imply government
 ownership, endorsement, or production readiness. See [BRANDING.md](BRANDING.md).
 Review [SECURITY.md](SECURITY.md), [CONTRIBUTING.md](CONTRIBUTING.md), and generated

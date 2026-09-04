@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup
 from .config import settings
 from .security import validate_public_http_url
 
-USER_AGENT = "SovereignAIDemonstrator/0.4 (local research tool)"
+USER_AGENT = "OSWAPAIDemonstrator/0.4 (local research tool)"
 
 
 def validate_url(url: str) -> None:

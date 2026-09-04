@@ -2,7 +2,7 @@
 
 ## Creator
 
-- Nemi Prowse — original creator of Sovereign AI Demonstrator.
+- Nemi Prowse — original creator of OSWAP AI Demonstrator.
 
 ## Contributions
 

@@ -1,7 +1,7 @@
 {
   "id": "oswap-ai",
   "name": "OSWAP AI",
-  "repository": "GremlinNavi/sovereign-ai-framework",
+  "repository": "GremlinNavi/oswap-ai-demonstrator",
   "local_path": ".",
   "planned_public_endpoints": ["ai.oswap.ca", "ai.oswap.jp", "ai.oswap.us"]
 }

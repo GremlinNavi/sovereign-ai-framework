@@ -1,10 +1,10 @@
-# Sovereign AI Demonstrator
+# OSWAP AI Demonstrator
 
 [English](README.md) · [Français canadien](README.fr-CA.md) · 日本語 · [言語方針](LANGUAGES.md)
 
 ローカルファースト、監査可能、人間による管理を重視した AI 支援研究のためのカナダ発リファレンス実装です。
 
-Sovereign AI Demonstrator は、交換可能な推論バックエンドを備えたローカルファーストの研究フレームワークです。AI のツール呼び出し、会話履歴の検索、ローカル知識の検索、公開 Web の調査、証拠評価、出典を重視した引用、信頼度評価、汎用 `.txt` 会話エクスポートを組み合わせます。
+OSWAP AI Demonstrator は、交換可能な推論バックエンドを備えたローカルファーストの研究フレームワークです。AI のツール呼び出し、会話履歴の検索、ローカル知識の検索、公開 Web の調査、証拠評価、出典を重視した引用、信頼度評価、汎用 `.txt` 会話エクスポートを組み合わせます。
 
 作成者: Nemi Prowse
 
@@ -12,9 +12,9 @@ Sovereign AI Demonstrator は、交換可能な推論バックエンドを備え
 
 ## OSWAP との関係
 
-Open-Source World Access Project (OSWAP) は、オープンソース・ソフトウェアへのアクセス、発見、保存を目的とする別個の取り組みです。
+Open-Source World Access Project (OSWAP) は、オープンソース・ソフトウェアへのアクセス、発見、保存、および関連ツールを扱う、より広範なプロジェクトです。
 
-Sovereign AI Demonstrator は独立したプロジェクト名を維持します。OSWAP はこのデモンストレーターの改名ではありません。
+OSWAP AI Demonstrator は、OSWAP に含まれる AI デモンストレーター・コンポーネントです。OSWAP の一部として、独自の実装・リリース境界を維持します。
 
 OSWAP は `oswap.ca`、`oswap.jp`、`oswap.us` を所有しています。このプロジェクト向けに計画されている OSWAP 管理下の公開エンドポイントは次の3つです。
 

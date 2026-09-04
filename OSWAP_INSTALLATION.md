@@ -50,9 +50,9 @@ The installer should treat repository coordinates as package metadata rather tha
 
 | Package | Current GitHub source | Current GitLab twin | Role |
 | --- | --- | --- | --- |
-| `ai` | `GremlinNavi/sovereign-ai-framework` | `GremlinNavi-group/sovereign-ai-framework` | Local-first sovereign AI framework and current OSWAP syntax host |
+| `ai` | `GremlinNavi/oswap-ai-demonstrator` | `GremlinNavi-group/oswap-ai-demonstrator` | Local-first sovereign AI framework and current OSWAP syntax host |
 | `twin` | `GremlinNavi/git-push-twin` | `GremlinNavi-group/git-push-twin` | PS-twin publication, redundancy, scrub, checksum, and Git transport tooling |
-| `syntax` | bundled in `sovereign-ai-framework/oswap-syntax/` | bundled in the GitLab twin | Declarative OSWAP command definitions and local dispatcher data |
+| `syntax` | bundled in `oswap-ai-demonstrator/oswap-syntax/` | bundled in the GitLab twin | Declarative OSWAP command definitions and local dispatcher data |
 
 There is currently no separate public `oswap-syntax` repository. The installer must not fabricate one.
 
@@ -63,7 +63,7 @@ OSWAP repositories are twins. GitHub and GitLab are distribution surfaces; neith
 The first installer implementation may use GitHub CLI because the desired bootstrap primitive is:
 
 ```powershell
-gh repo clone GremlinNavi/sovereign-ai-framework
+gh repo clone GremlinNavi/oswap-ai-demonstrator
 ```
 
 However, package metadata should also retain the equivalent GitLab repository URL so the installation architecture can fall back to normal Git transport when GitHub CLI or GitHub itself is unavailable.
@@ -89,7 +89,7 @@ Current OSWAP and PS-twin scripts support Windows PowerShell 5.1 or PowerShell 7
 From the directory where you want the checkouts:
 
 ```powershell
-gh repo clone GremlinNavi/sovereign-ai-framework
+gh repo clone GremlinNavi/oswap-ai-demonstrator
 gh repo clone GremlinNavi/git-push-twin
 ```
 
@@ -98,7 +98,7 @@ If GitHub CLI is unavailable, standard Git may be used with either published twi
 ### 3. Inspect the existing OSWAP syntax dispatcher
 
 ```powershell
-Set-Location .\sovereign-ai-framework
+Set-Location .\oswap-ai-demonstrator
 & .\scripts\Invoke-OSWAP.ps1 help
 ```
 
@@ -111,8 +111,8 @@ Run the PS-twin installer from inside the repository that should receive the `tw
 ```powershell
 & "..\git-push-twin\Install-GitPushTwin.ps1" `
   -RepositoryUrl @(
-    "https://github.com/GremlinNavi/sovereign-ai-framework.git",
-    "https://gitlab.com/GremlinNavi-group/sovereign-ai-framework.git"
+    "https://github.com/GremlinNavi/oswap-ai-demonstrator.git",
+    "https://gitlab.com/GremlinNavi-group/oswap-ai-demonstrator.git"
   )
 ```
 
@@ -185,8 +185,8 @@ A conceptual record may include:
 ```text
 id: ai
 sources:
-  github: GremlinNavi/sovereign-ai-framework
-  gitlab: GremlinNavi-group/sovereign-ai-framework
+  github: GremlinNavi/oswap-ai-demonstrator
+  gitlab: GremlinNavi-group/oswap-ai-demonstrator
 role: application
 ```
 

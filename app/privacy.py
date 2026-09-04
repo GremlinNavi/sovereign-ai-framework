@@ -169,7 +169,7 @@ def export_personal_data(destination: Path) -> Path:
         return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
 
     payload = {
-        "format": "sovereign-ai-demonstrator-personal-data-v1",
+        "format": "oswap-ai-demonstrator-personal-data-v1",
         "exported_at": datetime.now(timezone.utc).isoformat(),
         "sessions": sessions,
         "tool_audit": read_records(settings.audit_log_path),

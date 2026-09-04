@@ -36,8 +36,8 @@ def _default_data_root() -> Path:
     """Keep mutable user data out of the source checkout by default."""
     local_app_data = os.getenv("LOCALAPPDATA")
     if local_app_data:
-        return Path(local_app_data) / "SovereignAIDemonstrator"
-    return Path.home() / ".local" / "share" / "SovereignAIDemonstrator"
+        return Path(local_app_data) / "OSWAPAIDemonstrator"
+    return Path.home() / ".local" / "share" / "OSWAPAIDemonstrator"
 
 
 def is_local_endpoint(url: str) -> bool:
@@ -69,7 +69,7 @@ _load_dotenv(ROOT / ".env")
 # Change these two values to select independent inference backends.
 CHAT_BACKEND = os.getenv("SOVEREIGN_AI_DEMONSTRATOR_CHAT_BACKEND", "ollama")
 EMBEDDING_BACKEND = os.getenv("SOVEREIGN_AI_DEMONSTRATOR_EMBEDDING_BACKEND", "ollama")
-APP_NAME = "SovereignAIDemonstrator"
+APP_NAME = "OSWAPAIDemonstrator"
 
 
 @dataclass(frozen=True)

@@ -1,4 +1,4 @@
-SOVEREIGN AI DEMONSTRATOR
+OSWAP AI DEMONSTRATOR
 Release and configuration guide
 
 Creator: Nemi Prowse

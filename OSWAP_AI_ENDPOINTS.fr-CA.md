@@ -10,7 +10,7 @@ Les sous-domaines d'IA décrits ici demeurent une infrastructure planifiée. Ils
 
 ## Objectif
 
-Sovereign AI Demonstrator doit pouvoir être rejoint au moyen d'identités publiques stables contrôlées par OSWAP, sans dépendre de l'utilisation permanente d'une plateforme Git particulière.
+OSWAP AI Demonstrator doit pouvoir être rejoint au moyen d'identités publiques stables contrôlées par OSWAP, sans dépendre de l'utilisation permanente d'une plateforme Git particulière.
 
 Les points d'accès pairs prévus sont :
 
@@ -22,7 +22,7 @@ Aucun de ces points d'accès n'est désigné comme copie nationale principale ou
 
 ## Comportement dans un navigateur
 
-Une requête Web ordinaire vers un point d'accès déployé devrait afficher une page lisible par une personne pour Sovereign AI Demonstrator, comprenant l'état du projet, la documentation, les emplacements du code source, les renseignements sur les versions, la licence et les renseignements d'intégrité.
+Une requête Web ordinaire vers un point d'accès déployé devrait afficher une page lisible par une personne pour OSWAP AI Demonstrator, comprenant l'état du projet, la documentation, les emplacements du code source, les renseignements sur les versions, la licence et les renseignements d'intégrité.
 
 ## Comportement Git
 
@@ -109,12 +109,12 @@ Ces exemples constituent des concepts de conception; ils ne signifient pas que l
 ## Nommage
 
 - Initiative : Open-Source World Access Project (OSWAP)
-- Projet d'IA : Sovereign AI Demonstrator
-- Nom du dépôt : `sovereign-ai-framework`
+- Projet d'IA : OSWAP AI Demonstrator
+- Nom du dépôt : `oswap-ai-demonstrator`
 - Domaines OSWAP détenus : `oswap.ca`, `oswap.jp`, `oswap.us`
 - Points d'accès IA publics prévus : `ai.oswap.ca`, `ai.oswap.jp`, `ai.oswap.us`
 
-Les noms de domaine ne changent pas le nom de Sovereign AI Demonstrator. Ils fournissent des adresses stables contrôlées par OSWAP.
+Les noms de domaine ne changent pas le nom de OSWAP AI Demonstrator. Ils fournissent des adresses stables contrôlées par OSWAP.
 
 ## Principe de déploiement
 

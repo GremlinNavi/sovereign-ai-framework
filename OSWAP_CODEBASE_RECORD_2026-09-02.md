@@ -14,7 +14,7 @@ Each source snapshot below identifies the implementation state formally selected
 
 | Component | Role | Recorded source commit | Publication state |
 | --- | --- | --- | --- |
-| `sovereign-ai-framework` | Sovereign AI Demonstrator, OSWAP syntax/runtime integration | `b9b1a971f02bc3e15485714af32986b6bfa2fec4` | Existing GitHub and GitLab twin remotes |
+| `oswap-ai-demonstrator` | OSWAP AI Demonstrator, OSWAP syntax/runtime integration | `b9b1a971f02bc3e15485714af32986b6bfa2fec4` | Existing GitHub and GitLab twin remotes |
 | `PS-twin` / OSWAP Twin Transport | Auditable replicated Git transport | `29d8396820a2a6a612937adc54367cdae46a6531` | GitHub canonical slug `GremlinNavi/PS-twin`; GitLab compatibility slug `GremlinNavi-group/git-push-twin` |
 | `sovereign-codex-installer` | Windows bootstrap for local Codex + Ollama workflow | `b96304e0937f2df4ee710c87a7e6061cce42cdba` | Existing GitHub and GitLab twin remotes |
 | `oswapsacw-chatgpt-plugin` | OSWAP Standard for Auditable Code Workflows plugin | `ef934723f31ec3273f4884d9217318a02231861d` | Local Git repository; no remote configured at record time |

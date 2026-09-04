@@ -1,6 +1,6 @@
 # Security policy
 
-Sovereign AI Demonstrator is a local-first demonstrator, not a network service. Keep it bound to
+OSWAP AI Demonstrator is a local-first demonstrator, not a network service. Keep it bound to
 your machine and do not expose its web-research tools or backend endpoint to untrusted
 networks without a separate security review.
 
@@ -11,7 +11,7 @@ Older releases may require upgrading before a fix is available.
 
 ## Reporting a vulnerability
 
-Use the repository's [private security-advisory reporting channel](https://github.com/GremlinNavi/sovereign-ai-framework/security/advisories)
+Use the repository's [private security-advisory reporting channel](https://github.com/GremlinNavi/oswap-ai-demonstrator/security/advisories)
 when it is available. If private reporting has not been enabled by the maintainer,
 open an issue containing only a request for a private contact channel—do not include
 exploit details.

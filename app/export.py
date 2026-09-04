@@ -18,7 +18,7 @@ def export_session_txt(session_id: str, destination: Path, *, include_confidenti
             if line.strip():
                 records.append(json.loads(line))
     lines = [
-        "SOVEREIGN AI DEMONSTRATOR",
+        "OSWAP AI DEMONSTRATOR",
         "RESEARCH CONVERSATION EXPORT",
         "=============================",
         "",
@@ -45,7 +45,7 @@ def export_session_txt(session_id: str, destination: Path, *, include_confidenti
                 str(record.get("content", "")),
                 "",
             ])
-    lines.extend(["END OF SOVEREIGN AI DEMONSTRATOR EXPORT", ""])
+    lines.extend(["END OF OSWAP AI DEMONSTRATOR EXPORT", ""])
     destination.parent.mkdir(parents=True, exist_ok=True)
     destination.write_text("\n".join(lines), encoding="utf-8", newline="\n")
     return destination

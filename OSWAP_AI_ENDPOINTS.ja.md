@@ -10,7 +10,7 @@ OSWAP は公開ドメイン `oswap.ca`、`oswap.jp`、`oswap.us` を所有して
 
 ## 目的
 
-Sovereign AI Demonstrator は、特定の Git フォージを恒久的に利用し続けることに依存せず、OSWAP が管理する安定した公開アドレスから利用できることを目標とします。
+OSWAP AI Demonstrator は、特定の Git フォージを恒久的に利用し続けることに依存せず、OSWAP が管理する安定した公開アドレスから利用できることを目標とします。
 
 計画されているピア・エンドポイントは次の3つです。
 
@@ -22,7 +22,7 @@ Sovereign AI Demonstrator は、特定の Git フォージを恒久的に利用�
 
 ## ブラウザーでの動作
 
-導入済みのエンドポイントへ通常のブラウザーからアクセスした場合、Sovereign AI Demonstrator の人間向けプロジェクトページを返すことを想定します。ページには、プロジェクトの状態、ドキュメント、ソースの所在、リリース情報、ライセンス、整合性情報を含めます。
+導入済みのエンドポイントへ通常のブラウザーからアクセスした場合、OSWAP AI Demonstrator の人間向けプロジェクトページを返すことを想定します。ページには、プロジェクトの状態、ドキュメント、ソースの所在、リリース情報、ライセンス、整合性情報を含めます。
 
 ## Git での動作
 
@@ -109,12 +109,12 @@ git pull repo(9/3).oswap.ca
 ## 命名
 
 - 取り組み: Open-Source World Access Project (OSWAP)
-- AI プロジェクト: Sovereign AI Demonstrator
-- リポジトリ・スラッグ: `sovereign-ai-framework`
+- AI プロジェクト: OSWAP AI Demonstrator
+- リポジトリ・スラッグ: `oswap-ai-demonstrator`
 - OSWAP が所有するドメイン: `oswap.ca`、`oswap.jp`、`oswap.us`
 - 計画中の公開 AI エンドポイント: `ai.oswap.ca`、`ai.oswap.jp`、`ai.oswap.us`
 
-エンドポイント名は Sovereign AI Demonstrator の改名ではありません。OSWAP が管理する安定した公開アドレスを提供するためのものです。
+エンドポイント名は OSWAP AI Demonstrator の改名ではありません。OSWAP が管理する安定した公開アドレスを提供するためのものです。
 
 ## 導入原則
 

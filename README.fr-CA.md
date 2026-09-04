@@ -1,10 +1,10 @@
-# Sovereign AI Demonstrator
+# OSWAP AI Demonstrator
 
 [English](README.md) · Français canadien · [日本語](README.ja.md) · [Politique linguistique](LANGUAGES.md)
 
 Une implémentation de référence canadienne pour la recherche assistée par IA, locale d'abord, vérifiable et contrôlée par l'humain.
 
-Sovereign AI Demonstrator est un cadre de recherche local avec des moteurs d'inférence remplaçables. Il combine l'appel d'outils par IA, la récupération de l'historique des conversations, la recherche dans des connaissances locales, la recherche sur le Web public, l'évaluation des éléments de preuve, des citations axées sur la provenance, des niveaux de confiance et l'export universel des conversations en fichiers `.txt`.
+OSWAP AI Demonstrator est un cadre de recherche local avec des moteurs d'inférence remplaçables. Il combine l'appel d'outils par IA, la récupération de l'historique des conversations, la recherche dans des connaissances locales, la recherche sur le Web public, l'évaluation des éléments de preuve, des citations axées sur la provenance, des niveaux de confiance et l'export universel des conversations en fichiers `.txt`.
 
 Créatrice : Nemi Prowse
 
@@ -12,9 +12,9 @@ Créatrice : Nemi Prowse
 
 ## Relation avec OSWAP
 
-Le Open-Source World Access Project (OSWAP) est une initiative distincte consacrée à l'accès, à la découverte et à la préservation de logiciels libres et ouverts.
+Le Open-Source World Access Project (OSWAP) est le projet plus vaste consacré à l'accès, à la découverte et à la préservation de logiciels libres et ouverts, ainsi qu'aux outils associés.
 
-Sovereign AI Demonstrator conserve sa propre identité de projet. OSWAP n'est pas un nouveau nom pour le démonstrateur.
+OSWAP AI Demonstrator est le composant de démonstration IA d'OSWAP. Il conserve ses propres limites techniques et de publication tout en faisant partie du projet OSWAP.
 
 OSWAP possède `oswap.ca`, `oswap.jp` et `oswap.us`. Les futurs points d'accès publics prévus pour ce projet sont :
 
