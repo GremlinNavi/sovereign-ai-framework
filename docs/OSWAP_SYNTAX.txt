@@ -1,0 +1,33 @@
+OSWAP SYNTAX PROTOTYPE
+Open-Source World Access Project
+
+Current command family:
+  oswap push twin=<expression>
+
+Arithmetic operators:
+  ()  grouping
+  ^   exponentiation
+  *   multiplication
+  /   division
+  +   addition
+  -   subtraction
+
+Precedence:
+  1. parentheses
+  2. exponentiation
+  3. multiplication and division
+  4. addition and subtraction
+
+Examples:
+  oswap push twin=3^2
+    -> twin = 9
+
+  oswap push twin=4*(15-(2^3-5))+18/3^2
+    -> twin = 50
+
+  oswap push twin=4*(15-(23-5))+18/3^2
+    -> arithmetic result = -10
+    -> allocation validation fails
+
+Prototype rule:
+  Parsing and planning are side-effect free. Successful parsing is not authorization to execute.
