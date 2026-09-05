@@ -32,31 +32,33 @@ The OSWAP AI Demonstrator is the AI demonstrator component within that broader i
 
 The local `knowledge/index.sqlite3` database belongs to the OSWAP AI Demonstrator's RAG runtime. It is not the OSWAP software catalogue.
 
-## OSWAP-owned domains
+## OSWAP domain status
 
-OSWAP controls the following public domains:
+OSWAP has registered the following domains for planned future project infrastructure:
 
 - `oswap.ca`
 - `oswap.jp`
 - `oswap.us`
 
-These owned domains may be used as stable OSWAP namespaces in project documentation and architecture examples. Ownership of a parent domain does not imply that every proposed subdomain is operational. DNS, TLS, routing, Git protocol behavior, and content equivalence must be separately deployed and verified.
+No official OSWAP website, AI endpoint, Git endpoint, API, or other public service on these domains is represented by this repository as currently deployed or online.
 
-## Planned OSWAP AI endpoints
+Domain registration may be stated as a project fact. Operational claims require separate verification of DNS, TLS, routing/hosting, service behavior, and relevant content state.
 
-The planned OSWAP-controlled public identities for this project are:
+## Planned OSWAP AI hostnames
 
-- `https://ai.oswap.ca`
-- `https://ai.oswap.jp`
-- `https://ai.oswap.us`
+The following names are reserved in project design documents for possible future OSWAP-controlled public identities:
 
-These are intended as peer endpoints rather than a primary-and-mirror hierarchy. They do not rename the OSWAP AI Demonstrator and they do not make any national domain the canonical copy.
+- `ai.oswap.ca` — planned; not currently represented as online
+- `ai.oswap.jp` — planned; not currently represented as online
+- `ai.oswap.us` — planned; not currently represented as online
 
-The endpoints are intended to provide both a human-readable project surface and read-only Git access when the required infrastructure is deployed. Until DNS, TLS, routing, and Git protocol handling have been implemented and tested, documentation must describe them as planned rather than operational.
+These are intended as peer hostnames rather than a primary-and-mirror hierarchy. They do not rename the OSWAP AI Demonstrator and they do not make any national domain the canonical copy.
 
-The wider OSWAP Git Push Twin design may also use expression-addressed repository subdomains such as `repo9d3.oswap.ca`, `repo9d3.oswap.jp`, and `repo9d3.oswap.us`, where `9d3` is a transport-safe representation of the canonical Order of Operations expression `9/3`. Those names are design examples until individually deployed and verified.
+Documentation must not present these names as usable URLs or current clone targets until the corresponding infrastructure has been deployed and independently tested. Syntax examples that require a deliberately non-operational hostname should use a reserved documentation name such as `ai.oswap.invalid`.
 
-See [OSWAP_AI_ENDPOINTS.md](OSWAP_AI_ENDPOINTS.md) for the endpoint contract and proposed Git behavior.
+The wider OSWAP Twin design may also reserve expression-addressed names such as `repo9d3.oswap.ca`, `repo9d3.oswap.jp`, and `repo9d3.oswap.us`. Those names remain design examples until individually deployed and verified.
+
+See [OSWAP_AI_ENDPOINTS.md](OSWAP_AI_ENDPOINTS.md) for the endpoint contract and deployment-status rules.
 
 ## Documentation languages
 
@@ -66,7 +68,7 @@ Public documentation is implemented in three supported languages:
 - Canadian French (`fr-CA`)
 - Japanese (`ja`)
 
-Official project names, commands, URLs, repository slugs, file names, protocol names, hashes, and checksums remain unchanged across translations. English is the technical synchronization source unless a document explicitly states otherwise.
+Official project names, commands, repository slugs, file names, protocol names, hashes, and checksums remain unchanged across translations. English is the technical synchronization source unless a document explicitly states otherwise.
 
 Localized documentation must preserve status qualifiers such as planned, experimental, unverified, or operational. A translation must not strengthen a technical claim beyond the English source.
 
@@ -90,8 +92,8 @@ Those formulations imply institutional ownership, endorsement, or platform statu
 
 - Open-source access/discovery initiative: Open-Source World Access Project (OSWAP)
 - AI product / demonstrator: OSWAP AI Demonstrator
-- OSWAP-owned domains: `oswap.ca`, `oswap.jp`, `oswap.us`
-- OSWAP AI public identity: `ai.oswap.ca`, `ai.oswap.jp`, and `ai.oswap.us` (planned)
+- Registered OSWAP domains reserved for future infrastructure: `oswap.ca`, `oswap.jp`, `oswap.us`
+- Planned OSWAP AI hostnames: `ai.oswap.ca`, `ai.oswap.jp`, and `ai.oswap.us` (not currently represented as online)
 - OSWAP data/discovery specification: OSWAP Database
 - Repository identity: oswap-ai-demonstrator
 
@@ -105,4 +107,4 @@ A sovereign-AI reference implementation for controlled, evidence-aware knowledge
 
 ## Tone
 
-Professional, precise, understated, evidence-led, and candid about prototype limitations. Avoid hype, claims of government endorsement, and claims of production readiness that have not been independently demonstrated.
+Professional, precise, understated, evidence-led, and candid about prototype limitations. Avoid hype, claims of government endorsement, current website/service availability that has not been verified, and claims of production readiness that have not been independently demonstrated.
