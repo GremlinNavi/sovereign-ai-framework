@@ -4,43 +4,44 @@
 
 ## État
 
-OSWAP possède les domaines publics `oswap.ca`, `oswap.jp` et `oswap.us`.
+OSWAP a enregistré `oswap.ca`, `oswap.jp` et `oswap.us` pour une infrastructure future planifiée.
 
-Les sous-domaines d'IA décrits ici demeurent une infrastructure planifiée. Ils constituent des objectifs de conception tant que le DNS, le TLS, le routage en périphérie et le traitement du protocole Git n'ont pas été déployés et vérifiés pour chaque point d'accès.
+Le présent document ne présente aucun de ces domaines ni leurs sous-domaines OSWAP comme un site Web, un point d'accès Git, une API ou un autre service public actuellement déployé. L'enregistrement d'un domaine et la disponibilité d'un service sont des états distincts.
+
+Les sous-domaines d'IA décrits ici demeurent des objectifs de conception tant que le DNS, le TLS, le routage en périphérie, l'hébergement et le traitement du protocole Git n'ont pas été déployés et vérifiés pour chaque point d'accès.
+
+D'ici là, les instructions d'installation et de dépôt doivent utiliser des URL GitHub ou GitLab vérifiées plutôt qu'un domaine détenu par OSWAP.
 
 ## Objectif
 
-OSWAP AI Demonstrator doit pouvoir être rejoint au moyen d'identités publiques stables contrôlées par OSWAP, sans dépendre de l'utilisation permanente d'une plateforme Git particulière.
+OSWAP AI Demonstrator devrait éventuellement pouvoir être rejoint au moyen d'identités publiques stables contrôlées par OSWAP, sans dépendre de l'utilisation permanente d'une plateforme Git particulière.
 
-Les points d'accès pairs prévus sont :
+Les noms d'hôte pairs prévus sont :
 
-- `https://ai.oswap.ca`
-- `https://ai.oswap.jp`
-- `https://ai.oswap.us`
+- `ai.oswap.ca` — prévu; non présenté comme actuellement en ligne
+- `ai.oswap.jp` — prévu; non présenté comme actuellement en ligne
+- `ai.oswap.us` — prévu; non présenté comme actuellement en ligne
 
-Aucun de ces points d'accès n'est désigné comme copie nationale principale ou canonique. Ils doivent représenter la même identité de projet au moyen de domaines OSWAP pouvant être rejoints indépendamment.
+Aucun de ces points d'accès n'est désigné comme copie nationale principale ou canonique. Ils doivent représenter la même identité de projet au moyen de domaines OSWAP pouvant être rejoints indépendamment après leur déploiement et leur vérification.
 
 ## Comportement dans un navigateur
 
-Une requête Web ordinaire vers un point d'accès déployé devrait afficher une page lisible par une personne pour OSWAP AI Demonstrator, comprenant l'état du projet, la documentation, les emplacements du code source, les renseignements sur les versions, la licence et les renseignements d'intégrité.
+Une requête Web ordinaire vers un futur point d'accès déployé devrait afficher une page lisible par une personne pour OSWAP AI Demonstrator, comprenant l'état du projet, la documentation, les emplacements du code source, les renseignements sur les versions, la licence et les renseignements d'intégrité.
 
 ## Comportement Git
 
-Les mêmes noms d'hôte sont destinés à prendre en charge un accès Git Smart HTTP en lecture seule. Après le déploiement et la vérification, l'interface destinée aux utilisateurs devrait permettre notamment :
+Les noms d'hôte prévus sont destinés à prendre en charge un accès Git Smart HTTP en lecture seule après le déploiement et la vérification.
+
+La documentation et les tests qui nécessitent volontairement un nom d'hôte non opérationnel DEVRAIENT utiliser un domaine d'exemple réservé ou `.invalid` plutôt qu'un domaine réel détenu par OSWAP. Par exemple :
 
 ```text
-git clone https://ai.oswap.ca
-git clone https://ai.oswap.jp
-git clone https://ai.oswap.us
+git clone https://ai.oswap.invalid
+git pull https://ai.oswap.invalid main
 ```
 
-À partir d'une copie de travail Git existante :
+`.invalid` est réservé aux noms qui doivent être manifestement non opérationnels. Les commandes ci-dessus servent uniquement d'exemples de syntaxe et ne sont pas censées être résolues.
 
-```text
-git pull https://ai.oswap.ca main
-git pull https://ai.oswap.jp main
-git pull https://ai.oswap.us main
-```
+Lorsque l'infrastructure OSWAP aura réellement été déployée et vérifiée de façon indépendante, la documentation de production pourra remplacer cet espace réservé par le nom d'hôte déployé approprié.
 
 L'argument de branche est un refspec Git ordinaire. `main` est utilisé ici parce qu'il s'agit actuellement de la branche par défaut; la documentation ne doit pas laisser entendre que ce nom de branche est permanent si le dépôt change ultérieurement.
 
@@ -60,64 +61,68 @@ L'accès en écriture des personnes contributrices devrait continuer de passer p
 
 ## Indépendance par rapport aux plateformes Git
 
-GitHub et GitLab sont des plateformes de publication et de collaboration; ils ne constituent pas l'identité publique permanente du projet.
+GitHub et GitLab sont les plateformes actuelles de publication et de collaboration. Les domaines OSWAP planifiés constituent de futures identités publiques, et non des substituts actuellement déployés aux URL de ces plateformes.
 
-La relation prévue est :
+La relation future prévue est :
 
 ```text
 ai.oswap.ca / ai.oswap.jp / ai.oswap.us
-        ↓
+        [prévus; pas actuellement en ligne]
+                    ↓
 identité du projet contrôlée par OSWAP
-        ↓
+                    ↓
 transport Git / routage du dépôt
-        ↓
+                    ↓
 GitHub, GitLab ou un autre service compatible
 ```
 
-Le remplacement d'un service d'arrière-plan ne devrait pas obliger les utilisateurs à changer l'adresse publique OSWAP qui leur est fournie.
+Le remplacement d'un service d'arrière-plan ne devrait éventuellement pas obliger les utilisateurs à changer l'adresse publique OSWAP qui leur est fournie.
 
 ## Principe des domaines pairs
 
-Les points d'accès `.ca`, `.jp` et `.us` sont des pairs plutôt qu'une hiérarchie principale-miroir. Ils peuvent initialement utiliser des infrastructures différentes tout en présentant un état de projet équivalent.
+Les futurs points d'accès `.ca`, `.jp` et `.us` sont des pairs plutôt qu'une hiérarchie principale-miroir. Ils pourront éventuellement utiliser des infrastructures différentes tout en présentant un état de projet équivalent.
 
-L'implémentation ne doit pas prétendre offrir des garanties de synchronisation qui n'ont pas été vérifiées. Lorsque des renseignements d'intégrité sont publiés, ils devraient indiquer l'identifiant de commit et, lorsque pertinent, les sommes de contrôle des versions afin que les utilisateurs puissent comparer les points d'accès.
+L'implémentation ne doit pas prétendre offrir des garanties de synchronisation qui n'ont pas été vérifiées. Lorsque des renseignements d'intégrité seront publiés, ils devraient indiquer l'identifiant de commit et, lorsque pertinent, les sommes de contrôle des versions afin que les utilisateurs puissent comparer les points d'accès.
 
-La possession d'un domaine ne prouve pas qu'un sous-domaine précis est opérationnel ni que son état Git est équivalent à celui d'un autre point d'accès. Le déploiement DNS/TLS et l'équivalence du contenu Git sont des questions de vérification distinctes.
+La possession d'un domaine ne prouve pas qu'un domaine ou sous-domaine précis est opérationnel ni que son état Git est équivalent à celui d'un autre point d'accès. La délégation DNS, le TLS, le routage applicatif, le comportement Git et l'équivalence du contenu sont des questions de vérification distinctes.
 
 ## Adressage des dépôts par ordre des opérations
 
-La conception plus large de Git Push Twin d'OSWAP explore des identités de dépôt adressées par des expressions. Un identifiant arithmétique canonique comme `9/3` peut être encodé sous la forme DNS-compatible `9d3` lorsqu'une représentation sûre pour le transport est requise.
+La conception plus large de Twin d'OSWAP explore des identités de dépôt adressées par des expressions. Un identifiant arithmétique canonique comme `9/3` peut être encodé sous la forme DNS-compatible `9d3` lorsqu'une représentation sûre pour le transport est requise.
 
-Exemples de noms proposés sous les domaines détenus :
-
-```text
-repo9d3.oswap.ca
-repo9d3.oswap.jp
-repo9d3.oswap.us
-```
-
-Un futur adaptateur PowerShell/Git pourrait aussi accepter une forme destinée aux humains comme :
+Des noms futurs proposés sous les domaines enregistrés comprennent :
 
 ```text
-git pull repo(9/3).oswap.ca
+repo9d3.oswap.ca   [prévu]
+repo9d3.oswap.jp   [prévu]
+repo9d3.oswap.us   [prévu]
 ```
 
-puis la normaliser avant la résolution DNS et le transport Git vers un nom d'hôte comme `repo9d3.oswap.ca`.
+Un futur adaptateur PowerShell/Git pourrait aussi utiliser, dans la documentation ou les tests du parseur :
 
-Ces exemples constituent des concepts de conception; ils ne signifient pas que les sous-domaines ou cette syntaxe d'adaptateur sont actuellement opérationnels. Consulter la documentation de Git Push Twin sur l'ordre des opérations pour le modèle d'adressage, de sélection de sous-ensembles, de provenance et de dates de build.
+```text
+git pull repo(9/3).oswap.invalid
+```
+
+puis associer une expression validée à un nom d'hôte de production configuré seulement lorsqu'un profil de déploiement en fournit explicitement un.
+
+Ces exemples constituent des concepts de conception; ils ne signifient pas que les sous-domaines ou cette syntaxe d'adaptateur sont actuellement opérationnels.
 
 ## Nommage
 
 - Initiative : Open-Source World Access Project (OSWAP)
 - Projet d'IA : OSWAP AI Demonstrator
 - Nom du dépôt : `oswap-ai-demonstrator`
-- Domaines OSWAP détenus : `oswap.ca`, `oswap.jp`, `oswap.us`
-- Points d'accès IA publics prévus : `ai.oswap.ca`, `ai.oswap.jp`, `ai.oswap.us`
+- Domaines OSWAP enregistrés et réservés à une infrastructure future : `oswap.ca`, `oswap.jp`, `oswap.us`
+- Noms d'hôte IA publics prévus : `ai.oswap.ca`, `ai.oswap.jp`, `ai.oswap.us`
+- État actuel du site Web OSWAP : pas encore déployé par ce projet
 
-Les noms de domaine ne changent pas le nom de OSWAP AI Demonstrator. Ils fournissent des adresses stables contrôlées par OSWAP.
+Les noms de domaine ne changent pas le nom de OSWAP AI Demonstrator. Ils décrivent des adresses futures planifiées contrôlées par OSWAP.
 
 ## Principe de déploiement
 
-Le contenu destiné aux navigateurs et le trafic du protocole Git peuvent partager le même nom d'hôte, mais ils constituent des catégories de requêtes distinctes. La couche de périphérie devrait acheminer les requêtes Web ordinaires vers la page du projet et les requêtes Git Smart HTTP vers un service compatible avec Git.
+Le contenu destiné aux navigateurs et le trafic du protocole Git pourront éventuellement partager le même nom d'hôte, mais ils constituent des catégories de requêtes distinctes.
 
-Le présent document définit uniquement le contrat public prévu. Il ne prétend pas que les sous-domaines d'IA ou de dépôt adressé par expression sont opérationnels avant leur déploiement et leur vérification au moyen de véritables opérations de navigateur, DNS/TLS, `git clone`, `git fetch` et `git pull`.
+Un domaine ou sous-domaine NE DOIT PAS être décrit comme opérationnel avant que le DNS, le TLS, l'hébergement/routage et le comportement applicatif ou Git pertinents aient été testés depuis un client externe.
+
+Le présent document définit uniquement un contrat futur prévu. Il ne prétend pas que les domaines OSWAP, les sous-domaines d'IA ou les sous-domaines de dépôt adressés par expression sont actuellement en ligne.
