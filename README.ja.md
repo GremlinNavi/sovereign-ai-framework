@@ -16,35 +16,30 @@ Open-Source World Access Project (OSWAP) は、オープンソース・ソフト
 
 OSWAP AI Demonstrator は、OSWAP に含まれる AI デモンストレーター・コンポーネントです。OSWAP の一部として、独自の実装・リリース境界を維持します。
 
-OSWAP は `oswap.ca`、`oswap.jp`、`oswap.us` を所有しています。このプロジェクト向けに計画されている OSWAP 管理下の公開エンドポイントは次の3つです。
+OSWAP は、将来のインフラ向けに `oswap.ca`、`oswap.jp`、`oswap.us` を登録しています。本書は、これらのドメイン上の OSWAP Web サイト、Git エンドポイント、API、その他の公開サービスを、現在導入済みまたはオンラインとは表現しません。
 
-- `https://ai.oswap.ca`
-- `https://ai.oswap.jp`
-- `https://ai.oswap.us`
+このプロジェクト向けに計画されている公開ホスト名は次の3つです。
 
-この3つは、主系とミラーという階層ではなく、対等なピア・エンドポイントとして設計されています。DNS、TLS、ルーティング、Git プロトコル処理の導入と検証が完了するまでは、稼働中のサービスとして表現しません。
+- `ai.oswap.ca` — 計画中。現在オンラインではありません
+- `ai.oswap.jp` — 計画中。現在オンラインではありません
+- `ai.oswap.us` — 計画中。現在オンラインではありません
+
+この3つは、主系とミラーという階層ではなく、対等なピア・エンドポイントとして設計されています。DNS、TLS、ルーティング、ホスティング、Git プロトコル処理の導入と検証が完了するまでは、稼働中サービスとして扱いません。
 
 予定されているエンドポイント仕様と Order of Operations によるリポジトリ・アドレッシング例については [OSWAP_AI_ENDPOINTS.ja.md](OSWAP_AI_ENDPOINTS.ja.md) を参照してください。
 
 ## 予定されている Git アクセス
 
-インフラの導入と検証後、OSWAP エンドポイントでは読み取り専用の Git アクセスを提供する予定です。
+インフラの導入と検証後、将来の OSWAP エンドポイントでは読み取り専用の Git アクセスを提供する予定です。
+
+導入前の構文例では、実在する OSWAP ドメインを現在利用可能なネットワーク先のように見せないため、予約済みの `.invalid` ドメインを使用します。
 
 ```text
-git clone https://ai.oswap.ca
-git clone https://ai.oswap.jp
-git clone https://ai.oswap.us
+git clone https://ai.oswap.invalid
+git pull https://ai.oswap.invalid main
 ```
 
-既存の Git ワーキングツリーからは、次のような利用を想定しています。
-
-```text
-git pull https://ai.oswap.ca main
-git pull https://ai.oswap.jp main
-git pull https://ai.oswap.us main
-```
-
-これらは、実際の Git 操作による検証が完了するまではインフラ上の目標です。
+上記は意図的に非稼働の例です。現在の clone 手順では、検証済みの GitHub または GitLab のリポジトリ URL を使用します。
 
 ## 技術的な原則
 
@@ -74,7 +69,7 @@ Ollama は対応バックエンドのひとつですが、このフレームワ�
 - デスクトップ GUI
 - 公開リリースの準備
 
-コマンド、環境変数、ファイル名、URL、その他の技術的識別子は、すべての言語で変更しません。
+コマンド、環境変数、ファイル名、その他の技術的識別子は、すべての言語で変更しません。
 
 ## プライバシーと安全性
 
