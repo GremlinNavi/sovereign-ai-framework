@@ -16,35 +16,30 @@ Le Open-Source World Access Project (OSWAP) est le projet plus vaste consacré �
 
 OSWAP AI Demonstrator est le composant de démonstration IA d'OSWAP. Il conserve ses propres limites techniques et de publication tout en faisant partie du projet OSWAP.
 
-OSWAP possède `oswap.ca`, `oswap.jp` et `oswap.us`. Les futurs points d'accès publics prévus pour ce projet sont :
+OSWAP a enregistré `oswap.ca`, `oswap.jp` et `oswap.us` pour une infrastructure future planifiée. Aucun site Web, point d'accès Git, API ou autre service public OSWAP sur ces domaines n'est présenté ici comme actuellement déployé ou en ligne.
 
-- `https://ai.oswap.ca`
-- `https://ai.oswap.jp`
-- `https://ai.oswap.us`
+Les futurs noms d'hôte publics prévus pour ce projet sont :
 
-Ces trois adresses sont conçues comme des points d'accès pairs plutôt que comme une copie principale et des copies secondaires. Elles ne doivent pas être présentées comme opérationnelles avant la mise en place et la vérification du DNS, du TLS, du routage et du protocole Git.
+- `ai.oswap.ca` — prévu; pas actuellement en ligne
+- `ai.oswap.jp` — prévu; pas actuellement en ligne
+- `ai.oswap.us` — prévu; pas actuellement en ligne
+
+Ces trois noms sont conçus comme des points d'accès pairs plutôt que comme une copie principale et des copies secondaires. Ils ne doivent pas être présentés comme opérationnels avant la mise en place et la vérification du DNS, du TLS, du routage, de l'hébergement et du protocole Git.
 
 Voir [OSWAP_AI_ENDPOINTS.fr-CA.md](OSWAP_AI_ENDPOINTS.fr-CA.md) pour le contrat prévu de ces points d'accès et les exemples d'adressage de dépôt par ordre des opérations.
 
 ## Accès Git prévu
 
-Après le déploiement et la validation de l'infrastructure, les points d'accès OSWAP devraient permettre un accès Git en lecture seule, notamment :
+Après le déploiement et la validation de l'infrastructure, les futurs points d'accès OSWAP devraient permettre un accès Git en lecture seule.
+
+Avant ce déploiement, les exemples de syntaxe utilisent volontairement le domaine réservé `.invalid` afin de ne pas ressembler à une instruction réseau utilisable :
 
 ```text
-git clone https://ai.oswap.ca
-git clone https://ai.oswap.jp
-git clone https://ai.oswap.us
+git clone https://ai.oswap.invalid
+git pull https://ai.oswap.invalid main
 ```
 
-À partir d'une copie de travail Git existante :
-
-```text
-git pull https://ai.oswap.ca main
-git pull https://ai.oswap.jp main
-git pull https://ai.oswap.us main
-```
-
-Ces commandes sont des objectifs d'infrastructure tant que les points d'accès n'ont pas été testés avec de véritables opérations Git.
+Ces commandes sont des exemples non opérationnels. Les instructions actuelles de clonage doivent utiliser les URL GitHub ou GitLab vérifiées du projet.
 
 ## Principes techniques
 
